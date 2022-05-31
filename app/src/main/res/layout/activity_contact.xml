@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/hoja"
+    tools:context=".ContactActivity">
+
+    <EditText
+        android:id="@+id/etDireccion"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="72dp"
+        android:ems="10"
+        android:fontFamily="@font/hollaboi_2"
+        android:inputType="textEmailAddress"
+        android:minHeight="48dp"
+        android:text="atlantisappdevs@gmail.com"
+        android:textColor="@color/black"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/etAsunto"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:autofillHints=""
+        android:ems="10"
+        android:fontFamily="@font/hollaboi_2"
+        android:hint="Asunto"
+        android:inputType="textPersonName"
+        android:minHeight="48dp"
+        android:textColor="@color/black"
+        android:textColorHint="@color/black"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/etDireccion" />
+
+    <EditText
+        android:id="@+id/etMensaje"
+        android:layout_width="0dp"
+        android:layout_height="400dp"
+        android:layout_marginTop="10dp"
+        android:autofillHints=""
+        android:ems="10"
+        android:fontFamily="@font/hollaboi_2"
+        android:hint="Mensaje"
+        android:inputType="textPersonName"
+        android:minHeight="48dp"
+        android:textColor="@color/black"
+        android:textColorHint="@color/black"
+        app:layout_constraintBottom_toTopOf="@+id/enviar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/etAsunto"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <Button
+        android:id="@+id/enviar"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_gravity="center|center"
+        android:backgroundTint="@android:color/holo_red_light"
+        android:fontFamily="@font/hollaboi_2"
+        android:onClick="enviar"
+        android:text="Enviar"
+        android:textAllCaps="false"
+        android:textColor="@color/white"
+        android:textSize="35sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/etAsunto"
+        app:layout_constraintVertical_bias="0.844" />
+</androidx.constraintlayout.widget.ConstraintLayout>
