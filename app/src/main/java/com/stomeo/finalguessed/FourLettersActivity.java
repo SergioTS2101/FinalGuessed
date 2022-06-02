@@ -8,6 +8,9 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.TextView;
+
+import java.util.List;
 
 public class FourLettersActivity extends AppCompatActivity {
 
@@ -15,6 +18,9 @@ public class FourLettersActivity extends AppCompatActivity {
     Button noBtn;
     ImageView hangman;
     int cont = 0;
+    TextView et1;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
