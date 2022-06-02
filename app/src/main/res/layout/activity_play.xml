@@ -1,123 +1,246 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/hoja"
-    tools:context=".PlayActivity">
+    tools:context=".MainActivity">
 
-    <ImageButton
-        android:id="@+id/mainButton"
-        android:layout_width="48dp"
-        android:layout_height="48dp"
-        android:background="@drawable/playbtn"
-        android:src="@drawable/ic_home"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.049"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.045"
-        tools:ignore="SpeakableTextPresentCheck" />
-
-    <EditText
-        android:id="@+id/question"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:fontFamily="@font/hollaboi_2"
-        android:inputType=""
-        android:text="¿Cuántas letras contiene tu palabra?"
-        android:textAlignment="center"
-        android:textColor="@color/black"
-        android:textSize="40sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.155" />
-
-    <RadioGroup
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="44dp"
-        android:gravity="center"
-        android:orientation="vertical"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/question"
-        tools:layout_editor_absoluteX="0dp">
+        android:orientation="vertical">
 
-        <RadioButton
-            android:id="@+id/radio_4"
+        <TextView
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/hollaboi_2"
-            android:onClick="onRadioButtonClicked"
-            android:text="4 letras"
-            android:textColor="@color/black"
-            android:textSize="40sp" />
+            android:layout_height="wrap_content" />
 
-        <RadioButton
-            android:id="@+id/radio_5"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/hollaboi_2"
-            android:onClick="onRadioButtonClicked"
-            android:text="5 letras"
-            android:textColor="@color/black"
-            android:textSize="40sp" />
+        <ImageButton
+            android:id="@+id/mainButton"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:background="@drawable/playbtn"
+            android:src="@drawable/ic_home"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.049"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.045"
+            tools:ignore="SpeakableTextPresentCheck,ImageContrastCheck"
+            android:contentDescription="@string/mainButtonDescription" />
 
-        <RadioButton
-            android:id="@+id/radio_6"
-            android:layout_width="wrap_content"
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:fontFamily="@font/hollaboi_2"
-            android:onClick="onRadioButtonClicked"
-            android:text="6 letras"
-            android:textColor="@color/black"
-            android:textSize="40sp" />
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="10dp"
+            android:background="@color/white"
+            app:cardCornerRadius="10sp">
 
-        <RadioButton
-            android:id="@+id/radio_7"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/hollaboi_2"
-            android:onClick="onRadioButtonClicked"
-            android:text="7 letras"
-            android:textColor="@color/black"
-            android:textSize="40sp" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
 
-        <RadioButton
-            android:id="@+id/radio_8"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/hollaboi_2"
-            android:onClick="onRadioButtonClicked"
-            android:text="8 letras"
-            android:textColor="@color/black"
-            android:textSize="40sp" />
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:fontFamily="@font/organic_relief"
+                    android:padding="25sp"
+                    android:text="@string/temas"
+                    android:textAlignment="center"
+                    android:textColor="@color/black"
+                    android:textSize="30sp" />
 
-        <RadioButton
-            android:id="@+id/radio_9"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/hollaboi_2"
-            android:onClick="onRadioButtonClicked"
-            android:text="9 letras"
-            android:textColor="@color/black"
-            android:textSize="40sp" />
+            </LinearLayout>
 
-        <RadioButton
-            android:id="@+id/radio_10"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/hollaboi_2"
-            android:onClick="onRadioButtonClicked"
-            android:text="10 letras"
-            android:textColor="@color/black"
-            android:textSize="40sp" />
-    </RadioGroup>
+        </androidx.cardview.widget.CardView>
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+
+        <GridLayout
+            android:layout_width="match_parent"
+            android:layout_height="406dp"
+            android:layout_marginLeft="10sp"
+            android:layout_marginTop="10sp"
+            android:layout_marginRight="10sp"
+            android:columnCount="2"
+            android:rowCount="2">
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cvComida"
+                android:layout_rowWeight="1"
+                android:layout_columnWeight="1"
+                android:layout_gravity="fill"
+                android:layout_margin="10sp"
+                app:cardBackgroundColor="@color/white"
+                app:cardCornerRadius="10sp">
+
+                <ImageView
+                    android:layout_width="70dp"
+                    android:layout_height="70dp"
+                    android:layout_gravity="center"
+                    android:src="@drawable/comida"
+                    android:contentDescription="@string/foodImageDescription" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="bottom|center"
+                    android:fontFamily="@font/hollaboi_2"
+                    android:text="@string/comida"
+                    android:textAlignment="center"
+                    android:textColor="@color/black"
+                    android:textSize="35sp" />
+
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cvDeportes"
+                android:layout_rowWeight="1"
+                android:layout_columnWeight="1"
+                android:layout_gravity="fill"
+                android:layout_margin="10sp"
+                app:cardBackgroundColor="@color/white"
+                app:cardCornerRadius="10sp">
+
+                <ImageView
+                    android:layout_width="70dp"
+                    android:layout_height="70dp"
+                    android:layout_gravity="center"
+                    android:src="@drawable/deportes"
+                    android:contentDescription="@string/SportImageDescription" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="bottom|center"
+                    android:fontFamily="@font/hollaboi_2"
+                    android:text="@string/deportes"
+                    android:textAlignment="center"
+                    android:textColor="@color/black"
+                    android:textSize="35sp" />
+
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cvAnimales"
+                android:layout_rowWeight="1"
+                android:layout_columnWeight="1"
+                android:layout_gravity="fill"
+                android:layout_margin="10sp"
+                app:cardBackgroundColor="@color/white"
+                app:cardCornerRadius="10sp">
+
+                <ImageView
+                    android:layout_width="70dp"
+                    android:layout_height="70dp"
+                    android:layout_gravity="center"
+                    android:src="@drawable/animales"
+                    android:contentDescription="@string/AnimalImageDescription" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="bottom|center"
+                    android:fontFamily="@font/hollaboi_2"
+                    android:text="@string/animales"
+                    android:textAlignment="center"
+                    android:textColor="@color/black"
+                    android:textSize="35sp" />
+
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cvCapitales"
+                android:layout_rowWeight="1"
+                android:layout_columnWeight="1"
+                android:layout_gravity="fill"
+                android:layout_margin="10sp"
+                app:cardBackgroundColor="@color/white"
+                app:cardCornerRadius="10sp">
+
+                <ImageView
+                    android:layout_width="70dp"
+                    android:layout_height="70dp"
+                    android:layout_gravity="center"
+                    android:src="@drawable/capitales"
+                    android:contentDescription="@string/CapitalImageDescription" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="bottom|center"
+                    android:fontFamily="@font/hollaboi_2"
+                    android:text="@string/capitales"
+                    android:textAlignment="center"
+                    android:textColor="@color/black"
+                    android:textSize="35sp" />
+
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cvProfesiones"
+                android:layout_rowWeight="1"
+                android:layout_columnWeight="1"
+                android:layout_gravity="fill"
+                android:layout_margin="10sp"
+                app:cardBackgroundColor="@color/white"
+                app:cardCornerRadius="10sp">
+
+                <ImageView
+                    android:layout_width="70dp"
+                    android:layout_height="70dp"
+                    android:layout_gravity="center"
+                    android:src="@drawable/profesiones"
+                    android:contentDescription="@string/JobsImageDescription" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="bottom|center"
+                    android:fontFamily="@font/hollaboi_2"
+                    android:text="@string/profesiones"
+                    android:textAlignment="center"
+                    android:textColor="@color/black"
+                    android:textSize="35sp" />
+
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cvCine"
+                android:layout_rowWeight="1"
+                android:layout_columnWeight="1"
+                android:layout_gravity="fill"
+                android:layout_margin="10sp"
+                app:cardBackgroundColor="@color/white"
+                app:cardCornerRadius="10sp">
+
+                <ImageView
+                    android:layout_width="70dp"
+                    android:layout_height="70dp"
+                    android:layout_gravity="center"
+                    android:src="@drawable/cine"
+                    android:contentDescription="@string/CinemaImageDescription" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="bottom|center"
+                    android:fontFamily="@font/hollaboi_2"
+                    android:text="@string/cine"
+                    android:textAlignment="center"
+                    android:textColor="@color/black"
+                    android:textSize="35sp" />
+
+            </androidx.cardview.widget.CardView>
+
+        </GridLayout>
+
+    </LinearLayout>
+
+
+</ScrollView>

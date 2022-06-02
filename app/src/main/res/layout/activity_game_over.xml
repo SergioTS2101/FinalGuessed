@@ -14,7 +14,9 @@
         app:layout_constraintBottom_toTopOf="@+id/textView"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.017"
-        tools:layout_editor_absoluteX="4dp" />
+        tools:ignore="ImageContrastCheck"
+        tools:layout_editor_absoluteX="4dp"
+        android:contentDescription="@string/gameOverDescription" />
 
     <TextView
         android:id="@+id/textView"
@@ -22,7 +24,7 @@
         android:layout_height="wrap_content"
         android:fontFamily="@font/organic_relief"
         android:gravity="center"
-        android:text="FIN DEL JUEGO"
+        android:text="@string/fin_del_juego"
         android:textColor="@color/black"
         android:textSize="40sp"
         app:layout_constraintBottom_toBottomOf="parent"

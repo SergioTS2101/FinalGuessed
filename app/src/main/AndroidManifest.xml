@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="com.stomeo.finalguessed">
 
     <application
@@ -11,59 +12,44 @@
 
         <activity
             android:name=".GameOverActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:screenOrientation="portrait"
+            tools:ignore="LockedOrientationActivity" />
         <activity
-            android:name=".TenLettersActivity"
-            android:exported="false" />
-        <activity
-            android:name=".NineLettersActivity"
-            android:exported="false" />
-        <activity
-            android:name=".EightLettersActivity"
-            android:exported="false" />
-        <activity
-            android:name=".SevenLettersActivity"
-            android:exported="false" />
-        <activity
-            android:name=".SixLettersActivity"
-            android:exported="false" />
-        <activity
-            android:name=".FiveLettersActivity"
-            android:exported="false" />
-        <activity
-            android:name=".FourLettersActivity"
-            android:exported="false" />
-        <activity
-            android:name=".WordsActivity"
-            android:exported="false" />
+            android:name=".GameActivity"
+            android:exported="false"
+            android:screenOrientation="portrait"
+            tools:ignore="LockedOrientationActivity" />
         <activity
             android:name=".PlayActivity"
             android:exported="false"
-            android:screenOrientation="portrait" />
+            android:screenOrientation="portrait"
+            tools:ignore="LockedOrientationActivity" />
         <activity
             android:name=".OptionsActivity"
             android:exported="false"
-            android:screenOrientation="portrait" />
+            android:screenOrientation="portrait"
+            tools:ignore="LockedOrientationActivity" />
         <activity
             android:name=".SoundActivity"
             android:exported="false"
-            android:screenOrientation="portrait" />
-        <activity
-            android:name=".ShareActivity"
-            android:exported="false"
-            android:screenOrientation="portrait" />
+            android:screenOrientation="portrait"
+            tools:ignore="LockedOrientationActivity" />
         <activity
             android:name=".ContactActivity"
             android:exported="false"
-            android:screenOrientation="portrait" />
+            android:screenOrientation="portrait"
+            tools:ignore="LockedOrientationActivity" />
         <activity
             android:name=".MainActivity"
             android:exported="true"
-            android:screenOrientation="portrait" />
+            android:screenOrientation="portrait"
+            tools:ignore="LockedOrientationActivity" />
         <activity
             android:name=".SplashScreen"
             android:exported="true"
-            android:screenOrientation="portrait">
+            android:screenOrientation="portrait"
+            tools:ignore="LockedOrientationActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

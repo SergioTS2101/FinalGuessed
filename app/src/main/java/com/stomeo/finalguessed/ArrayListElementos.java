@@ -3,7 +3,7 @@ package com.stomeo.finalguessed;
 import java.io.Serializable;
 
 public class ArrayListElementos implements Serializable {
-    private String opcion;
+    private final String opcion;
 
     public ArrayListElementos(String opcion) {
         this.opcion = opcion;

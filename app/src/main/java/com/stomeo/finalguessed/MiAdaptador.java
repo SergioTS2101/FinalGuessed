@@ -7,14 +7,14 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
 
 public class MiAdaptador extends RecyclerView.Adapter<MiAdaptador.ViewHolder> {
-    private List<ArrayListElementos> mData;
-    private LayoutInflater mInflater;
-    private Context context;
+    private final List<ArrayListElementos> mData;
+    private final LayoutInflater mInflater;
     final OnItemClickListener listener;
 
     public interface OnItemClickListener {
@@ -23,13 +23,13 @@ public class MiAdaptador extends RecyclerView.Adapter<MiAdaptador.ViewHolder> {
 
     public MiAdaptador(Context context, List<ArrayListElementos> itemList, OnItemClickListener listener) {
         this.mInflater = LayoutInflater.from(context);
-        this.context = context;
         this.mData = itemList;
         this.listener = listener;
     }
 
+    @NonNull
     @Override
-    public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = mInflater.inflate(R.layout.activity_list, parent, false);
         return new ViewHolder(view);
     }
@@ -47,16 +47,16 @@ public class MiAdaptador extends RecyclerView.Adapter<MiAdaptador.ViewHolder> {
 
     public class ViewHolder extends RecyclerView.ViewHolder {
         ImageView logo;
-        TextView opción;
+        TextView opcion;
 
         ViewHolder(View itemView) {
             super(itemView);
             logo = itemView.findViewById(R.id.IconoImagen);
-            opción = itemView.findViewById(R.id.nameTextView);
+            opcion = itemView.findViewById(R.id.nameTextView);
         }
 
         void bindData(final ArrayListElementos item) {
-            opción.setText(item.getOpcion());
+            opcion.setText(item.getOpcion());
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
