@@ -10,7 +10,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/hollaboi_2"
-        android:text="Opciones"
+        android:text="@string/opciones"
         android:textColor="@color/black"
         android:textSize="76sp"
         android:textStyle="bold"

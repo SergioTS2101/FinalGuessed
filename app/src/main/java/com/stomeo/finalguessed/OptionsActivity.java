@@ -1,17 +1,12 @@
 package com.stomeo.finalguessed;
 
-import android.app.AlertDialog;
-import android.content.DialogInterface;
+
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
-import android.view.KeyEvent;
 import android.view.View;
-import android.widget.Switch;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.app.AppCompatDelegate;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -70,11 +65,6 @@ public class OptionsActivity extends AppCompatActivity {
             }
             case "Activar sonido": {
                 Intent intent = new Intent(this, SoundActivity.class);
-                startActivity(intent);
-                break;
-            }
-            default: {
-                Intent intent = new Intent(this, ContactActivity.class);
                 startActivity(intent);
                 break;
             }

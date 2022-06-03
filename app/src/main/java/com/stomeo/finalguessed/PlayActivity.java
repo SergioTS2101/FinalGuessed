@@ -1,17 +1,24 @@
 package com.stomeo.finalguessed;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.cardview.widget.CardView;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ImageButton;
-import android.widget.RadioButton;
 
 public class PlayActivity extends AppCompatActivity {
 
     ImageButton btn;
+    CardView cvComida;
+    CardView cvDeportes;
+    CardView cvAnimales;
+    CardView cvCapitales;
+    CardView cvProfesiones;
+    CardView cvCine;
+
+    private String temaElegido = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,55 +34,89 @@ public class PlayActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+        cvComida = (CardView) findViewById(R.id.cvComida);
+        cvDeportes = (CardView) findViewById(R.id.cvDeportes);
+        cvAnimales = (CardView) findViewById(R.id.cvAnimales);
+        cvCapitales = (CardView) findViewById(R.id.cvCapitales);
+        cvProfesiones = (CardView) findViewById(R.id.cvProfesiones);
+        cvCine = (CardView) findViewById(R.id.cvCine);
+
+        cvComida.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                temaElegido = "comida";
+                setTemaElegido("comida");
+                Intent intent = new Intent(getApplicationContext(), GameActivity.class);
+                intent.putExtra("temaElegido", temaElegido);
+                startActivity(intent);
+                finish();
+            }
+        });
+
+        cvDeportes.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                temaElegido = "deportes";
+                setTemaElegido("deportes");
+                Intent intent = new Intent(getApplicationContext(), GameActivity.class);
+                intent.putExtra("temaElegido", temaElegido);
+                startActivity(intent);
+                finish();
+            }
+        });
+
+        cvAnimales.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                temaElegido = "animales";
+                setTemaElegido("animales");
+                Intent intent = new Intent(getApplicationContext(), GameActivity.class);
+                intent.putExtra("temaElegido", temaElegido);
+                startActivity(intent);
+                finish();
+            }
+        });
+
+        cvCapitales.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                temaElegido = "capitales";
+                setTemaElegido("capitales");
+                Intent intent = new Intent(getApplicationContext(), GameActivity.class);
+                intent.putExtra("temaElegido", temaElegido);
+                startActivity(intent);
+                finish();
+            }
+        });
+
+        cvProfesiones.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                temaElegido = "profesiones";
+                setTemaElegido("profesiones");
+                Intent intent = new Intent(getApplicationContext(), GameActivity.class);
+                intent.putExtra("temaElegido", temaElegido);
+                startActivity(intent);
+                finish();
+            }
+        });
+
+        cvCine.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                temaElegido = "cine";
+                setTemaElegido("cine");
+                Intent intent = new Intent(getApplicationContext(), GameActivity.class);
+                intent.putExtra("temaElegido", temaElegido);
+                startActivity(intent);
+                finish();
+            }
+        });
     }
 
-    public void onRadioButtonClicked(View view) {
-        boolean checked = ((RadioButton) view).isChecked();
-
-        switch (view.getId()) {
-            case R.id.radio_4:
-                if (checked) {
-                    Intent intent = new Intent(this, FourLettersActivity.class);
-                    startActivity(intent);
-                }
-                break;
-            case R.id.radio_5:
-                if (checked) {
-                    Intent intent = new Intent(this, FiveLettersActivity.class);
-                    startActivity(intent);
-                }
-                break;
-            case R.id.radio_6:
-                if (checked) {
-                    Intent intent = new Intent(this, SixLettersActivity.class);
-                    startActivity(intent);
-                }
-                break;
-            case R.id.radio_7:
-                if (checked) {
-                    Intent intent = new Intent(this, SevenLettersActivity.class);
-                    startActivity(intent);
-                }
-                break;
-            case R.id.radio_8:
-                if (checked) {
-                    Intent intent = new Intent(this, EightLettersActivity.class);
-                    startActivity(intent);
-                }
-                break;
-            case R.id.radio_9:
-                if (checked) {
-                    Intent intent = new Intent(this, NineLettersActivity.class);
-                    startActivity(intent);
-                }
-                break;
-            case R.id.radio_10:
-                if (checked) {
-                    Intent intent = new Intent(this, TenLettersActivity.class);
-                    startActivity(intent);
-                }
-                break;
-        }
+    public void setTemaElegido(String temaElegido) {
+        this.temaElegido = temaElegido;
     }
 
     @Override

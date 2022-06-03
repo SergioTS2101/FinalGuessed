@@ -6,7 +6,6 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.KeyEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -50,7 +49,7 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    private void parar(View v) {
+    private void parar() {
         stopService(new Intent(this, ServicioMusica.class));
     }
 
@@ -60,7 +59,7 @@ public class MainActivity extends AppCompatActivity {
         alerta.setCancelable(false).setPositiveButton("Sí", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                parar(v);
+                parar();
                 Intent intent = new Intent(Intent.ACTION_MAIN);
                 intent.addCategory(Intent.CATEGORY_HOME);
                 intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);

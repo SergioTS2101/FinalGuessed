@@ -1,5 +1,6 @@
 package com.stomeo.finalguessed;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
@@ -11,6 +12,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.bumptech.glide.Glide;
 
+@SuppressLint("CustomSplashScreen")
 public class SplashScreen extends AppCompatActivity {
 
     View v;
@@ -20,17 +22,17 @@ public class SplashScreen extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash_screen);
 
-        reproducir(v);
+        reproducir();
 
         ImageView imageView = findViewById(R.id.splashGIF);
         Glide.with(this).asGif().load(R.raw.stickman_dancing).into(imageView);
 
-        abrirApp(true);
+        abrirApp();
 
 
     }
 
-    public void abrirApp(boolean locationPermission) {
+    public void abrirApp() {
 
         new Handler(Looper.getMainLooper()).postDelayed(new Runnable() {
             @Override
@@ -42,7 +44,7 @@ public class SplashScreen extends AppCompatActivity {
         }, 6000);
     }
 
-    private void reproducir(View v) {
+    private void reproducir() {
         startService(new Intent(this, ServicioMusica.class));
     }
 

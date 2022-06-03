@@ -2,8 +2,6 @@ package com.stomeo.finalguessed;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.app.AlertDialog;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -11,39 +9,36 @@ import android.widget.ImageView;
 
 public class SoundActivity extends AppCompatActivity {
 
-    private ImageView encender;
-    private ImageView apagar;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sound);
 
 
-        encender = findViewById(R.id.encender);
-        apagar = findViewById(R.id.apagar);
+        ImageView encender = findViewById(R.id.encender);
+        ImageView apagar = findViewById(R.id.apagar);
 
         encender.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                reproducir(v);
+                reproducir();
             }
         });
 
         apagar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                parar(v);
+                parar();
             }
         });
 
     }
 
-    private void reproducir(View v) {
+    private void reproducir() {
         startService(new Intent(this, ServicioMusica.class));
     }
 
-    private void parar(View v) {
+    private void parar() {
         stopService(new Intent(this, ServicioMusica.class));
     }
 

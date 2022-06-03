@@ -33,7 +33,8 @@
                 android:layout_gravity="center"
                 android:paddingLeft="14dp"
                 android:paddingRight="14dp"
-                android:src="@drawable/icono" />
+                android:src="@drawable/icono"
+                android:contentDescription="@string/logo" />
 
             <LinearLayout
                 android:id="@+id/ll"
@@ -50,7 +51,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="2dp"
-                    android:text="Contáctanos"
+                    android:text="@string/contacto"
                     android:fontFamily="@font/hollaboi_1"
                     android:textColor="@color/black"
                     android:textSize="54sp"
