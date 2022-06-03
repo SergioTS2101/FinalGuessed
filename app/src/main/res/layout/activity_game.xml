@@ -49,7 +49,16 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.245" />
 
-    <TextView
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvLetras"
+        android:layout_width="400dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/hangman"
+        android:orientation="horizontal"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"/>
+
+    <!--<TextView
         android:id="@+id/_1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -207,14 +216,13 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.519" />
+        app:layout_constraintVertical_bias="0.519" />-->
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/lettersLayout"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/_1">
+        app:layout_constraintBottom_toBottomOf="parent">
 
         <androidx.constraintlayout.helper.widget.Flow
             android:id="@+id/flow"
@@ -227,7 +235,7 @@
 
         </androidx.constraintlayout.helper.widget.Flow>
 
-        <TextView
+        <Button
             android:id="@+id/a"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
