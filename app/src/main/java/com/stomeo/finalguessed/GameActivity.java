@@ -5,6 +5,7 @@ import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -22,11 +23,12 @@ public class GameActivity extends AppCompatActivity {
     private enum Temas {
         comida, deportes, animales, capitales, profesiones, cine
     }
-
+    private static Context mContext;
     ImageButton btn;
     //Button noBtn;
     ImageView hangman;
-    //int cont = 0;
+    static int contfallos;
+    static int contaciertos;
     String temaElegido;
     TextView tvTema;
     TextView tvPrueba;
@@ -65,11 +67,13 @@ public class GameActivity extends AppCompatActivity {
     ArrayList<LetrasList> letrasList;
     LetrasAdapter letrasAdapter;
 
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game);
-
+        mContext = this;
         btn = (ImageButton) findViewById(R.id.mainButton);
         //noBtn = (Button) findViewById(R.id.btnNo);
         hangman = (ImageView) findViewById(R.id.hangman);
@@ -106,7 +110,8 @@ public class GameActivity extends AppCompatActivity {
         tvPrueba = (TextView) findViewById(R.id.tvPrueba);
 
         recyclerView = findViewById(R.id.rvLetras);
-
+        contaciertos = 0;
+        contfallos = 0;
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -170,156 +175,417 @@ public class GameActivity extends AppCompatActivity {
         tvA.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                boolean pressed = false;
+                if (!pressed){
+                    if(guessWord('a', caracteres, letrasList)){
+                        letrasAdapter = new LetrasAdapter(GameActivity.this, letrasList);
+                        recyclerView.setAdapter(letrasAdapter);
+                    }
+                    tvA.setVisibility(View.INVISIBLE);
+                    pressed = true;
+                    checkConds(hangman, caracteres);
+                }
             }
         });
 
         tvB.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                boolean pressed = false;
+                if (!pressed){
+                    if(guessWord('b', caracteres, letrasList)){
+                        letrasAdapter = new LetrasAdapter(GameActivity.this, letrasList);
+                        recyclerView.setAdapter(letrasAdapter);
+                    }
+                    tvB.setVisibility(View.INVISIBLE);
+                    pressed = true;
+                    checkConds(hangman,caracteres);
+                }
             }
+
         });
 
         tvC.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                boolean pressed = false;
+                if (!pressed){
+                    if(guessWord('c', caracteres, letrasList)){
+                        letrasAdapter = new LetrasAdapter(GameActivity.this, letrasList);
+                        recyclerView.setAdapter(letrasAdapter);
+                    }
+                    tvC.setVisibility(View.INVISIBLE);
+                    pressed = true;
+                    checkConds(hangman, caracteres);
+                }
             }
         });
 
         tvD.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                boolean pressed = false;
+                if (!pressed){
+                    if(guessWord('d', caracteres, letrasList)){
+                        letrasAdapter = new LetrasAdapter(GameActivity.this, letrasList);
+                        recyclerView.setAdapter(letrasAdapter);
+                    }
+                    tvD.setVisibility(View.INVISIBLE);
+                    pressed = true;
+                    checkConds(hangman, caracteres);
+                }
             }
         });
 
         tvE.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                boolean pressed = false;
+                if (!pressed){
+                    if(guessWord('e', caracteres, letrasList)){
+                        letrasAdapter = new LetrasAdapter(GameActivity.this, letrasList);
+                        recyclerView.setAdapter(letrasAdapter);
+                    }
+                    tvE.setVisibility(View.INVISIBLE);
+                    pressed = true;
+                    checkConds(hangman, caracteres);
+                }
             }
         });
 
         tvF.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                boolean pressed = false;
+                if (!pressed){
+                    if(guessWord('f', caracteres, letrasList)){
+                        letrasAdapter = new LetrasAdapter(GameActivity.this, letrasList);
+                        recyclerView.setAdapter(letrasAdapter);
+                    }
+                    tvF.setVisibility(View.INVISIBLE);
+                    pressed = true;
+                    checkConds(hangman, caracteres);
+                }
             }
         });
 
         tvG.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                boolean pressed = false;
+                if (!pressed){
+                    if(guessWord('g', caracteres, letrasList)){
+                        letrasAdapter = new LetrasAdapter(GameActivity.this, letrasList);
+                        recyclerView.setAdapter(letrasAdapter);
+                    }
+                    tvG.setVisibility(View.INVISIBLE);
+                    pressed = true;
+                    checkConds(hangman, caracteres);
+                }
             }
         });
 
         tvH.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                boolean pressed = false;
+                if (!pressed){
+                    if(guessWord('h', caracteres, letrasList)){
+                        letrasAdapter = new LetrasAdapter(GameActivity.this, letrasList);
+                        recyclerView.setAdapter(letrasAdapter);
+                    }
+                    tvH.setVisibility(View.INVISIBLE);
+                    pressed = true;
+                    checkConds(hangman, caracteres);
+                }
             }
         });
 
         tvI.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                boolean pressed = false;
+                if (!pressed){
+                    if(guessWord('i', caracteres, letrasList)){
+                        letrasAdapter = new LetrasAdapter(GameActivity.this, letrasList);
+                        recyclerView.setAdapter(letrasAdapter);
+                    }
+                    tvI.setVisibility(View.INVISIBLE);
+                    pressed = true;
+                    checkConds(hangman, caracteres);
+                }
             }
         });
 
         tvJ.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                boolean pressed = false;
+                if (!pressed){
+                    if(guessWord('j', caracteres, letrasList)){
+                        letrasAdapter = new LetrasAdapter(GameActivity.this, letrasList);
+                        recyclerView.setAdapter(letrasAdapter);
+                    }
+                    tvJ.setVisibility(View.INVISIBLE);
+                    pressed = true;
+                    checkConds(hangman, caracteres);
+                }
             }
         });
 
         tvK.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                boolean pressed = false;
+                if (!pressed){
+                    if(guessWord('k', caracteres, letrasList)){
+                        letrasAdapter = new LetrasAdapter(GameActivity.this, letrasList);
+                        recyclerView.setAdapter(letrasAdapter);
+                    }
+                    tvK.setVisibility(View.INVISIBLE);
+                    pressed = true;
+                    checkConds(hangman, caracteres);
+                }
             }
         });
 
         tvL.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                boolean pressed = false;
+                if (!pressed){
+                    if(guessWord('l', caracteres, letrasList)){
+                        letrasAdapter = new LetrasAdapter(GameActivity.this, letrasList);
+                        recyclerView.setAdapter(letrasAdapter);
+                    }
+                    tvL.setVisibility(View.INVISIBLE);
+                    pressed = true;
+                    checkConds(hangman, caracteres);
+                }
             }
         });
 
         tvM.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                boolean pressed = false;
+                if (!pressed){
+                    if(guessWord('m', caracteres, letrasList)){
+                        letrasAdapter = new LetrasAdapter(GameActivity.this, letrasList);
+                        recyclerView.setAdapter(letrasAdapter);
+                    }
+                    tvM.setVisibility(View.INVISIBLE);
+                    pressed = true;
+                    checkConds(hangman, caracteres);
+                }
             }
         });
 
         tvN.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                boolean pressed = false;
+                if (!pressed){
+                    if(guessWord('n', caracteres, letrasList)){
+                        letrasAdapter = new LetrasAdapter(GameActivity.this, letrasList);
+                        recyclerView.setAdapter(letrasAdapter);
+                    }
+                    tvN.setVisibility(View.INVISIBLE);
+                    pressed = true;
+                    checkConds(hangman, caracteres);
+                }
             }
         });
 
         tvO.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                boolean pressed = false;
+                if (!pressed){
+                    if(guessWord('o', caracteres, letrasList)){
+                        letrasAdapter = new LetrasAdapter(GameActivity.this, letrasList);
+                        recyclerView.setAdapter(letrasAdapter);
+                    }
+                    tvO.setVisibility(View.INVISIBLE);
+                    pressed = true;
+                    checkConds(hangman, caracteres);
+                }
             }
         });
 
         tvP.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                boolean pressed = false;
+                if (!pressed){
+                    if(guessWord('p', caracteres, letrasList)){
+                        letrasAdapter = new LetrasAdapter(GameActivity.this, letrasList);
+                        recyclerView.setAdapter(letrasAdapter);
+                    }
+                    tvP.setVisibility(View.INVISIBLE);
+                    pressed = true;
+                    checkConds(hangman, caracteres);
+                }
             }
         });
 
         tvQ.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                boolean pressed = false;
+                if (!pressed){
+                    if(guessWord('q', caracteres, letrasList)){
+                        letrasAdapter = new LetrasAdapter(GameActivity.this, letrasList);
+                        recyclerView.setAdapter(letrasAdapter);
+                    }
+                    tvQ.setVisibility(View.INVISIBLE);
+                    pressed = true;
+                    checkConds(hangman, caracteres);
+                }
             }
         });
 
         tvR.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                boolean pressed = false;
+                if (!pressed){
+                    if(guessWord('r', caracteres, letrasList)){
+                        letrasAdapter = new LetrasAdapter(GameActivity.this, letrasList);
+                        recyclerView.setAdapter(letrasAdapter);
+                    }
+                    tvR.setVisibility(View.INVISIBLE);
+                    pressed = true;
+                    checkConds(hangman, caracteres);
+                }
             }
         });
 
         tvS.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                boolean pressed = false;
+                if (!pressed){
+                    if(guessWord('s', caracteres, letrasList)){
+                        letrasAdapter = new LetrasAdapter(GameActivity.this, letrasList);
+                        recyclerView.setAdapter(letrasAdapter);
+                    }
+                    tvS.setVisibility(View.INVISIBLE);
+                    pressed = true;
+                    checkConds(hangman, caracteres);
+                }
             }
         });
 
         tvT.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                boolean pressed = false;
+                if (!pressed){
+                    if(guessWord('t', caracteres, letrasList)){
+                        letrasAdapter = new LetrasAdapter(GameActivity.this, letrasList);
+                        recyclerView.setAdapter(letrasAdapter);
+                    }
+                    tvT.setVisibility(View.INVISIBLE);
+                    pressed = true;
+                    checkConds(hangman,caracteres);
+                }
             }
         });
 
         tvU.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                boolean pressed = false;
+                if (!pressed){
+                    if(guessWord('u', caracteres, letrasList)){
+                        letrasAdapter = new LetrasAdapter(GameActivity.this, letrasList);
+                        recyclerView.setAdapter(letrasAdapter);
+                    }
+                    tvU.setVisibility(View.INVISIBLE);
+                    pressed = true;
+                    checkConds(hangman, caracteres);
+                }
             }
         });
 
         tvV.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                boolean pressed = false;
+                if (!pressed){
+                    if(guessWord('v', caracteres, letrasList)){
+                        letrasAdapter = new LetrasAdapter(GameActivity.this, letrasList);
+                        recyclerView.setAdapter(letrasAdapter);
+                    }
+                    tvV.setVisibility(View.INVISIBLE);
+                    pressed = true;
+                    checkConds(hangman, caracteres);
+                }
             }
         });
 
         tvW.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                boolean pressed = false;
+                if (!pressed){
+                    if(guessWord('w', caracteres, letrasList)){
+                        letrasAdapter = new LetrasAdapter(GameActivity.this, letrasList);
+                        recyclerView.setAdapter(letrasAdapter);
+                    }
+                    tvW.setVisibility(View.INVISIBLE);
+                    pressed = true;
+                    checkConds(hangman, caracteres);
+                }
             }
         });
 
         tvX.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                boolean pressed = false;
+                if (!pressed){
+                    if(guessWord('x', caracteres, letrasList)){
+                        letrasAdapter = new LetrasAdapter(GameActivity.this, letrasList);
+                        recyclerView.setAdapter(letrasAdapter);
+                    }
+                    tvX.setVisibility(View.INVISIBLE);
+                    pressed = true;
+                    checkConds(hangman, caracteres);
+                }
             }
         });
 
         tvY.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                boolean pressed = false;
+                if (!pressed){
+                    if(guessWord('y', caracteres, letrasList)){
+                        letrasAdapter = new LetrasAdapter(GameActivity.this, letrasList);
+                        recyclerView.setAdapter(letrasAdapter);
+                    }
+                    tvY.setVisibility(View.INVISIBLE);
+                    pressed = true;
+                    checkConds(hangman, caracteres);
+                }
             }
         });
 
         tvZ.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                boolean pressed = false;
+                if (!pressed){
+                    if(guessWord('z', caracteres, letrasList)){
+                        letrasAdapter = new LetrasAdapter(GameActivity.this, letrasList);
+                        recyclerView.setAdapter(letrasAdapter);
+                    }
+                    tvZ.setVisibility(View.INVISIBLE);
+                    pressed = true;
+                    checkConds(hangman, caracteres);
+                }
             }
         });
 
@@ -377,4 +643,62 @@ public class GameActivity extends AppCompatActivity {
                         | View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
                         | View.SYSTEM_UI_FLAG_FULLSCREEN);
     }
+
+    public static boolean guessWord(char c, char[] caracteres, ArrayList<LetrasList> letrasList){
+        boolean fail = true;
+        for(int i = 0; i < caracteres.length; i++){
+            if(caracteres[i] == c){
+                fail = false;
+                contaciertos++;
+                letrasList.set(i, new LetrasList(c));
+
+            }
+        }
+        if (fail){
+            contfallos++;
+            return (false);
+        }
+        else
+            return (true);
+    }
+
+    public static void checkConds(ImageView hangman, char[] caracteres){
+        if (contfallos == 1) {
+            hangman.setVisibility(View.VISIBLE);
+            hangman.setImageResource(R.drawable.primer_fallo);
+        }
+        else if (contfallos == 2) {
+            hangman.setVisibility(View.VISIBLE);
+            hangman.setImageResource(R.drawable.segundo_fallo);
+        }
+        else if (contfallos == 3) {
+            hangman.setVisibility(View.VISIBLE);
+            hangman.setImageResource(R.drawable.tercer_fallo);
+        }
+        else if (contfallos == 4) {
+            hangman.setVisibility(View.VISIBLE);
+            hangman.setImageResource(R.drawable.cuarto_fallo);
+        }
+        else if (contfallos == 5) {
+            hangman.setVisibility(View.VISIBLE);
+            hangman.setImageResource(R.drawable.quinto_fallo);
+        }
+        else if (contfallos == 6) {
+            hangman.setVisibility(View.VISIBLE);
+            hangman.setImageResource(R.drawable.septimo_fallo);
+        }
+        else if (contfallos == 7){
+            hangman.setVisibility(View.VISIBLE);
+            hangman.setImageResource(R.drawable.octavo_fallo);
+            Intent intent = new Intent(mContext, GameOverActivity.class);
+            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            mContext.startActivity(intent);
+        }
+        if (contaciertos == caracteres.length){
+            Intent intent = new Intent(mContext, GameOverActivity.class);
+            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            mContext.startActivity(intent);
+        }
+    }
+
 }
