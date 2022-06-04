@@ -3,12 +3,6 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/FinalGuessedBueno/app/src/main/res/layout/activity_four_letters.xml" value="0.35989583333333336" />
-        <entry key="..\:/FinalGuessedBueno/app/src/main/res/layout/activity_game.xml" value="0.1796875" />
-        <entry key="..\:/FinalGuessedBueno/app/src/main/res/layout/activity_game_over.xml" value="0.3351449275362319" />
-        <entry key="..\:/FinalGuessedBueno/app/src/main/res/layout/activity_list.xml" value="0.3351449275362319" />
-        <entry key="..\:/FinalGuessedBueno/app/src/main/res/layout/activity_main.xml" value="0.1" />
-        <entry key="..\:/FinalGuessedBueno/app/src/main/res/layout/activity_play.xml" value="0.35989583333333336" />
         <entry key="..\:/Users/sergi/AndroidStudioProjects/FinalGuessed/app/src/main/res/drawable/ic_guessed_background.xml" value="0.1435" />
         <entry key="..\:/Users/sergi/AndroidStudioProjects/FinalGuessed/app/src/main/res/drawable/ic_music_off_foreground.xml" value="0.1" />
         <entry key="..\:/Users/sergi/AndroidStudioProjects/FinalGuessed/app/src/main/res/drawable/ic_music_on_foreground.xml" value="0.1" />
@@ -17,6 +11,7 @@
         <entry key="..\:/Users/sergi/AndroidStudioProjects/FinalGuessed/app/src/main/res/layout/activity_eight_letters.xml" value="0.17391304347826086" />
         <entry key="..\:/Users/sergi/AndroidStudioProjects/FinalGuessed/app/src/main/res/layout/activity_five_letters.xml" value="0.17391304347826086" />
         <entry key="..\:/Users/sergi/AndroidStudioProjects/FinalGuessed/app/src/main/res/layout/activity_four_letters.xml" value="0.22" />
+        <entry key="..\:/Users/sergi/AndroidStudioProjects/FinalGuessed/app/src/main/res/layout/activity_game.xml" value="0.22" />
         <entry key="..\:/Users/sergi/AndroidStudioProjects/FinalGuessed/app/src/main/res/layout/activity_game_over.xml" value="0.17391304347826086" />
         <entry key="..\:/Users/sergi/AndroidStudioProjects/FinalGuessed/app/src/main/res/layout/activity_list.xml" value="0.17391304347826086" />
         <entry key="..\:/Users/sergi/AndroidStudioProjects/FinalGuessed/app/src/main/res/layout/activity_main.xml" value="0.1" />
@@ -30,6 +25,7 @@
         <entry key="..\:/Users/sergi/AndroidStudioProjects/FinalGuessed/app/src/main/res/layout/activity_splash_screen.xml" value="0.17074275362318841" />
         <entry key="..\:/Users/sergi/AndroidStudioProjects/FinalGuessed/app/src/main/res/layout/activity_ten_letters.xml" value="0.17391304347826086" />
         <entry key="..\:/Users/sergi/AndroidStudioProjects/FinalGuessed/app/src/main/res/layout/activity_words.xml" value="0.17391304347826086" />
+        <entry key="..\:/Users/sergi/AndroidStudioProjects/FinalGuessed/app/src/main/res/layout/letras.xml" value="0.22" />
         <entry key="..\:/Users/sergi/AndroidStudioProjects/FinalGuessed/app/src/main/res/layout/lista_activity.xml" value="0.17074275362318841" />
         <entry key="..\:/Users/sergi/AndroidStudioProjects/FinalGuessed/app/src/main/res/mipmap-anydpi-v26/ic_guessed.xml" value="0.1435" />
         <entry key="..\:/Users/sergi/AndroidStudioProjects/FinalGuessed/app/src/main/res/mipmap-anydpi-v26/ic_guessed_round.xml" value="0.1" />

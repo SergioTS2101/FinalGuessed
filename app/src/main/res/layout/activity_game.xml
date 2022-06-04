@@ -49,11 +49,24 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.245" />
 
+    <TextView
+        android:id="@+id/tvPrueba"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="52dp"
+        android:text=""
+        android:textSize="40sp"
+        app:layout_constraintBottom_toBottomOf="@+id/hangman"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/hangman"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvLetras"
         android:layout_width="400dp"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toBottomOf="@id/hangman"
+        android:background="?android:attr/selectableItemBackground"
         android:orientation="horizontal"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"/>
@@ -235,7 +248,7 @@
 
         </androidx.constraintlayout.helper.widget.Flow>
 
-        <Button
+        <TextView
             android:id="@+id/a"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

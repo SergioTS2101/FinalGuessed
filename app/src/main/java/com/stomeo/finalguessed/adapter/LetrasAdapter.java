@@ -23,7 +23,7 @@ public class LetrasAdapter extends RecyclerView.Adapter<LetrasAdapter.LetrasView
     ArrayList<LetrasList> listaLetras;
     Context context;
 
-    public LetrasAdapter(Context context,ArrayList<LetrasList> listaLetras){
+    public LetrasAdapter(Context context, ArrayList<LetrasList> listaLetras){
         this.context = context;
         this.listaLetras =  listaLetras;
     }

@@ -8,8 +8,6 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-//import android.widget.Button;
-import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -31,15 +29,41 @@ public class GameActivity extends AppCompatActivity {
     //int cont = 0;
     String temaElegido;
     TextView tvTema;
+    TextView tvPrueba;
 
-    Button btnA;
+    TextView tvA;
+    TextView tvB;
+    TextView tvC;
+    TextView tvD;
+    TextView tvE;
+    TextView tvF;
+    TextView tvG;
+    TextView tvH;
+    TextView tvI;
+    TextView tvJ;
+    TextView tvK;
+    TextView tvL;
+    TextView tvM;
+    TextView tvN;
+    TextView tvO;
+    TextView tvP;
+    TextView tvQ;
+    TextView tvR;
+    TextView tvS;
+    TextView tvT;
+    TextView tvU;
+    TextView tvV;
+    TextView tvW;
+    TextView tvX;
+    TextView tvY;
+    TextView tvZ;
+
+    char[] caracteres;
 
     //Recycler letras
     RecyclerView recyclerView;
     ArrayList<LetrasList> letrasList;
     LetrasAdapter letrasAdapter;
-
-    private List<ListaPalabras> listaPalabras;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,9 +74,36 @@ public class GameActivity extends AppCompatActivity {
         //noBtn = (Button) findViewById(R.id.btnNo);
         hangman = (ImageView) findViewById(R.id.hangman);
 
-        btnA = (Button) findViewById(R.id.a);
+        tvA = (TextView) findViewById(R.id.a);
+        tvB = (TextView) findViewById(R.id.b);
+        tvC = (TextView) findViewById(R.id.c);
+        tvD = (TextView) findViewById(R.id.d);
+        tvE = (TextView) findViewById(R.id.e);
+        tvF = (TextView) findViewById(R.id.f);
+        tvG = (TextView) findViewById(R.id.g);
+        tvH = (TextView) findViewById(R.id.h);
+        tvI = (TextView) findViewById(R.id.i);
+        tvJ = (TextView) findViewById(R.id.j);
+        tvK = (TextView) findViewById(R.id.k);
+        tvL = (TextView) findViewById(R.id.l);
+        tvM = (TextView) findViewById(R.id.m);
+        tvN = (TextView) findViewById(R.id.n);
+        tvO = (TextView) findViewById(R.id.o);
+        tvP = (TextView) findViewById(R.id.p);
+        tvQ = (TextView) findViewById(R.id.q);
+        tvR = (TextView) findViewById(R.id.r);
+        tvS = (TextView) findViewById(R.id.s);
+        tvT = (TextView) findViewById(R.id.t);
+        tvU = (TextView) findViewById(R.id.u);
+        tvV = (TextView) findViewById(R.id.v);
+        tvW = (TextView) findViewById(R.id.w);
+        tvX = (TextView) findViewById(R.id.x);
+        tvY = (TextView) findViewById(R.id.y);
+        tvZ = (TextView) findViewById(R.id.z);
 
         tvTema = (TextView) findViewById(R.id.tvTema);
+
+        tvPrueba = (TextView) findViewById(R.id.tvPrueba);
 
         recyclerView = findViewById(R.id.rvLetras);
 
@@ -87,23 +138,25 @@ public class GameActivity extends AppCompatActivity {
                 break;
         }
 
-        listaPalabras = ArrayListPalabras.getPalabras(temaElegido);
+        List<ListaPalabras> listaPalabras = ArrayListPalabras.getPalabras(temaElegido);
 
-        int numero = (int)(Math.random()*30+1);
+        int numero = (int) (Math.random() * 29 + 0);
         String palabraAleatoria = listaPalabras.get(numero).getPalabra();
 
-        char[] caracteres = palabraAleatoria.toCharArray();
+        tvPrueba.setText(palabraAleatoria);
+
+        caracteres = palabraAleatoria.toCharArray();
 
 
-        letrasList = new ArrayList<>();
-        for (int i = 0; i < caracteres.length; i++){
-            LetrasList letras = new LetrasList(caracteres[i]);
-            letrasList.add(letras);
+        letrasList = new ArrayList<LetrasList>();
+        for (int i = 0; i < caracteres.length; i++) {
+            letrasList.add(new LetrasList(' '));
         }
 
 
+
         LinearLayoutManager layoutManager = new LinearLayoutManager(
-                GameActivity.this,LinearLayoutManager.HORIZONTAL,false
+                GameActivity.this, LinearLayoutManager.HORIZONTAL, false
         );
 
         recyclerView.setLayoutManager(layoutManager);
@@ -114,18 +167,161 @@ public class GameActivity extends AppCompatActivity {
         recyclerView.setAdapter(letrasAdapter);
 
 
-
-       /* btnA.setOnClickListener(new View.OnClickListener() {
+        tvA.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                for(int i = 0; i < caracteres.length; i++){
-                    if(caracteres =){
-
-                    }
-                }
             }
-        });*/
+        });
 
+        tvB.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+            }
+        });
+
+        tvC.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+            }
+        });
+
+        tvD.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+            }
+        });
+
+        tvE.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+            }
+        });
+
+        tvF.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+            }
+        });
+
+        tvG.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+            }
+        });
+
+        tvH.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+            }
+        });
+
+        tvI.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+            }
+        });
+
+        tvJ.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+            }
+        });
+
+        tvK.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+            }
+        });
+
+        tvL.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+            }
+        });
+
+        tvM.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+            }
+        });
+
+        tvN.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+            }
+        });
+
+        tvO.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+            }
+        });
+
+        tvP.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+            }
+        });
+
+        tvQ.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+            }
+        });
+
+        tvR.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+            }
+        });
+
+        tvS.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+            }
+        });
+
+        tvT.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+            }
+        });
+
+        tvU.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+            }
+        });
+
+        tvV.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+            }
+        });
+
+        tvW.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+            }
+        });
+
+        tvX.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+            }
+        });
+
+        tvY.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+            }
+        });
+
+        tvZ.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+            }
+        });
 
        /* noBtn.setOnClickListener(new View.OnClickListener() {
             @Override
