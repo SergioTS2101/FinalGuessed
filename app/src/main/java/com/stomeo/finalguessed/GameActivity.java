@@ -177,7 +177,7 @@ public class GameActivity extends AppCompatActivity {
             public void onClick(View v) {
                 boolean pressed = false;
                 if (!pressed){
-                    if(guessWord('a', caracteres, letrasList)){
+                    if(guessWord('A', caracteres, letrasList)){
                         letrasAdapter = new LetrasAdapter(GameActivity.this, letrasList);
                         recyclerView.setAdapter(letrasAdapter);
                     }
@@ -193,7 +193,7 @@ public class GameActivity extends AppCompatActivity {
             public void onClick(View v) {
                 boolean pressed = false;
                 if (!pressed){
-                    if(guessWord('b', caracteres, letrasList)){
+                    if(guessWord('B', caracteres, letrasList)){
                         letrasAdapter = new LetrasAdapter(GameActivity.this, letrasList);
                         recyclerView.setAdapter(letrasAdapter);
                     }
@@ -210,7 +210,7 @@ public class GameActivity extends AppCompatActivity {
             public void onClick(View v) {
                 boolean pressed = false;
                 if (!pressed){
-                    if(guessWord('c', caracteres, letrasList)){
+                    if(guessWord('C', caracteres, letrasList)){
                         letrasAdapter = new LetrasAdapter(GameActivity.this, letrasList);
                         recyclerView.setAdapter(letrasAdapter);
                     }
@@ -226,7 +226,7 @@ public class GameActivity extends AppCompatActivity {
             public void onClick(View v) {
                 boolean pressed = false;
                 if (!pressed){
-                    if(guessWord('d', caracteres, letrasList)){
+                    if(guessWord('D', caracteres, letrasList)){
                         letrasAdapter = new LetrasAdapter(GameActivity.this, letrasList);
                         recyclerView.setAdapter(letrasAdapter);
                     }
@@ -242,7 +242,7 @@ public class GameActivity extends AppCompatActivity {
             public void onClick(View v) {
                 boolean pressed = false;
                 if (!pressed){
-                    if(guessWord('e', caracteres, letrasList)){
+                    if(guessWord('E', caracteres, letrasList)){
                         letrasAdapter = new LetrasAdapter(GameActivity.this, letrasList);
                         recyclerView.setAdapter(letrasAdapter);
                     }
@@ -258,7 +258,7 @@ public class GameActivity extends AppCompatActivity {
             public void onClick(View v) {
                 boolean pressed = false;
                 if (!pressed){
-                    if(guessWord('f', caracteres, letrasList)){
+                    if(guessWord('F', caracteres, letrasList)){
                         letrasAdapter = new LetrasAdapter(GameActivity.this, letrasList);
                         recyclerView.setAdapter(letrasAdapter);
                     }
@@ -274,7 +274,7 @@ public class GameActivity extends AppCompatActivity {
             public void onClick(View v) {
                 boolean pressed = false;
                 if (!pressed){
-                    if(guessWord('g', caracteres, letrasList)){
+                    if(guessWord('G', caracteres, letrasList)){
                         letrasAdapter = new LetrasAdapter(GameActivity.this, letrasList);
                         recyclerView.setAdapter(letrasAdapter);
                     }
@@ -290,7 +290,7 @@ public class GameActivity extends AppCompatActivity {
             public void onClick(View v) {
                 boolean pressed = false;
                 if (!pressed){
-                    if(guessWord('h', caracteres, letrasList)){
+                    if(guessWord('H', caracteres, letrasList)){
                         letrasAdapter = new LetrasAdapter(GameActivity.this, letrasList);
                         recyclerView.setAdapter(letrasAdapter);
                     }
@@ -306,7 +306,7 @@ public class GameActivity extends AppCompatActivity {
             public void onClick(View v) {
                 boolean pressed = false;
                 if (!pressed){
-                    if(guessWord('i', caracteres, letrasList)){
+                    if(guessWord('I', caracteres, letrasList)){
                         letrasAdapter = new LetrasAdapter(GameActivity.this, letrasList);
                         recyclerView.setAdapter(letrasAdapter);
                     }
@@ -322,7 +322,7 @@ public class GameActivity extends AppCompatActivity {
             public void onClick(View v) {
                 boolean pressed = false;
                 if (!pressed){
-                    if(guessWord('j', caracteres, letrasList)){
+                    if(guessWord('J', caracteres, letrasList)){
                         letrasAdapter = new LetrasAdapter(GameActivity.this, letrasList);
                         recyclerView.setAdapter(letrasAdapter);
                     }
@@ -338,7 +338,7 @@ public class GameActivity extends AppCompatActivity {
             public void onClick(View v) {
                 boolean pressed = false;
                 if (!pressed){
-                    if(guessWord('k', caracteres, letrasList)){
+                    if(guessWord('K', caracteres, letrasList)){
                         letrasAdapter = new LetrasAdapter(GameActivity.this, letrasList);
                         recyclerView.setAdapter(letrasAdapter);
                     }
@@ -354,7 +354,7 @@ public class GameActivity extends AppCompatActivity {
             public void onClick(View v) {
                 boolean pressed = false;
                 if (!pressed){
-                    if(guessWord('l', caracteres, letrasList)){
+                    if(guessWord('L', caracteres, letrasList)){
                         letrasAdapter = new LetrasAdapter(GameActivity.this, letrasList);
                         recyclerView.setAdapter(letrasAdapter);
                     }
@@ -370,7 +370,7 @@ public class GameActivity extends AppCompatActivity {
             public void onClick(View v) {
                 boolean pressed = false;
                 if (!pressed){
-                    if(guessWord('m', caracteres, letrasList)){
+                    if(guessWord('M', caracteres, letrasList)){
                         letrasAdapter = new LetrasAdapter(GameActivity.this, letrasList);
                         recyclerView.setAdapter(letrasAdapter);
                     }
@@ -386,7 +386,7 @@ public class GameActivity extends AppCompatActivity {
             public void onClick(View v) {
                 boolean pressed = false;
                 if (!pressed){
-                    if(guessWord('n', caracteres, letrasList)){
+                    if(guessWord('N', caracteres, letrasList)){
                         letrasAdapter = new LetrasAdapter(GameActivity.this, letrasList);
                         recyclerView.setAdapter(letrasAdapter);
                     }
@@ -402,7 +402,7 @@ public class GameActivity extends AppCompatActivity {
             public void onClick(View v) {
                 boolean pressed = false;
                 if (!pressed){
-                    if(guessWord('o', caracteres, letrasList)){
+                    if(guessWord('O', caracteres, letrasList)){
                         letrasAdapter = new LetrasAdapter(GameActivity.this, letrasList);
                         recyclerView.setAdapter(letrasAdapter);
                     }
@@ -418,7 +418,7 @@ public class GameActivity extends AppCompatActivity {
             public void onClick(View v) {
                 boolean pressed = false;
                 if (!pressed){
-                    if(guessWord('p', caracteres, letrasList)){
+                    if(guessWord('P', caracteres, letrasList)){
                         letrasAdapter = new LetrasAdapter(GameActivity.this, letrasList);
                         recyclerView.setAdapter(letrasAdapter);
                     }
@@ -434,7 +434,7 @@ public class GameActivity extends AppCompatActivity {
             public void onClick(View v) {
                 boolean pressed = false;
                 if (!pressed){
-                    if(guessWord('q', caracteres, letrasList)){
+                    if(guessWord('Q', caracteres, letrasList)){
                         letrasAdapter = new LetrasAdapter(GameActivity.this, letrasList);
                         recyclerView.setAdapter(letrasAdapter);
                     }
@@ -450,7 +450,7 @@ public class GameActivity extends AppCompatActivity {
             public void onClick(View v) {
                 boolean pressed = false;
                 if (!pressed){
-                    if(guessWord('r', caracteres, letrasList)){
+                    if(guessWord('R', caracteres, letrasList)){
                         letrasAdapter = new LetrasAdapter(GameActivity.this, letrasList);
                         recyclerView.setAdapter(letrasAdapter);
                     }
@@ -466,7 +466,7 @@ public class GameActivity extends AppCompatActivity {
             public void onClick(View v) {
                 boolean pressed = false;
                 if (!pressed){
-                    if(guessWord('s', caracteres, letrasList)){
+                    if(guessWord('S', caracteres, letrasList)){
                         letrasAdapter = new LetrasAdapter(GameActivity.this, letrasList);
                         recyclerView.setAdapter(letrasAdapter);
                     }
@@ -482,7 +482,7 @@ public class GameActivity extends AppCompatActivity {
             public void onClick(View v) {
                 boolean pressed = false;
                 if (!pressed){
-                    if(guessWord('t', caracteres, letrasList)){
+                    if(guessWord('T', caracteres, letrasList)){
                         letrasAdapter = new LetrasAdapter(GameActivity.this, letrasList);
                         recyclerView.setAdapter(letrasAdapter);
                     }
@@ -498,7 +498,7 @@ public class GameActivity extends AppCompatActivity {
             public void onClick(View v) {
                 boolean pressed = false;
                 if (!pressed){
-                    if(guessWord('u', caracteres, letrasList)){
+                    if(guessWord('U', caracteres, letrasList)){
                         letrasAdapter = new LetrasAdapter(GameActivity.this, letrasList);
                         recyclerView.setAdapter(letrasAdapter);
                     }
@@ -514,7 +514,7 @@ public class GameActivity extends AppCompatActivity {
             public void onClick(View v) {
                 boolean pressed = false;
                 if (!pressed){
-                    if(guessWord('v', caracteres, letrasList)){
+                    if(guessWord('V', caracteres, letrasList)){
                         letrasAdapter = new LetrasAdapter(GameActivity.this, letrasList);
                         recyclerView.setAdapter(letrasAdapter);
                     }
@@ -530,7 +530,7 @@ public class GameActivity extends AppCompatActivity {
             public void onClick(View v) {
                 boolean pressed = false;
                 if (!pressed){
-                    if(guessWord('w', caracteres, letrasList)){
+                    if(guessWord('W', caracteres, letrasList)){
                         letrasAdapter = new LetrasAdapter(GameActivity.this, letrasList);
                         recyclerView.setAdapter(letrasAdapter);
                     }
@@ -546,7 +546,7 @@ public class GameActivity extends AppCompatActivity {
             public void onClick(View v) {
                 boolean pressed = false;
                 if (!pressed){
-                    if(guessWord('x', caracteres, letrasList)){
+                    if(guessWord('X', caracteres, letrasList)){
                         letrasAdapter = new LetrasAdapter(GameActivity.this, letrasList);
                         recyclerView.setAdapter(letrasAdapter);
                     }
@@ -562,7 +562,7 @@ public class GameActivity extends AppCompatActivity {
             public void onClick(View v) {
                 boolean pressed = false;
                 if (!pressed){
-                    if(guessWord('y', caracteres, letrasList)){
+                    if(guessWord('Y', caracteres, letrasList)){
                         letrasAdapter = new LetrasAdapter(GameActivity.this, letrasList);
                         recyclerView.setAdapter(letrasAdapter);
                     }
@@ -578,7 +578,7 @@ public class GameActivity extends AppCompatActivity {
             public void onClick(View v) {
                 boolean pressed = false;
                 if (!pressed){
-                    if(guessWord('z', caracteres, letrasList)){
+                    if(guessWord('Z', caracteres, letrasList)){
                         letrasAdapter = new LetrasAdapter(GameActivity.this, letrasList);
                         recyclerView.setAdapter(letrasAdapter);
                     }
