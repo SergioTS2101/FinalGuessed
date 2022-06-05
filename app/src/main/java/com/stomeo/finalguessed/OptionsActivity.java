@@ -52,9 +52,7 @@ public class OptionsActivity extends AppCompatActivity {
                 break;
             }
             case "Compartir app": {
-                Intent intent = new Intent(Intent.ACTION_VIEW);
-                intent.setData(Uri.parse(guessed_URL));
-                startActivity(intent);
+                compartirApp();
                 break;
             }
             case "Nuestros juegos": {
@@ -68,6 +66,19 @@ public class OptionsActivity extends AppCompatActivity {
                 startActivity(intent);
                 break;
             }
+        }
+    }
+
+    private void compartirApp() {
+        try {
+            Intent i = new Intent(Intent.ACTION_SEND);
+            i.setType("text/plain");
+            i.putExtra(Intent.EXTRA_SUBJECT, getResources().getString(R.string.app_name));
+            String aux = "Descarga la app Guessed\n";
+            aux = aux + "https://play.google.com/store/apps/de..."+getBaseContext().getPackageName();
+            i.putExtra(Intent.EXTRA_TEXT, aux);
+            startActivity(i);
+        } catch (Exception e) {
         }
     }
 

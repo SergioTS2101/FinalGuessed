@@ -31,10 +31,12 @@ public class GameOverActivity extends AppCompatActivity {
         }).setNegativeButton("No", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
+                parar();
                 Intent intent = new Intent(Intent.ACTION_MAIN);
                 intent.addCategory(Intent.CATEGORY_HOME);
                 intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 startActivity(intent);
+                finish();
             }
         });
         AlertDialog titulo = alerta.create();
@@ -43,6 +45,9 @@ public class GameOverActivity extends AppCompatActivity {
 
     }
 
+    private void parar() {
+        stopService(new Intent(this, ServicioMusica.class));
+    }
 
     @Override
     public void onWindowFocusChanged(boolean hasFocus) {

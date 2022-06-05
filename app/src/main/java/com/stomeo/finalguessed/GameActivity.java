@@ -662,7 +662,7 @@ public class GameActivity extends AppCompatActivity {
             return (true);
     }
 
-    public static void checkConds(ImageView hangman, char[] caracteres){
+    public void checkConds(ImageView hangman, char[] caracteres){
         if (contfallos == 1) {
             hangman.setVisibility(View.VISIBLE);
             hangman.setImageResource(R.drawable.primer_fallo);
@@ -693,6 +693,7 @@ public class GameActivity extends AppCompatActivity {
             Intent intent = new Intent(mContext, GameOverActivity.class);
             intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
             mContext.startActivity(intent);
+            finish();
         }
         if (contaciertos == caracteres.length){
             Intent intent = new Intent(mContext, GameOverActivity.class);

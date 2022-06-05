@@ -14,9 +14,9 @@
         android:contentDescription="@string/mainGIFDescription"
         app:layout_constraintBottom_toTopOf="@+id/textView"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.017"
+        app:layout_constraintVertical_bias="0.618"
         tools:ignore="ImageContrastCheck"
-        tools:layout_editor_absoluteX="4dp" />
+        tools:layout_editor_absoluteX="0dp" />
 
     <TextView
         android:id="@+id/textView"
