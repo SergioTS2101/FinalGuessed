@@ -10,6 +10,7 @@
     <string name="hangmanDescription">Imagen del muñeco ahorcado</string>
     <string name="barra_baja">_</string>
     <string name="no">No</string>
+    <string name="si">Sí</string>
     <string name="gameOverDescription">GIF del muñeco ahorcado tras finalizar el juego</string>
     <string name="fin_del_juego">FIN DEL JUEGO</string>
     <string name="logo">Imagen del logo de la aplicación</string>
@@ -55,5 +56,11 @@
     <string name="x">X</string>
     <string name="y">Y</string>
     <string name="z">Z</string>
-    <string name="letras_usadas">Letras usadas:</string>
+    <string name="palabraAdivinar">La palabra a adivinar era: </string>
+    <string name="desea"> ¿Desea jugar de nuevo?</string>
+    <string name="mensaje">Mensaje</string>
+    <string name="enviar">Enviar</string>
+    <string name="Subject">Asunto</string>
+
+
 </resources>

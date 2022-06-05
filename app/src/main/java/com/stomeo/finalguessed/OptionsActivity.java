@@ -12,12 +12,12 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 
 public class OptionsActivity extends AppCompatActivity {
 
     public List<ArrayListElementos> elements;
     private final static String atlantis_URL = "https://play.google.com/store/apps/details?id=com.sermami.atlantis&hl=es&gl=US";
-    private final static String guessed_URL = "https://mega.nz/file/xE5hwISC#AGXJOXQeZBeW01m3Pi96WYaEOHmPAGJyc929q8xY0Q0";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,11 +28,17 @@ public class OptionsActivity extends AppCompatActivity {
 
     public void inicializar() {
         elements = new ArrayList<>();
-        elements.add(new ArrayListElementos("Contáctanos"));
-        elements.add(new ArrayListElementos("Compartir app"));
-        elements.add(new ArrayListElementos("Nuestros juegos"));
-        elements.add(new ArrayListElementos("Activar sonido"));
-
+        if (Locale.getDefault().getISO3Language().equals("eng")) {
+            elements.add(new ArrayListElementos("Contact us"));
+            elements.add(new ArrayListElementos("Share app"));
+            elements.add(new ArrayListElementos("Our games"));
+            elements.add(new ArrayListElementos("Activate sound"));
+        }else{
+            elements.add(new ArrayListElementos("Contáctanos"));
+            elements.add(new ArrayListElementos("Compartir app"));
+            elements.add(new ArrayListElementos("Nuestros juegos"));
+            elements.add(new ArrayListElementos("Activar sonido"));
+        }
         MiAdaptador miAdaptador = new MiAdaptador(this, elements, new MiAdaptador.OnItemClickListener() {
             @Override
             public void onItemClick(ArrayListElementos item) {
@@ -66,6 +72,26 @@ public class OptionsActivity extends AppCompatActivity {
                 startActivity(intent);
                 break;
             }
+            case "Contact us": {
+                Intent intent = new Intent(this, ContactActivity.class);
+                startActivity(intent);
+                break;
+            }
+            case "Share app": {
+                compartirApp();
+                break;
+            }
+            case "Our games": {
+                Intent intent = new Intent(Intent.ACTION_VIEW);
+                intent.setData(Uri.parse(atlantis_URL));
+                startActivity(intent);
+                break;
+            }
+            case "Activate sound": {
+                Intent intent = new Intent(this, SoundActivity.class);
+                startActivity(intent);
+                break;
+            }
         }
     }
 
@@ -75,10 +101,10 @@ public class OptionsActivity extends AppCompatActivity {
             i.setType("text/plain");
             i.putExtra(Intent.EXTRA_SUBJECT, getResources().getString(R.string.app_name));
             String aux = "Descarga la app Guessed\n";
-            aux = aux + "https://play.google.com/store/apps/de..."+getBaseContext().getPackageName();
+            aux = aux + "https://play.google.com/store/apps/de..." + getBaseContext().getPackageName();
             i.putExtra(Intent.EXTRA_TEXT, aux);
             startActivity(i);
-        } catch (Exception e) {
+        } catch (Exception ignored) {
         }
     }
 

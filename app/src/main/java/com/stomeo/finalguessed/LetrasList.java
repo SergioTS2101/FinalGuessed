@@ -1,8 +1,8 @@
 package com.stomeo.finalguessed;
 
-public class LetrasList{
+public class LetrasList {
 
-    private char letra;
+    private final char letra;
 
     public LetrasList(char letra) {
         this.letra = letra;

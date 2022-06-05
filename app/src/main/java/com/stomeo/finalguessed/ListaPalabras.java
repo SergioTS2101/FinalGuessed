@@ -2,8 +2,8 @@ package com.stomeo.finalguessed;
 
 public class ListaPalabras {
 
-    private String palabra;
-    private int id;
+    private final String palabra;
+    private final int id;
 
     public ListaPalabras(String palabra, int id) {
         this.palabra = palabra;

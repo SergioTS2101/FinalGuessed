@@ -14,7 +14,6 @@ import com.bumptech.glide.Glide;
 
 public class MainActivity extends AppCompatActivity {
 
-    View v;
     Button jugar;
     Button opciones;
 
@@ -27,7 +26,7 @@ public class MainActivity extends AppCompatActivity {
         Glide.with(this).asGif().load(R.raw.ahorcado).into(imageView);
 
 
-        jugar = (Button) findViewById(R.id.jugar);
+        jugar = findViewById(R.id.jugar);
 
         jugar.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -37,7 +36,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        opciones = (Button) findViewById(R.id.opciones);
+        opciones = findViewById(R.id.opciones);
 
         opciones.setOnClickListener(new View.OnClickListener() {
             @Override

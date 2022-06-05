@@ -5,6 +5,7 @@ import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -23,6 +24,8 @@ public class GameActivity extends AppCompatActivity {
     private enum Temas {
         comida, deportes, animales, capitales, profesiones, cine
     }
+
+    @SuppressLint("StaticFieldLeak")
     private static Context mContext;
     ImageButton btn;
     //Button noBtn;
@@ -30,8 +33,9 @@ public class GameActivity extends AppCompatActivity {
     static int contfallos;
     static int contaciertos;
     String temaElegido;
+    String palabraCorrecta;
     TextView tvTema;
-    TextView tvPrueba;
+    //TextView tvPrueba;
 
     TextView tvA;
     TextView tvB;
@@ -68,46 +72,45 @@ public class GameActivity extends AppCompatActivity {
     LetrasAdapter letrasAdapter;
 
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game);
         mContext = this;
-        btn = (ImageButton) findViewById(R.id.mainButton);
+        btn = findViewById(R.id.mainButton);
         //noBtn = (Button) findViewById(R.id.btnNo);
-        hangman = (ImageView) findViewById(R.id.hangman);
+        hangman = findViewById(R.id.hangman);
 
-        tvA = (TextView) findViewById(R.id.a);
-        tvB = (TextView) findViewById(R.id.b);
-        tvC = (TextView) findViewById(R.id.c);
-        tvD = (TextView) findViewById(R.id.d);
-        tvE = (TextView) findViewById(R.id.e);
-        tvF = (TextView) findViewById(R.id.f);
-        tvG = (TextView) findViewById(R.id.g);
-        tvH = (TextView) findViewById(R.id.h);
-        tvI = (TextView) findViewById(R.id.i);
-        tvJ = (TextView) findViewById(R.id.j);
-        tvK = (TextView) findViewById(R.id.k);
-        tvL = (TextView) findViewById(R.id.l);
-        tvM = (TextView) findViewById(R.id.m);
-        tvN = (TextView) findViewById(R.id.n);
-        tvO = (TextView) findViewById(R.id.o);
-        tvP = (TextView) findViewById(R.id.p);
-        tvQ = (TextView) findViewById(R.id.q);
-        tvR = (TextView) findViewById(R.id.r);
-        tvS = (TextView) findViewById(R.id.s);
-        tvT = (TextView) findViewById(R.id.t);
-        tvU = (TextView) findViewById(R.id.u);
-        tvV = (TextView) findViewById(R.id.v);
-        tvW = (TextView) findViewById(R.id.w);
-        tvX = (TextView) findViewById(R.id.x);
-        tvY = (TextView) findViewById(R.id.y);
-        tvZ = (TextView) findViewById(R.id.z);
+        tvA = findViewById(R.id.a);
+        tvB = findViewById(R.id.b);
+        tvC = findViewById(R.id.c);
+        tvD = findViewById(R.id.d);
+        tvE = findViewById(R.id.e);
+        tvF = findViewById(R.id.f);
+        tvG = findViewById(R.id.g);
+        tvH = findViewById(R.id.h);
+        tvI = findViewById(R.id.i);
+        tvJ = findViewById(R.id.j);
+        tvK = findViewById(R.id.k);
+        tvL = findViewById(R.id.l);
+        tvM = findViewById(R.id.m);
+        tvN = findViewById(R.id.n);
+        tvO = findViewById(R.id.o);
+        tvP = findViewById(R.id.p);
+        tvQ = findViewById(R.id.q);
+        tvR = findViewById(R.id.r);
+        tvS = findViewById(R.id.s);
+        tvT = findViewById(R.id.t);
+        tvU = findViewById(R.id.u);
+        tvV = findViewById(R.id.v);
+        tvW = findViewById(R.id.w);
+        tvX = findViewById(R.id.x);
+        tvY = findViewById(R.id.y);
+        tvZ = findViewById(R.id.z);
 
-        tvTema = (TextView) findViewById(R.id.tvTema);
+        tvTema = findViewById(R.id.tvTema);
 
-        tvPrueba = (TextView) findViewById(R.id.tvPrueba);
+        //tvPrueba = (TextView) findViewById(R.id.tvPrueba);
 
         recyclerView = findViewById(R.id.rvLetras);
         contaciertos = 0;
@@ -147,17 +150,15 @@ public class GameActivity extends AppCompatActivity {
 
         int numero = (int) (Math.random() * 29 + 0);
         String palabraAleatoria = listaPalabras.get(numero).getPalabra();
-
-        tvPrueba.setText(palabraAleatoria);
+        palabraCorrecta = palabraAleatoria;
 
         caracteres = palabraAleatoria.toCharArray();
 
 
-        letrasList = new ArrayList<LetrasList>();
+        letrasList = new ArrayList<>();
         for (int i = 0; i < caracteres.length; i++) {
             letrasList.add(new LetrasList(' '));
         }
-
 
 
         LinearLayoutManager layoutManager = new LinearLayoutManager(
@@ -176,8 +177,8 @@ public class GameActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 boolean pressed = false;
-                if (!pressed){
-                    if(guessWord('A', caracteres, letrasList)){
+                if (!pressed) {
+                    if (guessWord('A', caracteres, letrasList)) {
                         letrasAdapter = new LetrasAdapter(GameActivity.this, letrasList);
                         recyclerView.setAdapter(letrasAdapter);
                     }
@@ -192,14 +193,14 @@ public class GameActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 boolean pressed = false;
-                if (!pressed){
-                    if(guessWord('B', caracteres, letrasList)){
+                if (!pressed) {
+                    if (guessWord('B', caracteres, letrasList)) {
                         letrasAdapter = new LetrasAdapter(GameActivity.this, letrasList);
                         recyclerView.setAdapter(letrasAdapter);
                     }
                     tvB.setVisibility(View.INVISIBLE);
                     pressed = true;
-                    checkConds(hangman,caracteres);
+                    checkConds(hangman, caracteres);
                 }
             }
 
@@ -209,8 +210,8 @@ public class GameActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 boolean pressed = false;
-                if (!pressed){
-                    if(guessWord('C', caracteres, letrasList)){
+                if (!pressed) {
+                    if (guessWord('C', caracteres, letrasList)) {
                         letrasAdapter = new LetrasAdapter(GameActivity.this, letrasList);
                         recyclerView.setAdapter(letrasAdapter);
                     }
@@ -225,8 +226,8 @@ public class GameActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 boolean pressed = false;
-                if (!pressed){
-                    if(guessWord('D', caracteres, letrasList)){
+                if (!pressed) {
+                    if (guessWord('D', caracteres, letrasList)) {
                         letrasAdapter = new LetrasAdapter(GameActivity.this, letrasList);
                         recyclerView.setAdapter(letrasAdapter);
                     }
@@ -241,8 +242,8 @@ public class GameActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 boolean pressed = false;
-                if (!pressed){
-                    if(guessWord('E', caracteres, letrasList)){
+                if (!pressed) {
+                    if (guessWord('E', caracteres, letrasList)) {
                         letrasAdapter = new LetrasAdapter(GameActivity.this, letrasList);
                         recyclerView.setAdapter(letrasAdapter);
                     }
@@ -257,8 +258,8 @@ public class GameActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 boolean pressed = false;
-                if (!pressed){
-                    if(guessWord('F', caracteres, letrasList)){
+                if (!pressed) {
+                    if (guessWord('F', caracteres, letrasList)) {
                         letrasAdapter = new LetrasAdapter(GameActivity.this, letrasList);
                         recyclerView.setAdapter(letrasAdapter);
                     }
@@ -273,8 +274,8 @@ public class GameActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 boolean pressed = false;
-                if (!pressed){
-                    if(guessWord('G', caracteres, letrasList)){
+                if (!pressed) {
+                    if (guessWord('G', caracteres, letrasList)) {
                         letrasAdapter = new LetrasAdapter(GameActivity.this, letrasList);
                         recyclerView.setAdapter(letrasAdapter);
                     }
@@ -289,8 +290,8 @@ public class GameActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 boolean pressed = false;
-                if (!pressed){
-                    if(guessWord('H', caracteres, letrasList)){
+                if (!pressed) {
+                    if (guessWord('H', caracteres, letrasList)) {
                         letrasAdapter = new LetrasAdapter(GameActivity.this, letrasList);
                         recyclerView.setAdapter(letrasAdapter);
                     }
@@ -305,8 +306,8 @@ public class GameActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 boolean pressed = false;
-                if (!pressed){
-                    if(guessWord('I', caracteres, letrasList)){
+                if (!pressed) {
+                    if (guessWord('I', caracteres, letrasList)) {
                         letrasAdapter = new LetrasAdapter(GameActivity.this, letrasList);
                         recyclerView.setAdapter(letrasAdapter);
                     }
@@ -321,8 +322,8 @@ public class GameActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 boolean pressed = false;
-                if (!pressed){
-                    if(guessWord('J', caracteres, letrasList)){
+                if (!pressed) {
+                    if (guessWord('J', caracteres, letrasList)) {
                         letrasAdapter = new LetrasAdapter(GameActivity.this, letrasList);
                         recyclerView.setAdapter(letrasAdapter);
                     }
@@ -337,8 +338,8 @@ public class GameActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 boolean pressed = false;
-                if (!pressed){
-                    if(guessWord('K', caracteres, letrasList)){
+                if (!pressed) {
+                    if (guessWord('K', caracteres, letrasList)) {
                         letrasAdapter = new LetrasAdapter(GameActivity.this, letrasList);
                         recyclerView.setAdapter(letrasAdapter);
                     }
@@ -353,8 +354,8 @@ public class GameActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 boolean pressed = false;
-                if (!pressed){
-                    if(guessWord('L', caracteres, letrasList)){
+                if (!pressed) {
+                    if (guessWord('L', caracteres, letrasList)) {
                         letrasAdapter = new LetrasAdapter(GameActivity.this, letrasList);
                         recyclerView.setAdapter(letrasAdapter);
                     }
@@ -369,8 +370,8 @@ public class GameActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 boolean pressed = false;
-                if (!pressed){
-                    if(guessWord('M', caracteres, letrasList)){
+                if (!pressed) {
+                    if (guessWord('M', caracteres, letrasList)) {
                         letrasAdapter = new LetrasAdapter(GameActivity.this, letrasList);
                         recyclerView.setAdapter(letrasAdapter);
                     }
@@ -385,8 +386,8 @@ public class GameActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 boolean pressed = false;
-                if (!pressed){
-                    if(guessWord('N', caracteres, letrasList)){
+                if (!pressed) {
+                    if (guessWord('N', caracteres, letrasList)) {
                         letrasAdapter = new LetrasAdapter(GameActivity.this, letrasList);
                         recyclerView.setAdapter(letrasAdapter);
                     }
@@ -401,8 +402,8 @@ public class GameActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 boolean pressed = false;
-                if (!pressed){
-                    if(guessWord('O', caracteres, letrasList)){
+                if (!pressed) {
+                    if (guessWord('O', caracteres, letrasList)) {
                         letrasAdapter = new LetrasAdapter(GameActivity.this, letrasList);
                         recyclerView.setAdapter(letrasAdapter);
                     }
@@ -417,8 +418,8 @@ public class GameActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 boolean pressed = false;
-                if (!pressed){
-                    if(guessWord('P', caracteres, letrasList)){
+                if (!pressed) {
+                    if (guessWord('P', caracteres, letrasList)) {
                         letrasAdapter = new LetrasAdapter(GameActivity.this, letrasList);
                         recyclerView.setAdapter(letrasAdapter);
                     }
@@ -433,8 +434,8 @@ public class GameActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 boolean pressed = false;
-                if (!pressed){
-                    if(guessWord('Q', caracteres, letrasList)){
+                if (!pressed) {
+                    if (guessWord('Q', caracteres, letrasList)) {
                         letrasAdapter = new LetrasAdapter(GameActivity.this, letrasList);
                         recyclerView.setAdapter(letrasAdapter);
                     }
@@ -449,8 +450,8 @@ public class GameActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 boolean pressed = false;
-                if (!pressed){
-                    if(guessWord('R', caracteres, letrasList)){
+                if (!pressed) {
+                    if (guessWord('R', caracteres, letrasList)) {
                         letrasAdapter = new LetrasAdapter(GameActivity.this, letrasList);
                         recyclerView.setAdapter(letrasAdapter);
                     }
@@ -465,8 +466,8 @@ public class GameActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 boolean pressed = false;
-                if (!pressed){
-                    if(guessWord('S', caracteres, letrasList)){
+                if (!pressed) {
+                    if (guessWord('S', caracteres, letrasList)) {
                         letrasAdapter = new LetrasAdapter(GameActivity.this, letrasList);
                         recyclerView.setAdapter(letrasAdapter);
                     }
@@ -481,14 +482,14 @@ public class GameActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 boolean pressed = false;
-                if (!pressed){
-                    if(guessWord('T', caracteres, letrasList)){
+                if (!pressed) {
+                    if (guessWord('T', caracteres, letrasList)) {
                         letrasAdapter = new LetrasAdapter(GameActivity.this, letrasList);
                         recyclerView.setAdapter(letrasAdapter);
                     }
                     tvT.setVisibility(View.INVISIBLE);
                     pressed = true;
-                    checkConds(hangman,caracteres);
+                    checkConds(hangman, caracteres);
                 }
             }
         });
@@ -497,8 +498,8 @@ public class GameActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 boolean pressed = false;
-                if (!pressed){
-                    if(guessWord('U', caracteres, letrasList)){
+                if (!pressed) {
+                    if (guessWord('U', caracteres, letrasList)) {
                         letrasAdapter = new LetrasAdapter(GameActivity.this, letrasList);
                         recyclerView.setAdapter(letrasAdapter);
                     }
@@ -513,8 +514,8 @@ public class GameActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 boolean pressed = false;
-                if (!pressed){
-                    if(guessWord('V', caracteres, letrasList)){
+                if (!pressed) {
+                    if (guessWord('V', caracteres, letrasList)) {
                         letrasAdapter = new LetrasAdapter(GameActivity.this, letrasList);
                         recyclerView.setAdapter(letrasAdapter);
                     }
@@ -529,8 +530,8 @@ public class GameActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 boolean pressed = false;
-                if (!pressed){
-                    if(guessWord('W', caracteres, letrasList)){
+                if (!pressed) {
+                    if (guessWord('W', caracteres, letrasList)) {
                         letrasAdapter = new LetrasAdapter(GameActivity.this, letrasList);
                         recyclerView.setAdapter(letrasAdapter);
                     }
@@ -545,8 +546,8 @@ public class GameActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 boolean pressed = false;
-                if (!pressed){
-                    if(guessWord('X', caracteres, letrasList)){
+                if (!pressed) {
+                    if (guessWord('X', caracteres, letrasList)) {
                         letrasAdapter = new LetrasAdapter(GameActivity.this, letrasList);
                         recyclerView.setAdapter(letrasAdapter);
                     }
@@ -561,8 +562,8 @@ public class GameActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 boolean pressed = false;
-                if (!pressed){
-                    if(guessWord('Y', caracteres, letrasList)){
+                if (!pressed) {
+                    if (guessWord('Y', caracteres, letrasList)) {
                         letrasAdapter = new LetrasAdapter(GameActivity.this, letrasList);
                         recyclerView.setAdapter(letrasAdapter);
                     }
@@ -577,8 +578,8 @@ public class GameActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 boolean pressed = false;
-                if (!pressed){
-                    if(guessWord('Z', caracteres, letrasList)){
+                if (!pressed) {
+                    if (guessWord('Z', caracteres, letrasList)) {
                         letrasAdapter = new LetrasAdapter(GameActivity.this, letrasList);
                         recyclerView.setAdapter(letrasAdapter);
                     }
@@ -588,41 +589,6 @@ public class GameActivity extends AppCompatActivity {
                 }
             }
         });
-
-       /* noBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                cont++;
-                if (cont == 1) {
-                    hangman.setVisibility(View.VISIBLE);
-                    hangman.setImageResource(R.drawable.primer_fallo);
-
-                } else if (cont == 2) {
-                    hangman.setVisibility(View.VISIBLE);
-                    hangman.setImageResource(R.drawable.segundo_fallo);
-
-                } else if (cont == 3) {
-                    hangman.setVisibility(View.VISIBLE);
-                    hangman.setImageResource(R.drawable.tercer_fallo);
-                } else if (cont == 4) {
-                    hangman.setVisibility(View.VISIBLE);
-                    hangman.setImageResource(R.drawable.cuarto_fallo);
-                } else if (cont == 5) {
-                    hangman.setVisibility(View.VISIBLE);
-                    hangman.setImageResource(R.drawable.quinto_fallo);
-                } else if (cont == 6) {
-                    hangman.setVisibility(View.VISIBLE);
-                    hangman.setImageResource(R.drawable.septimo_fallo);
-                } else if (cont == 7) {
-                    hangman.setVisibility(View.VISIBLE);
-                    hangman.setImageResource(R.drawable.octavo_fallo);
-                    Intent intent = new Intent(getApplicationContext(), GameOverActivity.class);
-                    startActivity(intent);
-
-                }
-            }
-        });
-        */
     }
 
     @Override
@@ -644,58 +610,52 @@ public class GameActivity extends AppCompatActivity {
                         | View.SYSTEM_UI_FLAG_FULLSCREEN);
     }
 
-    public static boolean guessWord(char c, char[] caracteres, ArrayList<LetrasList> letrasList){
+    public static boolean guessWord(char c, char[] caracteres, ArrayList<LetrasList> letrasList) {
         boolean fail = true;
-        for(int i = 0; i < caracteres.length; i++){
-            if(caracteres[i] == c){
+        for (int i = 0; i < caracteres.length; i++) {
+            if (caracteres[i] == c) {
                 fail = false;
                 contaciertos++;
                 letrasList.set(i, new LetrasList(c));
 
             }
         }
-        if (fail){
+        if (fail) {
             contfallos++;
             return (false);
-        }
-        else
+        } else
             return (true);
     }
 
-    public void checkConds(ImageView hangman, char[] caracteres){
+    public void checkConds(ImageView hangman, char[] caracteres) {
         if (contfallos == 1) {
             hangman.setVisibility(View.VISIBLE);
             hangman.setImageResource(R.drawable.primer_fallo);
-        }
-        else if (contfallos == 2) {
+        } else if (contfallos == 2) {
             hangman.setVisibility(View.VISIBLE);
             hangman.setImageResource(R.drawable.segundo_fallo);
-        }
-        else if (contfallos == 3) {
+        } else if (contfallos == 3) {
             hangman.setVisibility(View.VISIBLE);
             hangman.setImageResource(R.drawable.tercer_fallo);
-        }
-        else if (contfallos == 4) {
+        } else if (contfallos == 4) {
             hangman.setVisibility(View.VISIBLE);
             hangman.setImageResource(R.drawable.cuarto_fallo);
-        }
-        else if (contfallos == 5) {
+        } else if (contfallos == 5) {
             hangman.setVisibility(View.VISIBLE);
             hangman.setImageResource(R.drawable.quinto_fallo);
-        }
-        else if (contfallos == 6) {
+        } else if (contfallos == 6) {
             hangman.setVisibility(View.VISIBLE);
             hangman.setImageResource(R.drawable.septimo_fallo);
-        }
-        else if (contfallos == 7){
+        } else if (contfallos == 7) {
             hangman.setVisibility(View.VISIBLE);
             hangman.setImageResource(R.drawable.octavo_fallo);
             Intent intent = new Intent(mContext, GameOverActivity.class);
             intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            intent.putExtra("palabraCorrecta", palabraCorrecta);
             mContext.startActivity(intent);
             finish();
         }
-        if (contaciertos == caracteres.length){
+        if (contaciertos == caracteres.length) {
             Intent intent = new Intent(mContext, GameOverActivity.class);
             intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
             mContext.startActivity(intent);

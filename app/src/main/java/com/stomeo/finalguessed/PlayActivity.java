@@ -25,7 +25,7 @@ public class PlayActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_play);
 
-        btn = (ImageButton) findViewById(R.id.mainButton);
+        btn = findViewById(R.id.mainButton);
 
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -35,12 +35,12 @@ public class PlayActivity extends AppCompatActivity {
             }
         });
 
-        cvComida = (CardView) findViewById(R.id.cvComida);
-        cvDeportes = (CardView) findViewById(R.id.cvDeportes);
-        cvAnimales = (CardView) findViewById(R.id.cvAnimales);
-        cvCapitales = (CardView) findViewById(R.id.cvCapitales);
-        cvProfesiones = (CardView) findViewById(R.id.cvProfesiones);
-        cvCine = (CardView) findViewById(R.id.cvCine);
+        cvComida = findViewById(R.id.cvComida);
+        cvDeportes = findViewById(R.id.cvDeportes);
+        cvAnimales = findViewById(R.id.cvAnimales);
+        cvCapitales = findViewById(R.id.cvCapitales);
+        cvProfesiones = findViewById(R.id.cvProfesiones);
+        cvCine = findViewById(R.id.cvCine);
 
         cvComida.setOnClickListener(new View.OnClickListener() {
             @Override
