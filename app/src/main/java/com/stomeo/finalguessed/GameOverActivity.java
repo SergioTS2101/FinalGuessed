@@ -36,6 +36,7 @@ public class GameOverActivity extends AppCompatActivity {
                 public void onClick(DialogInterface dialog, int which) {
                     Intent intent = new Intent(getApplicationContext(), PlayActivity.class);
                     startActivity(intent);
+                    finish();
                 }
             }).setNegativeButton("No", new DialogInterface.OnClickListener() {
                 @Override
@@ -59,6 +60,7 @@ public class GameOverActivity extends AppCompatActivity {
                 public void onClick(DialogInterface dialog, int which) {
                     Intent intent = new Intent(getApplicationContext(), PlayActivity.class);
                     startActivity(intent);
+                    finish();
                 }
             }).setNegativeButton("No", new DialogInterface.OnClickListener() {
                 @Override

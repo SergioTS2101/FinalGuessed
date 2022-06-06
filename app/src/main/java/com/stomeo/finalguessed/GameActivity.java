@@ -653,6 +653,7 @@ public class GameActivity extends AppCompatActivity {
             intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
             intent.putExtra("palabraCorrecta", palabraCorrecta);
             mContext.startActivity(intent);
+            finish();
         }
     }
 }

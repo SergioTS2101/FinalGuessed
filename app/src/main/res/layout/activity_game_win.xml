@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".GameWinActivity">
+    tools:context=".GameWinActivity"
+    android:background="@color/white">
 
     <ImageView
         android:id="@+id/gamewinGIF"
@@ -39,7 +40,7 @@
         android:gravity="center"
         android:text="Palabra"
         android:textColor="@color/black"
-        android:textSize="40sp"
+        android:textSize="30sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
