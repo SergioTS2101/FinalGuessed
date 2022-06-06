@@ -28,14 +28,12 @@ public class GameActivity extends AppCompatActivity {
     @SuppressLint("StaticFieldLeak")
     private static Context mContext;
     ImageButton btn;
-    //Button noBtn;
     ImageView hangman;
     static int contfallos;
     static int contaciertos;
     String temaElegido;
     String palabraCorrecta;
     TextView tvTema;
-    //TextView tvPrueba;
 
     TextView tvA;
     TextView tvB;
@@ -78,7 +76,6 @@ public class GameActivity extends AppCompatActivity {
         setContentView(R.layout.activity_game);
         mContext = this;
         btn = findViewById(R.id.mainButton);
-        //noBtn = (Button) findViewById(R.id.btnNo);
         hangman = findViewById(R.id.hangman);
 
         tvA = findViewById(R.id.a);
@@ -109,8 +106,6 @@ public class GameActivity extends AppCompatActivity {
         tvZ = findViewById(R.id.z);
 
         tvTema = findViewById(R.id.tvTema);
-
-        //tvPrueba = (TextView) findViewById(R.id.tvPrueba);
 
         recyclerView = findViewById(R.id.rvLetras);
         contaciertos = 0;
