@@ -64,4 +64,9 @@
     <string name="Subject">Asunto</string>
     <string name="nuevoTema">Nuevo Tema</string>
     <string name="volver">Volver a Jugar</string>
+    <string name="volver2">Volver</string>
+    <string name="txt1">Somos Sergio Tomeo, Miguel Martínez</string>
+    <string name="txt2">y Marcos Martín; estudiantes de 2º DAM</string>
+    <string name="txt3">del IES Juan de la Cierva.</string>
+    <string name="introduce_tu_respuesta">Introduce tu respuesta</string>
 </resources>

@@ -53,11 +53,13 @@ public class OptionsActivity extends AppCompatActivity {
             elements.add(new ArrayListElementos("Share app"));
             elements.add(new ArrayListElementos("Our games"));
             elements.add(new ArrayListElementos("Activate sound"));
+            elements.add(new ArrayListElementos("About us"));
         } else {
             elements.add(new ArrayListElementos("Contáctanos"));
             elements.add(new ArrayListElementos("Compartir app"));
             elements.add(new ArrayListElementos("Nuestros juegos"));
             elements.add(new ArrayListElementos("Activar sonido"));
+            elements.add(new ArrayListElementos("Sobre nosotros"));
         }
         MiAdaptador miAdaptador = new MiAdaptador(this, elements, new MiAdaptador.OnItemClickListener() {
             @Override
@@ -101,6 +103,11 @@ public class OptionsActivity extends AppCompatActivity {
                 startActivity(intent);
                 break;
             }
+            case "Sobre nosotros": {
+                Intent intent = new Intent(this, AboutUsActivity.class);
+                startActivity(intent);
+                break;
+            }
             case "Contact us": {
                 Intent intent = new Intent(this, ContactActivity.class);
                 startActivity(intent);
@@ -118,6 +125,11 @@ public class OptionsActivity extends AppCompatActivity {
             }
             case "Activate sound": {
                 Intent intent = new Intent(this, SoundActivity.class);
+                startActivity(intent);
+                break;
+            }
+            case "About us": {
+                Intent intent = new Intent(this, AboutUsActivity.class);
                 startActivity(intent);
                 break;
             }
