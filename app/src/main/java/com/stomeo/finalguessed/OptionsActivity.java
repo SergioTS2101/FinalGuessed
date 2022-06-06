@@ -1,8 +1,12 @@
 package com.stomeo.finalguessed;
 
+import android.content.BroadcastReceiver;
+import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.net.Uri;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -18,11 +22,28 @@ public class OptionsActivity extends AppCompatActivity {
     public List<ArrayListElementos> elements;
     private final static String atlantis_URL = "https://play.google.com/store/apps/details?id=com.sermami.atlantis&hl=es&gl=US";
 
+    BroadcastReceiver miBroadcast = new BroadcastReceiver() {
+
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            if (intent.getAction().equals(Intent.ACTION_SCREEN_ON)) {
+                Log.i("TAG", "Screen ON");
+            } else if (intent.getAction().equals(Intent.ACTION_SCREEN_OFF)) {
+                Log.i("TAG", "Screen OFF");
+                parar();
+            }
+
+        }
+    };
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_options);
         inicializar();
+
+        registerReceiver(miBroadcast, new IntentFilter(Intent.ACTION_SCREEN_ON));
+        registerReceiver(miBroadcast, new IntentFilter(Intent.ACTION_SCREEN_OFF));
     }
 
     public void inicializar() {
@@ -32,7 +53,7 @@ public class OptionsActivity extends AppCompatActivity {
             elements.add(new ArrayListElementos("Share app"));
             elements.add(new ArrayListElementos("Our games"));
             elements.add(new ArrayListElementos("Activate sound"));
-        }else{
+        } else {
             elements.add(new ArrayListElementos("Contáctanos"));
             elements.add(new ArrayListElementos("Compartir app"));
             elements.add(new ArrayListElementos("Nuestros juegos"));
@@ -48,6 +69,15 @@ public class OptionsActivity extends AppCompatActivity {
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setAdapter(miAdaptador);
     }
+
+    private void reproducir() {
+        startService(new Intent(this, ServicioMusica.class));
+    }
+
+    private void parar() {
+        stopService(new Intent(this, ServicioMusica.class));
+    }
+
 
     public void iniciarActividad(ArrayListElementos item) {
         switch (item.getOpcion()) {
@@ -100,7 +130,7 @@ public class OptionsActivity extends AppCompatActivity {
             i.setType("text/plain");
             i.putExtra(Intent.EXTRA_SUBJECT, getResources().getString(R.string.app_name));
             String aux = "Descarga la app Guessed\n";
-            aux = aux + "https://play.google.com/store/apps/de..." + getBaseContext().getPackageName();
+            aux = aux + "https://mega.nz/file/M2JWzLoA#L2_gJd-rKljUyLHNX4W836gPZOB1ituQZBcsHBTO8fo";
             i.putExtra(Intent.EXTRA_TEXT, aux);
             startActivity(i);
         } catch (Exception ignored) {

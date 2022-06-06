@@ -2,8 +2,12 @@ package com.stomeo.finalguessed;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.BroadcastReceiver;
+import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -15,6 +19,21 @@ public class GameWinActivity extends AppCompatActivity {
 
     TextView tvPalabra;
     Button btn1, btn2;
+    String temaElegido;
+
+    BroadcastReceiver miBroadcast = new BroadcastReceiver() {
+
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            if (intent.getAction().equals(Intent.ACTION_SCREEN_ON)) {
+                Log.i("TAG", "Screen ON");
+            } else if (intent.getAction().equals(Intent.ACTION_SCREEN_OFF)) {
+                Log.i("TAG", "Screen OFF");
+                parar();
+            }
+
+        }
+    };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,14 +49,17 @@ public class GameWinActivity extends AppCompatActivity {
 
         String palabraCorrecta = getIntent().getStringExtra("palabraCorrecta");
 
+        temaElegido = getIntent().getStringExtra("temaElegido");
+
         tvPalabra.setText(palabraCorrecta);
 
         btn1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(), GameActivity.class);
-                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                intent.putExtra("temaElegido", temaElegido);
                 startActivity(intent);
+                finish();
             }
         });
 
@@ -47,9 +69,22 @@ public class GameWinActivity extends AppCompatActivity {
                 Intent intent = new Intent(getApplicationContext(), PlayActivity.class);
                 intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 startActivity(intent);
+                finish();
             }
         });
+
+        registerReceiver(miBroadcast, new IntentFilter(Intent.ACTION_SCREEN_ON));
+        registerReceiver(miBroadcast, new IntentFilter(Intent.ACTION_SCREEN_OFF));
     }
+
+    private void reproducir() {
+        startService(new Intent(this, ServicioMusica.class));
+    }
+
+    private void parar() {
+        stopService(new Intent(this, ServicioMusica.class));
+    }
+
 
     @Override
     public void onWindowFocusChanged(boolean hasFocus) {

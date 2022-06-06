@@ -6,9 +6,12 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.annotation.SuppressLint;
+import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.ImageView;
@@ -18,8 +21,23 @@ import com.stomeo.finalguessed.adapter.LetrasAdapter;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Stack;
 
 public class GameActivity extends AppCompatActivity {
+
+    BroadcastReceiver miBroadcast = new BroadcastReceiver() {
+
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            if (intent.getAction().equals(Intent.ACTION_SCREEN_ON)) {
+                Log.i("TAG", "Screen ON");
+            } else if (intent.getAction().equals(Intent.ACTION_SCREEN_OFF)) {
+                Log.i("TAG", "Screen OFF");
+                parar();
+            }
+
+        }
+    };
 
     private enum Temas {
         comida, deportes, animales, capitales, profesiones, cine
@@ -143,7 +161,19 @@ public class GameActivity extends AppCompatActivity {
 
         List<ListaPalabras> listaPalabras = ArrayListPalabras.getPalabras(temaElegido);
 
+
+        int pos;
         int numero = (int) (Math.random() * 29 + 0);
+        Stack<Integer> pNumeros = new Stack<Integer>();
+        for (int i = 0; i < numero; i++) {
+            pos = (int) Math.floor(Math.random() * numero);
+            while (pNumeros.contains(pos)) {
+                pos = (int) Math.floor(Math.random() * numero);
+            }
+            pNumeros.push(pos);
+        }
+
+
         String palabraAleatoria = listaPalabras.get(numero).getPalabra();
         palabraCorrecta = palabraAleatoria;
 
@@ -582,6 +612,17 @@ public class GameActivity extends AppCompatActivity {
                 }
             }
         });
+
+        registerReceiver(miBroadcast, new IntentFilter(Intent.ACTION_SCREEN_ON));
+        registerReceiver(miBroadcast, new IntentFilter(Intent.ACTION_SCREEN_OFF));
+    }
+
+    private void reproducir() {
+        startService(new Intent(this, ServicioMusica.class));
+    }
+
+    private void parar() {
+        stopService(new Intent(this, ServicioMusica.class));
     }
 
     @Override
@@ -652,8 +693,44 @@ public class GameActivity extends AppCompatActivity {
             Intent intent = new Intent(mContext, GameWinActivity.class);
             intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
             intent.putExtra("palabraCorrecta", palabraCorrecta);
+            intent.putExtra("temaElegido", temaElegido);
             mContext.startActivity(intent);
             finish();
+
+            List<ListaPalabras> listaPalabras = ArrayListPalabras.getPalabras(temaElegido);
+
+            int pos;
+            int numero = (int) (Math.random() * 29 + 0);
+            Stack<Integer> pNumeros = new Stack<Integer>();
+            for (int i = 0; i < numero; i++) {
+                pos = (int) Math.floor(Math.random() * numero);
+                while (pNumeros.contains(pos)) {
+                    pos = (int) Math.floor(Math.random() * numero);
+                }
+                pNumeros.push(pos);
+            }
+
+
+            String palabraAleatoria = listaPalabras.get(numero).getPalabra();
+            palabraCorrecta = palabraAleatoria;
+
+            caracteres = palabraAleatoria.toCharArray();
+
+            letrasList = new ArrayList<>();
+            for (int i = 0; i < caracteres.length; i++) {
+                letrasList.add(new LetrasList(' '));
+            }
+
+            LinearLayoutManager layoutManager = new LinearLayoutManager(
+                    GameActivity.this, LinearLayoutManager.HORIZONTAL, false
+            );
+
+            recyclerView.setLayoutManager(layoutManager);
+            recyclerView.setItemAnimator(new DefaultItemAnimator());
+
+            letrasAdapter = new LetrasAdapter(GameActivity.this, letrasList);
+
+            recyclerView.setAdapter(letrasAdapter);
         }
     }
 }
