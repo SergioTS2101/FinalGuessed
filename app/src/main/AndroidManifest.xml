@@ -9,7 +9,10 @@
         android:label="Guessed"
         android:supportsRtl="true"
         android:theme="@style/Theme.FinalGuessed">
-
+        <activity
+            android:name=".GameWinActivity"
+            android:exported="false"
+            tools:ignore="LockedOrientationActivity"/>
         <activity
             android:name=".GameOverActivity"
             android:exported="false"

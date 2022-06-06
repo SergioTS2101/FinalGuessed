@@ -13,6 +13,7 @@
     <string name="no">No</string>
     <string name="si">Yes</string>
     <string name="gameOverDescription">GIF of the hanged doll after finishing the game</string>
+    <string name="gameWinDescription">GIF del muñeco bailando tras finalizar el juego</string>
     <string name="fin_del_juego">END OF THE GAME</string>
     <string name="logo">Application logo image</string>
     <string name="contacto">Contact us</string>
@@ -62,4 +63,6 @@
     <string name="mensaje">Message</string>
     <string name="enviar">Send</string>
     <string name="Subject">Subject</string>
+    <string name="nuevoTema">New Theme</string>
+    <string name="volver">Play Again</string>
 </resources>

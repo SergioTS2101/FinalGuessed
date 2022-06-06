@@ -149,12 +149,10 @@ public class GameActivity extends AppCompatActivity {
 
         caracteres = palabraAleatoria.toCharArray();
 
-
         letrasList = new ArrayList<>();
         for (int i = 0; i < caracteres.length; i++) {
             letrasList.add(new LetrasList(' '));
         }
-
 
         LinearLayoutManager layoutManager = new LinearLayoutManager(
                 GameActivity.this, LinearLayoutManager.HORIZONTAL, false
@@ -651,10 +649,10 @@ public class GameActivity extends AppCompatActivity {
             finish();
         }
         if (contaciertos == caracteres.length) {
-            Intent intent = new Intent(mContext, GameOverActivity.class);
+            Intent intent = new Intent(mContext, GameWinActivity.class);
             intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            intent.putExtra("palabraCorrecta", palabraCorrecta);
             mContext.startActivity(intent);
         }
     }
-
 }

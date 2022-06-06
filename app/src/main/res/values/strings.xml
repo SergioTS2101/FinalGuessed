@@ -12,6 +12,7 @@
     <string name="no">No</string>
     <string name="si">Sí</string>
     <string name="gameOverDescription">GIF del muñeco ahorcado tras finalizar el juego</string>
+    <string name="gameWinDescription">GIF del muñeco bailando tras finalizar el juego</string>
     <string name="fin_del_juego">FIN DEL JUEGO</string>
     <string name="logo">Imagen del logo de la aplicación</string>
     <string name="contacto">Contáctanos</string>
@@ -61,4 +62,6 @@
     <string name="mensaje">Mensaje</string>
     <string name="enviar">Enviar</string>
     <string name="Subject">Asunto</string>
+    <string name="nuevoTema">Nuevo Tema</string>
+    <string name="volver">Volver a Jugar</string>
 </resources>

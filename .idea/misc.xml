@@ -6,9 +6,11 @@
         <entry key="..\:/FinalGuessedBueno/app/src/main/res/layout/activity_contact.xml" value="0.35989583333333336" />
         <entry key="..\:/FinalGuessedBueno/app/src/main/res/layout/activity_game.xml" value="0.25" />
         <entry key="..\:/FinalGuessedBueno/app/src/main/res/layout/activity_game_over.xml" value="0.35989583333333336" />
+        <entry key="..\:/FinalGuessedBueno/app/src/main/res/layout/activity_game_win.xml" value="0.22" />
         <entry key="..\:/FinalGuessedBueno/app/src/main/res/layout/activity_list.xml" value="0.35989583333333336" />
         <entry key="..\:/FinalGuessedBueno/app/src/main/res/layout/activity_main.xml" value="0.16018518518518518" />
         <entry key="..\:/FinalGuessedBueno/app/src/main/res/layout/activity_options.xml" value="0.35989583333333336" />
+        <entry key="..\:/FinalGuessedBueno/app/src/main/res/layout/activity_play.xml" value="0.33" />
         <entry key="..\:/FinalGuessedBueno/app/src/main/res/layout/activity_sound.xml" value="0.35989583333333336" />
         <entry key="..\:/FinalGuessedBueno/app/src/main/res/layout/activity_splash_screen.xml" value="0.35989583333333336" />
         <entry key="..\:/FinalGuessedBueno/app/src/main/res/layout/letras.xml" value="0.33" />
