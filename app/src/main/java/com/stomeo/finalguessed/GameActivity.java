@@ -644,6 +644,15 @@ public class GameActivity extends AppCompatActivity {
                         | View.SYSTEM_UI_FLAG_FULLSCREEN);
     }
 
+    @Override
+    public void onBackPressed()
+    {
+        Intent intent = new Intent(GameActivity.this, PlayActivity.class);
+        startActivity(intent);
+        finish();
+        super.onBackPressed();
+    }
+
     public static boolean guessWord(char c, char[] caracteres, ArrayList<LetrasList> letrasList) {
         boolean fail = true;
         for (int i = 0; i < caracteres.length; i++) {

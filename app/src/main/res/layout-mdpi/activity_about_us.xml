@@ -11,11 +11,11 @@
 
     <androidx.cardview.widget.CardView
         android:id="@+id/cv"
-        android:layout_width="322dp"
-        android:layout_height="386dp"
-        android:layout_marginLeft="16dp"
-        android:layout_marginRight="16dp"
-        android:layout_marginBottom="200dp"
+        android:layout_width="300sp"
+        android:layout_height="200sp"
+        android:layout_marginLeft="16sp"
+        android:layout_marginRight="16sp"
+        android:layout_marginBottom="200sp"
         app:cardBackgroundColor="#FFFCFC"
         app:cardCornerRadius="8dp"
         app:cardElevation="16dp"
@@ -26,7 +26,7 @@
 
 
         <LinearLayout
-            android:layout_width="317dp"
+            android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical">
 
@@ -55,7 +55,7 @@
                 android:padding="8dp"
                 android:text="@string/txt2"
                 android:textColor="@color/black"
-                android:textSize="22sp" />
+                android:textSize="21sp" />
 
             <TextView
                 android:id="@+id/txt3"
@@ -70,15 +70,19 @@
                 android:textColor="@color/black"
                 android:textSize="22sp" />
 
-            <de.hdodenhof.circleimageview.CircleImageView
-                android:src="@drawable/equipo"
-                android:layout_width="300dp"
-                android:layout_height="200dp"
-                />
 
         </LinearLayout>
 
     </androidx.cardview.widget.CardView>
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:layout_width="100sp"
+        android:layout_height="100sp"
+        android:src="@drawable/equipo"
+        app:layout_constraintBottom_toTopOf="@+id/volver"
+        app:layout_constraintEnd_toStartOf="@+id/guideline2"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cv" />
 
     <Button
         android:id="@+id/volver"
@@ -93,8 +97,10 @@
         android:textSize="35sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/cv" />
+        app:layout_constraintTop_toBottomOf="@+id/cv"
+        app:layout_constraintVertical_bias="0.892" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline1"

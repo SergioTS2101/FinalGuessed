@@ -20,12 +20,84 @@
         <entry key="..\:/Users/sergi/AndroidStudioProjects/FinalGuessed/app/src/main/res/drawable/ic_music_off_foreground.xml" value="0.1" />
         <entry key="..\:/Users/sergi/AndroidStudioProjects/FinalGuessed/app/src/main/res/drawable/ic_music_on_foreground.xml" value="0.1" />
         <entry key="..\:/Users/sergi/AndroidStudioProjects/FinalGuessed/app/src/main/res/drawable/playbtn.xml" value="0.2035" />
-        <entry key="..\:/Users/sergi/AndroidStudioProjects/FinalGuessed/app/src/main/res/layout/activity_about_us.xml" value="0.33" />
-        <entry key="..\:/Users/sergi/AndroidStudioProjects/FinalGuessed/app/src/main/res/layout/activity_contact.xml" value="0.22" />
+        <entry key="..\:/Users/sergi/AndroidStudioProjects/FinalGuessed/app/src/main/res/layout-hdpi/activity_about_us.xml" value="0.24150485436893204" />
+        <entry key="..\:/Users/sergi/AndroidStudioProjects/FinalGuessed/app/src/main/res/layout-hdpi/activity_contact.xml" value="0.3671586715867159" />
+        <entry key="..\:/Users/sergi/AndroidStudioProjects/FinalGuessed/app/src/main/res/layout-hdpi/activity_game.xml" value="0.4176587301587302" />
+        <entry key="..\:/Users/sergi/AndroidStudioProjects/FinalGuessed/app/src/main/res/layout-hdpi/activity_game_over.xml" value="0.3948412698412698" />
+        <entry key="..\:/Users/sergi/AndroidStudioProjects/FinalGuessed/app/src/main/res/layout-hdpi/activity_game_win.xml" value="0.3948412698412698" />
+        <entry key="..\:/Users/sergi/AndroidStudioProjects/FinalGuessed/app/src/main/res/layout-hdpi/activity_list.xml" value="0.3948412698412698" />
+        <entry key="..\:/Users/sergi/AndroidStudioProjects/FinalGuessed/app/src/main/res/layout-hdpi/activity_main.xml" value="0.3948412698412698" />
+        <entry key="..\:/Users/sergi/AndroidStudioProjects/FinalGuessed/app/src/main/res/layout-hdpi/activity_options.xml" value="0.3948412698412698" />
+        <entry key="..\:/Users/sergi/AndroidStudioProjects/FinalGuessed/app/src/main/res/layout-hdpi/activity_play.xml" value="0.3948412698412698" />
+        <entry key="..\:/Users/sergi/AndroidStudioProjects/FinalGuessed/app/src/main/res/layout-hdpi/activity_sound.xml" value="0.3948412698412698" />
+        <entry key="..\:/Users/sergi/AndroidStudioProjects/FinalGuessed/app/src/main/res/layout-hdpi/activity_splash_screen.xml" value="0.3948412698412698" />
+        <entry key="..\:/Users/sergi/AndroidStudioProjects/FinalGuessed/app/src/main/res/layout-hdpi/letras.xml" value="0.3948412698412698" />
+        <entry key="..\:/Users/sergi/AndroidStudioProjects/FinalGuessed/app/src/main/res/layout-ldpi/activity_about_us.xml" value="0.6503267973856209" />
+        <entry key="..\:/Users/sergi/AndroidStudioProjects/FinalGuessed/app/src/main/res/layout-ldpi/activity_contact.xml" value="0.7210144927536232" />
+        <entry key="..\:/Users/sergi/AndroidStudioProjects/FinalGuessed/app/src/main/res/layout-ldpi/activity_game.xml" value="0.7210144927536232" />
+        <entry key="..\:/Users/sergi/AndroidStudioProjects/FinalGuessed/app/src/main/res/layout-ldpi/activity_game_over.xml" value="0.3948412698412698" />
+        <entry key="..\:/Users/sergi/AndroidStudioProjects/FinalGuessed/app/src/main/res/layout-ldpi/activity_game_win.xml" value="0.737037037037037" />
+        <entry key="..\:/Users/sergi/AndroidStudioProjects/FinalGuessed/app/src/main/res/layout-ldpi/activity_list.xml" value="0.737037037037037" />
+        <entry key="..\:/Users/sergi/AndroidStudioProjects/FinalGuessed/app/src/main/res/layout-ldpi/activity_main.xml" value="0.7158273381294964" />
+        <entry key="..\:/Users/sergi/AndroidStudioProjects/FinalGuessed/app/src/main/res/layout-ldpi/activity_options.xml" value="0.7158273381294964" />
+        <entry key="..\:/Users/sergi/AndroidStudioProjects/FinalGuessed/app/src/main/res/layout-ldpi/activity_play.xml" value="0.7537878787878788" />
+        <entry key="..\:/Users/sergi/AndroidStudioProjects/FinalGuessed/app/src/main/res/layout-ldpi/activity_sound.xml" value="0.7210144927536232" />
+        <entry key="..\:/Users/sergi/AndroidStudioProjects/FinalGuessed/app/src/main/res/layout-ldpi/activity_splash_screen.xml" value="0.7158273381294964" />
+        <entry key="..\:/Users/sergi/AndroidStudioProjects/FinalGuessed/app/src/main/res/layout-ldpi/letras.xml" value="0.737037037037037" />
+        <entry key="..\:/Users/sergi/AndroidStudioProjects/FinalGuessed/app/src/main/res/layout-mdpi/activity_about_us.xml" value="0.3948412698412698" />
+        <entry key="..\:/Users/sergi/AndroidStudioProjects/FinalGuessed/app/src/main/res/layout-mdpi/activity_contact.xml" value="0.5240641711229946" />
+        <entry key="..\:/Users/sergi/AndroidStudioProjects/FinalGuessed/app/src/main/res/layout-mdpi/activity_game.xml" value="0.5784883720930233" />
+        <entry key="..\:/Users/sergi/AndroidStudioProjects/FinalGuessed/app/src/main/res/layout-mdpi/activity_game_over.xml" value="0.36704119850187267" />
+        <entry key="..\:/Users/sergi/AndroidStudioProjects/FinalGuessed/app/src/main/res/layout-mdpi/activity_game_win.xml" value="0.5784883720930233" />
+        <entry key="..\:/Users/sergi/AndroidStudioProjects/FinalGuessed/app/src/main/res/layout-mdpi/activity_list.xml" value="0.5784883720930233" />
+        <entry key="..\:/Users/sergi/AndroidStudioProjects/FinalGuessed/app/src/main/res/layout-mdpi/activity_main.xml" value="0.5784883720930233" />
+        <entry key="..\:/Users/sergi/AndroidStudioProjects/FinalGuessed/app/src/main/res/layout-mdpi/activity_options.xml" value="0.5784883720930233" />
+        <entry key="..\:/Users/sergi/AndroidStudioProjects/FinalGuessed/app/src/main/res/layout-mdpi/activity_play.xml" value="0.5784883720930233" />
+        <entry key="..\:/Users/sergi/AndroidStudioProjects/FinalGuessed/app/src/main/res/layout-mdpi/activity_sound.xml" value="0.6119186046511628" />
+        <entry key="..\:/Users/sergi/AndroidStudioProjects/FinalGuessed/app/src/main/res/layout-mdpi/activity_splash_screen.xml" value="0.5784883720930233" />
+        <entry key="..\:/Users/sergi/AndroidStudioProjects/FinalGuessed/app/src/main/res/layout-mdpi/letras.xml" value="0.5784883720930233" />
+        <entry key="..\:/Users/sergi/AndroidStudioProjects/FinalGuessed/app/src/main/res/layout-xhdpi/activity_about_us.xml" value="0.12894736842105264" />
+        <entry key="..\:/Users/sergi/AndroidStudioProjects/FinalGuessed/app/src/main/res/layout-xhdpi/activity_contact.xml" value="0.16258169934640523" />
+        <entry key="..\:/Users/sergi/AndroidStudioProjects/FinalGuessed/app/src/main/res/layout-xhdpi/activity_game.xml" value="0.2674731182795699" />
+        <entry key="..\:/Users/sergi/AndroidStudioProjects/FinalGuessed/app/src/main/res/layout-xhdpi/activity_game_over.xml" value="0.2674731182795699" />
+        <entry key="..\:/Users/sergi/AndroidStudioProjects/FinalGuessed/app/src/main/res/layout-xhdpi/activity_game_win.xml" value="0.2674731182795699" />
+        <entry key="..\:/Users/sergi/AndroidStudioProjects/FinalGuessed/app/src/main/res/layout-xhdpi/activity_list.xml" value="0.2674731182795699" />
+        <entry key="..\:/Users/sergi/AndroidStudioProjects/FinalGuessed/app/src/main/res/layout-xhdpi/activity_main.xml" value="0.2674731182795699" />
+        <entry key="..\:/Users/sergi/AndroidStudioProjects/FinalGuessed/app/src/main/res/layout-xhdpi/activity_options.xml" value="0.2674731182795699" />
+        <entry key="..\:/Users/sergi/AndroidStudioProjects/FinalGuessed/app/src/main/res/layout-xhdpi/activity_play.xml" value="0.28293010752688175" />
+        <entry key="..\:/Users/sergi/AndroidStudioProjects/FinalGuessed/app/src/main/res/layout-xhdpi/activity_sound.xml" value="0.3621031746031746" />
+        <entry key="..\:/Users/sergi/AndroidStudioProjects/FinalGuessed/app/src/main/res/layout-xhdpi/activity_splash_screen.xml" value="0.44730392156862747" />
+        <entry key="..\:/Users/sergi/AndroidStudioProjects/FinalGuessed/app/src/main/res/layout-xhdpi/letras.xml" value="0.44730392156862747" />
+        <entry key="..\:/Users/sergi/AndroidStudioProjects/FinalGuessed/app/src/main/res/layout-xxhdpi/activity_about_us.xml" value="0.1802536231884058" />
+        <entry key="..\:/Users/sergi/AndroidStudioProjects/FinalGuessed/app/src/main/res/layout-xxhdpi/activity_contact.xml" value="0.17192982456140352" />
+        <entry key="..\:/Users/sergi/AndroidStudioProjects/FinalGuessed/app/src/main/res/layout-xxhdpi/activity_game.xml" value="0.1675213675213675" />
+        <entry key="..\:/Users/sergi/AndroidStudioProjects/FinalGuessed/app/src/main/res/layout-xxhdpi/activity_game_over.xml" value="0.3621031746031746" />
+        <entry key="..\:/Users/sergi/AndroidStudioProjects/FinalGuessed/app/src/main/res/layout-xxhdpi/activity_game_win.xml" value="0.17192982456140352" />
+        <entry key="..\:/Users/sergi/AndroidStudioProjects/FinalGuessed/app/src/main/res/layout-xxhdpi/activity_list.xml" value="0.17192982456140352" />
+        <entry key="..\:/Users/sergi/AndroidStudioProjects/FinalGuessed/app/src/main/res/layout-xxhdpi/activity_main.xml" value="0.16545784224841342" />
+        <entry key="..\:/Users/sergi/AndroidStudioProjects/FinalGuessed/app/src/main/res/layout-xxhdpi/activity_options.xml" value="0.17192982456140352" />
+        <entry key="..\:/Users/sergi/AndroidStudioProjects/FinalGuessed/app/src/main/res/layout-xxhdpi/activity_play.xml" value="0.3621031746031746" />
+        <entry key="..\:/Users/sergi/AndroidStudioProjects/FinalGuessed/app/src/main/res/layout-xxhdpi/activity_sound.xml" value="0.3621031746031746" />
+        <entry key="..\:/Users/sergi/AndroidStudioProjects/FinalGuessed/app/src/main/res/layout-xxhdpi/activity_splash_screen.xml" value="0.3621031746031746" />
+        <entry key="..\:/Users/sergi/AndroidStudioProjects/FinalGuessed/app/src/main/res/layout-xxhdpi/letras.xml" value="0.3948412698412698" />
+        <entry key="..\:/Users/sergi/AndroidStudioProjects/FinalGuessed/app/src/main/res/layout-xxxhdpi/activity_about_us.xml" value="0.12894736842105264" />
+        <entry key="..\:/Users/sergi/AndroidStudioProjects/FinalGuessed/app/src/main/res/layout-xxxhdpi/activity_contact.xml" value="0.12894736842105264" />
+        <entry key="..\:/Users/sergi/AndroidStudioProjects/FinalGuessed/app/src/main/res/layout-xxxhdpi/activity_game.xml" value="0.1675929884566054" />
+        <entry key="..\:/Users/sergi/AndroidStudioProjects/FinalGuessed/app/src/main/res/layout-xxxhdpi/activity_game_over.xml" value="0.16545784224841342" />
+        <entry key="..\:/Users/sergi/AndroidStudioProjects/FinalGuessed/app/src/main/res/layout-xxxhdpi/activity_game_win.xml" value="0.16545784224841342" />
+        <entry key="..\:/Users/sergi/AndroidStudioProjects/FinalGuessed/app/src/main/res/layout-xxxhdpi/activity_list.xml" value="0.16545784224841342" />
+        <entry key="..\:/Users/sergi/AndroidStudioProjects/FinalGuessed/app/src/main/res/layout-xxxhdpi/activity_main.xml" value="0.3621031746031746" />
+        <entry key="..\:/Users/sergi/AndroidStudioProjects/FinalGuessed/app/src/main/res/layout-xxxhdpi/activity_options.xml" value="0.16545784224841342" />
+        <entry key="..\:/Users/sergi/AndroidStudioProjects/FinalGuessed/app/src/main/res/layout-xxxhdpi/activity_play.xml" value="0.16545784224841342" />
+        <entry key="..\:/Users/sergi/AndroidStudioProjects/FinalGuessed/app/src/main/res/layout-xxxhdpi/activity_sound.xml" value="0.16545784224841342" />
+        <entry key="..\:/Users/sergi/AndroidStudioProjects/FinalGuessed/app/src/main/res/layout-xxxhdpi/activity_splash_screen.xml" value="0.16545784224841342" />
+        <entry key="..\:/Users/sergi/AndroidStudioProjects/FinalGuessed/app/src/main/res/layout-xxxhdpi/letras.xml" value="0.16545784224841342" />
+        <entry key="..\:/Users/sergi/AndroidStudioProjects/FinalGuessed/app/src/main/res/layout/activity_about_us.xml" value="0.17192982456140352" />
+        <entry key="..\:/Users/sergi/AndroidStudioProjects/FinalGuessed/app/src/main/res/layout/activity_contact.xml" value="0.36704119850187267" />
         <entry key="..\:/Users/sergi/AndroidStudioProjects/FinalGuessed/app/src/main/res/layout/activity_eight_letters.xml" value="0.17391304347826086" />
         <entry key="..\:/Users/sergi/AndroidStudioProjects/FinalGuessed/app/src/main/res/layout/activity_five_letters.xml" value="0.17391304347826086" />
         <entry key="..\:/Users/sergi/AndroidStudioProjects/FinalGuessed/app/src/main/res/layout/activity_four_letters.xml" value="0.22" />
-        <entry key="..\:/Users/sergi/AndroidStudioProjects/FinalGuessed/app/src/main/res/layout/activity_game.xml" value="0.22" />
+        <entry key="..\:/Users/sergi/AndroidStudioProjects/FinalGuessed/app/src/main/res/layout/activity_game.xml" value="0.37859712230215825" />
         <entry key="..\:/Users/sergi/AndroidStudioProjects/FinalGuessed/app/src/main/res/layout/activity_game_over.xml" value="0.17391304347826086" />
         <entry key="..\:/Users/sergi/AndroidStudioProjects/FinalGuessed/app/src/main/res/layout/activity_game_win.xml" value="0.20416666666666666" />
         <entry key="..\:/Users/sergi/AndroidStudioProjects/FinalGuessed/app/src/main/res/layout/activity_list.xml" value="0.17391304347826086" />
