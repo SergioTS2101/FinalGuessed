@@ -6,14 +6,18 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 
 public class AboutUsActivity extends AppCompatActivity {
 
     Button volver;
+    TextView txtLink;
+    private final static String gitHub_URL = "https://github.com/SergioTS2101/FinalGuessed";
 
     BroadcastReceiver miBroadcast = new BroadcastReceiver() {
 
@@ -42,6 +46,17 @@ public class AboutUsActivity extends AppCompatActivity {
                 Intent intent = new Intent(AboutUsActivity.this, OptionsActivity.class);
                 startActivity(intent);
                 finish();
+            }
+        });
+
+        txtLink = findViewById(R.id.txtLink);
+
+        txtLink.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Intent.ACTION_VIEW);
+                intent.setData(Uri.parse(gitHub_URL));
+                startActivity(intent);
             }
         });
         registerReceiver(miBroadcast, new IntentFilter(Intent.ACTION_SCREEN_ON));

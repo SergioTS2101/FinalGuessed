@@ -70,11 +70,18 @@
                 android:textColor="@color/black"
                 android:textSize="22sp" />
 
-            <de.hdodenhof.circleimageview.CircleImageView
-                android:src="@drawable/equipo"
+            <TextView
+                android:id="@+id/txtLink"
                 android:layout_width="300dp"
-                android:layout_height="200dp"
-                />
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:fontFamily="@font/hollaboi_2"
+                android:inputType="text"
+                android:minHeight="48dp"
+                android:padding="8dp"
+                android:text="https://github.com/SergioTS2101/FinalGuessed"
+                android:textColor="@android:color/holo_blue_dark"
+                android:textSize="22sp" />
 
         </LinearLayout>
 

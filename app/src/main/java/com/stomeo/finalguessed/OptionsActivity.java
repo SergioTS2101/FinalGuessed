@@ -106,6 +106,7 @@ public class OptionsActivity extends AppCompatActivity {
             case "Sobre nosotros": {
                 Intent intent = new Intent(this, AboutUsActivity.class);
                 startActivity(intent);
+                finish();
                 break;
             }
             case "Contact us": {
@@ -131,6 +132,7 @@ public class OptionsActivity extends AppCompatActivity {
             case "About us": {
                 Intent intent = new Intent(this, AboutUsActivity.class);
                 startActivity(intent);
+                finish();
                 break;
             }
         }
@@ -142,7 +144,7 @@ public class OptionsActivity extends AppCompatActivity {
             i.setType("text/plain");
             i.putExtra(Intent.EXTRA_SUBJECT, getResources().getString(R.string.app_name));
             String aux = "Descarga la app Guessed\n";
-            aux = aux + "https://mega.nz/file/sjA1lCaR#qxqNGua5KT5I9WUsrxBAHknf9gXuIrHjjVxRIcyA9NM";
+            aux = aux + "https://mega.nz/file/JnxW3TAb#3IrAmC3R0KokZdefWBR40xfxsts8GMgo5a04TIIlaoQ";
             i.putExtra(Intent.EXTRA_TEXT, aux);
             startActivity(i);
         } catch (Exception ignored) {

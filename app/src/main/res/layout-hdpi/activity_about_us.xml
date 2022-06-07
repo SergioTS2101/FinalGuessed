@@ -11,8 +11,8 @@
 
     <androidx.cardview.widget.CardView
         android:id="@+id/cv"
-        android:layout_width="500dp"
-        android:layout_height="700dp"
+        android:layout_width="wrap_content"
+        android:layout_height="300dp"
         android:layout_marginLeft="16dp"
         android:layout_marginRight="16dp"
         android:layout_marginBottom="200dp"
@@ -42,7 +42,7 @@
                 android:padding="8dp"
                 android:text="@string/txt1"
                 android:textColor="@color/black"
-                android:textSize="40sp" />
+                android:textSize="22sp" />
 
             <TextView
                 android:id="@+id/txt2"
@@ -55,7 +55,7 @@
                 android:padding="8dp"
                 android:text="@string/txt2"
                 android:textColor="@color/black"
-                android:textSize="40sp" />
+                android:textSize="22sp" />
 
             <TextView
                 android:id="@+id/txt3"
@@ -68,13 +68,20 @@
                 android:padding="8dp"
                 android:text="@string/txt3"
                 android:textColor="@color/black"
-                android:textSize="40sp" />
+                android:textSize="22sp" />
 
-            <de.hdodenhof.circleimageview.CircleImageView
-                android:src="@drawable/equipo"
-                android:layout_width="match_parent"
+            <TextView
+                android:id="@+id/txtLink"
+                android:layout_width="300dp"
                 android:layout_height="wrap_content"
-                />
+                android:layout_margin="8dp"
+                android:fontFamily="@font/hollaboi_2"
+                android:inputType="text"
+                android:minHeight="48dp"
+                android:padding="8dp"
+                android:text="https://github.com/SergioTS2101/FinalGuessed"
+                android:textColor="@android:color/holo_blue_dark"
+                android:textSize="22sp" />
 
         </LinearLayout>
 
@@ -83,14 +90,14 @@
     <Button
         android:id="@+id/volver"
         android:layout_width="match_parent"
-        android:layout_height="70dp"
+        android:layout_height="50dp"
         android:layout_gravity="center|center"
         android:backgroundTint="@android:color/holo_red_light"
         android:fontFamily="@font/hollaboi_2"
         android:text="@string/volver2"
         android:textAllCaps="false"
         android:textColor="@color/white"
-        android:textSize="55sp"
+        android:textSize="35sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

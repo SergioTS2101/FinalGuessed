@@ -54,7 +54,7 @@
                     android:text="@string/contacto"
                     android:fontFamily="@font/hollaboi_1"
                     android:textColor="@color/black"
-                    android:textSize="54sp"
+                    android:textSize="44sp"
                     android:textStyle="bold" />
 
             </LinearLayout>

@@ -38,8 +38,8 @@
 
     <ImageView
         android:id="@+id/hangman"
-        android:layout_width="60dp"
-        android:layout_height="60dp"
+        android:layout_width="100dp"
+        android:layout_height="150dp"
         android:contentDescription="@string/hangmanDescription"
         android:src="@drawable/primer_fallo"
         android:visibility="invisible"
@@ -51,16 +51,15 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvLetras"
-        android:layout_width="55dp"
-        android:layout_height="194dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_centerInParent="true"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="30dp"
         android:orientation="horizontal"
         app:layout_constraintBottom_toTopOf="@+id/lettersLayout"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/hangman"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintTop_toBottomOf="@id/hangman" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/lettersLayout"
