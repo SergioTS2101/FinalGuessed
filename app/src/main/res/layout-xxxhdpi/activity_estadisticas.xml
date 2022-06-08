@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".EstadisticasActivity"
+    android:background="@drawable/hoja"
+    android:forceDarkAllowed="false">
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cvComida"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvTitulo"
+        android:layout_marginTop="20dp">
+
+        <TextView
+            android:id="@+id/tvComidas"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Comidas"
+            android:textColor="@color/black"
+            android:layout_marginLeft="150dp"
+            android:layout_marginTop="25dp"/>
+
+        <ImageView
+            android:id="@+id/imComidas"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/comida"
+            android:textColor="@color/black"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:layout_marginLeft="20dp"/>
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cvDeportes"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/cvComida"
+        android:layout_marginTop="15dp">
+
+        <TextView
+            android:id="@+id/tvDeportes"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Deportes"
+            android:textColor="@color/black"
+            android:layout_marginLeft="150dp"
+            android:layout_marginTop="25dp"/>
+
+        <ImageView
+            android:id="@+id/imDeportes"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/deportes"
+            android:textColor="@color/black"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:layout_marginLeft="20dp"/>
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cvAnimales"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/cvDeportes"
+        android:layout_marginTop="15dp">
+
+        <TextView
+            android:id="@+id/tvAnimales"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Animales"
+            android:textColor="@color/black"
+            android:layout_marginLeft="150dp"
+            android:layout_marginTop="25dp"/>
+
+        <ImageView
+            android:id="@+id/imAnimales"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/animales"
+            android:textColor="@color/black"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:layout_marginLeft="20dp"/>
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cvCapitales"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/cvAnimales"
+        android:layout_marginTop="15dp">
+
+        <TextView
+            android:id="@+id/tvCapitales"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Capitales"
+            android:textColor="@color/black"
+            android:layout_marginLeft="150dp"
+            android:layout_marginTop="25dp"/>
+
+        <ImageView
+            android:id="@+id/imCapitales"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/capitales"
+            android:textColor="@color/black"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:layout_marginLeft="20dp"/>
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cvProfesiones"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/cvCapitales"
+        android:layout_marginTop="15dp">
+
+        <TextView
+            android:id="@+id/tvProfesiones"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Profesiones"
+            android:textColor="@color/black"
+            android:layout_marginLeft="150dp"
+            android:layout_marginTop="25dp"/>
+
+        <ImageView
+            android:id="@+id/imProfesiones"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/profesiones"
+            android:textColor="@color/black"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:layout_marginLeft="20dp"/>
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cvCine"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/cvProfesiones"
+        android:layout_marginTop="15dp">
+
+        <TextView
+            android:id="@+id/tvCine"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Cine"
+            android:textColor="@color/black"
+            android:layout_marginLeft="150dp"
+            android:layout_marginTop="25dp"/>
+
+        <ImageView
+            android:id="@+id/imCine"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/cine"
+            android:textColor="@color/black"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:layout_marginLeft="20dp"/>
+    </androidx.cardview.widget.CardView>
+
+    <TextView
+        android:id="@+id/tvTitulo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/hollaboi_2"
+        android:text="@string/statistics"
+        android:textColor="@color/black"
+        android:textSize="76sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.039"/>
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

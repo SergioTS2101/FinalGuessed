@@ -1,0 +1,413 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/hoja"
+    tools:context=".MultiplayerActivity">
+
+    <ImageButton
+        android:id="@+id/mainButton"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:background="@drawable/playbtn"
+        android:contentDescription="@string/mainButtonDescription"
+        android:src="@drawable/ic_home"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintDimensionRatio="1:1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.049"
+        app:layout_constraintStart_toStartOf="@+id/guideline1"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.045"
+        tools:ignore="SpeakableTextPresentCheck" />
+
+    <TextView
+        android:id="@+id/tvTema"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/organic_relief"
+        android:text=""
+        android:textColor="@color/black"
+        android:textSize="35sp"
+        app:layout_constraintBottom_toTopOf="@+id/hangman"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/mainButton" />
+
+    <ImageView
+        android:id="@+id/hangman"
+        android:layout_width="250dp"
+        android:layout_height="250dp"
+        android:contentDescription="@string/hangmanDescription"
+        android:src="@drawable/primer_fallo"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.245" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvLetras"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:layout_marginTop="30dp"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toTopOf="@+id/lettersLayout"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/hangman" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/lettersLayout"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginBottom="4dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        tools:layout_editor_absoluteX="16dp">
+
+        <androidx.constraintlayout.helper.widget.Flow
+            android:id="@+id/flow"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:padding="10sp"
+            app:constraint_referenced_ids="a, b, c, d, e, f, g, h, i, j, k, l, m, n, o, p, q, r, s, t, u, v, w, x, y, z"
+            app:flow_wrapMode="chain"
+            app:layout_constraintTop_toTopOf="parent">
+
+        </androidx.constraintlayout.helper.widget.Flow>
+
+        <TextView
+            android:id="@+id/a"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="?android:attr/selectableItemBackground"
+            android:fontFamily="@font/hollaboi_2"
+            android:paddingHorizontal="10dp"
+            android:text="@string/a"
+            android:textColor="@color/black"
+            android:textSize="30sp" />
+
+        <TextView
+            android:id="@+id/b"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="?android:attr/selectableItemBackground"
+            android:fontFamily="@font/hollaboi_2"
+            android:paddingHorizontal="10dp"
+            android:text="@string/b"
+            android:textColor="@color/black"
+            android:textSize="30sp"
+            tools:ignore="MissingConstraints" />
+
+        <TextView
+            android:id="@+id/c"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="?android:attr/selectableItemBackground"
+            android:fontFamily="@font/hollaboi_2"
+            android:paddingHorizontal="10dp"
+            android:text="@string/c"
+            android:textColor="@color/black"
+            android:textSize="30sp"
+            tools:ignore="MissingConstraints" />
+
+        <TextView
+            android:id="@+id/d"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="?android:attr/selectableItemBackground"
+            android:fontFamily="@font/hollaboi_2"
+            android:paddingHorizontal="10dp"
+            android:text="@string/d"
+            android:textColor="@color/black"
+            android:textSize="30sp"
+            tools:ignore="MissingConstraints" />
+
+        <TextView
+            android:id="@+id/e"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="?android:attr/selectableItemBackground"
+            android:fontFamily="@font/hollaboi_2"
+            android:paddingHorizontal="10dp"
+            android:text="@string/e"
+            android:textColor="@color/black"
+            android:textSize="30sp"
+            tools:ignore="MissingConstraints" />
+
+        <TextView
+            android:id="@+id/f"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="?android:attr/selectableItemBackground"
+            android:fontFamily="@font/hollaboi_2"
+            android:paddingHorizontal="10dp"
+            android:text="@string/f"
+            android:textColor="@color/black"
+            android:textSize="30sp"
+            tools:ignore="MissingConstraints" />
+
+        <TextView
+            android:id="@+id/g"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="?android:attr/selectableItemBackground"
+            android:fontFamily="@font/hollaboi_2"
+            android:paddingHorizontal="10dp"
+            android:text="@string/g"
+            android:textColor="@color/black"
+            android:textSize="30sp"
+            tools:ignore="MissingConstraints" />
+
+        <TextView
+            android:id="@+id/h"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="?android:attr/selectableItemBackground"
+            android:fontFamily="@font/hollaboi_2"
+            android:paddingHorizontal="10dp"
+            android:text="@string/h"
+            android:textColor="@color/black"
+            android:textSize="30sp"
+            tools:ignore="MissingConstraints" />
+
+        <TextView
+            android:id="@+id/i"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="?android:attr/selectableItemBackground"
+            android:fontFamily="@font/hollaboi_2"
+            android:paddingHorizontal="10dp"
+            android:text="@string/i"
+            android:textColor="@color/black"
+            android:textSize="30sp"
+            tools:ignore="MissingConstraints" />
+
+        <TextView
+            android:id="@+id/j"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="?android:attr/selectableItemBackground"
+            android:fontFamily="@font/hollaboi_2"
+            android:paddingHorizontal="10dp"
+            android:text="@string/j"
+            android:textColor="@color/black"
+            android:textSize="30sp"
+            tools:ignore="MissingConstraints" />
+
+        <TextView
+            android:id="@+id/k"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="?android:attr/selectableItemBackground"
+            android:fontFamily="@font/hollaboi_2"
+            android:paddingHorizontal="10dp"
+            android:text="@string/k"
+            android:textColor="@color/black"
+            android:textSize="30sp"
+            tools:ignore="MissingConstraints" />
+
+        <TextView
+            android:id="@+id/l"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="?android:attr/selectableItemBackground"
+            android:fontFamily="@font/hollaboi_2"
+            android:paddingHorizontal="10dp"
+            android:text="@string/l"
+            android:textColor="@color/black"
+            android:textSize="30sp"
+            tools:ignore="MissingConstraints" />
+
+        <TextView
+            android:id="@+id/m"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="?android:attr/selectableItemBackground"
+            android:fontFamily="@font/hollaboi_2"
+            android:paddingHorizontal="10dp"
+            android:text="@string/m"
+            android:textColor="@color/black"
+            android:textSize="30sp"
+            tools:ignore="MissingConstraints" />
+
+        <TextView
+            android:id="@+id/n"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="?android:attr/selectableItemBackground"
+            android:fontFamily="@font/hollaboi_2"
+            android:paddingHorizontal="10dp"
+            android:text="@string/n"
+            android:textColor="@color/black"
+            android:textSize="30sp"
+            tools:ignore="MissingConstraints" />
+
+        <TextView
+            android:id="@+id/o"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="?android:attr/selectableItemBackground"
+            android:fontFamily="@font/hollaboi_2"
+            android:paddingHorizontal="10dp"
+            android:text="@string/o"
+            android:textColor="@color/black"
+            android:textSize="30sp"
+            tools:ignore="MissingConstraints" />
+
+        <TextView
+            android:id="@+id/p"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="?android:attr/selectableItemBackground"
+            android:fontFamily="@font/hollaboi_2"
+            android:paddingHorizontal="10dp"
+            android:text="@string/p"
+            android:textColor="@color/black"
+            android:textSize="30sp"
+            tools:ignore="MissingConstraints" />
+
+        <TextView
+            android:id="@+id/q"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="?android:attr/selectableItemBackground"
+            android:fontFamily="@font/hollaboi_2"
+            android:paddingHorizontal="10dp"
+            android:text="@string/q"
+            android:textColor="@color/black"
+            android:textSize="30sp"
+            tools:ignore="MissingConstraints" />
+
+        <TextView
+            android:id="@+id/r"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="?android:attr/selectableItemBackground"
+            android:fontFamily="@font/hollaboi_2"
+            android:paddingHorizontal="10dp"
+            android:text="@string/r"
+            android:textColor="@color/black"
+            android:textSize="30sp"
+            tools:ignore="MissingConstraints" />
+
+        <TextView
+            android:id="@+id/s"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="?android:attr/selectableItemBackground"
+            android:fontFamily="@font/hollaboi_2"
+            android:paddingHorizontal="10dp"
+            android:text="@string/s"
+            android:textColor="@color/black"
+            android:textSize="30sp"
+            tools:ignore="MissingConstraints" />
+
+        <TextView
+            android:id="@+id/t"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="?android:attr/selectableItemBackground"
+            android:fontFamily="@font/hollaboi_2"
+            android:paddingHorizontal="10dp"
+            android:text="@string/t"
+            android:textColor="@color/black"
+            android:textSize="30sp"
+            tools:ignore="MissingConstraints" />
+
+        <TextView
+            android:id="@+id/u"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="?android:attr/selectableItemBackground"
+            android:fontFamily="@font/hollaboi_2"
+            android:paddingHorizontal="10dp"
+            android:text="@string/u"
+            android:textColor="@color/black"
+            android:textSize="30sp"
+            tools:ignore="MissingConstraints" />
+
+        <TextView
+            android:id="@+id/v"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="?android:attr/selectableItemBackground"
+            android:fontFamily="@font/hollaboi_2"
+            android:paddingHorizontal="10dp"
+            android:text="@string/v"
+            android:textColor="@color/black"
+            android:textSize="30sp"
+            tools:ignore="MissingConstraints" />
+
+        <TextView
+            android:id="@+id/w"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="?android:attr/selectableItemBackground"
+            android:fontFamily="@font/hollaboi_2"
+            android:paddingHorizontal="10dp"
+            android:text="@string/w"
+            android:textColor="@color/black"
+            android:textSize="30sp"
+            tools:ignore="MissingConstraints" />
+
+        <TextView
+            android:id="@+id/x"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="?android:attr/selectableItemBackground"
+            android:fontFamily="@font/hollaboi_2"
+            android:paddingHorizontal="10dp"
+            android:text="@string/x"
+            android:textColor="@color/black"
+            android:textSize="30sp"
+            tools:ignore="MissingConstraints" />
+
+        <TextView
+            android:id="@+id/y"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="?android:attr/selectableItemBackground"
+            android:fontFamily="@font/hollaboi_2"
+            android:paddingHorizontal="10dp"
+            android:text="@string/y"
+            android:textColor="@color/black"
+            android:textSize="30sp"
+            tools:ignore="MissingConstraints"
+            tools:layout_editor_absoluteX="85dp"
+            tools:layout_editor_absoluteY="118dp" />
+
+        <TextView
+            android:id="@+id/z"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="?android:attr/selectableItemBackground"
+            android:fontFamily="@font/hollaboi_2"
+            android:paddingHorizontal="10dp"
+            android:text="@string/z"
+            android:textColor="@color/black"
+            android:textSize="30sp"
+            tools:ignore="MissingConstraints" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.05" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.94" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

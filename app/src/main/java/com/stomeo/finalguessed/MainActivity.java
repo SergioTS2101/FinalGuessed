@@ -12,7 +12,10 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 
@@ -20,6 +23,9 @@ public class MainActivity extends AppCompatActivity {
 
     Button jugar;
     Button opciones;
+    Button btn2Jugadores;
+    private String palabra = "";
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,6 +55,50 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+        btn2Jugadores = findViewById(R.id.btn2jugadores);
+
+        btn2Jugadores.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                AlertDialog.Builder alertDialog = new AlertDialog.Builder(MainActivity.this);
+                alertDialog.setTitle("2 jugadores");
+                alertDialog.setMessage("Introduzca una palabra");
+
+                final EditText input = new EditText(MainActivity.this);
+                LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(
+                        LinearLayout.LayoutParams.MATCH_PARENT,
+                        LinearLayout.LayoutParams.MATCH_PARENT);
+                input.setLayoutParams(lp);
+                alertDialog.setView(input);
+
+                alertDialog.setPositiveButton("Jugar",
+                        new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int which) {
+                                String palabraAAdivinar = input.getText().toString();
+                                palabra = palabraAAdivinar;
+                                Intent intent = new Intent(getApplicationContext(), MultiplayerActivity.class);
+                                intent.putExtra("palabraAAdivinar", palabra);
+                                startActivity(intent);
+                                finish();
+                                Toast.makeText(getApplicationContext(),
+                                        "¡A jugar!", Toast.LENGTH_SHORT).show();
+                            }
+
+                        });
+
+                alertDialog.setNegativeButton("Cerrar",
+                        new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int which) {
+                                dialog.cancel();
+                            }
+                        });
+
+                alertDialog.show();
+            }
+
+        });
+
     }
 
     @Override

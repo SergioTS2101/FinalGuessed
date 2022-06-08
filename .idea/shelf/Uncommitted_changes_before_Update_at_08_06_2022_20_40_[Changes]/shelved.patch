@@ -1,0 +1,1438 @@
+Index: app/src/main/res/values/themes.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><resources xmlns:tools=\"http://schemas.android.com/tools\">\r\n    <!-- Base application theme. -->\r\n    <style name=\"Theme.FinalGuessed\" parent=\"Theme.MaterialComponents.DayNight.NoActionBar\">\r\n        <!-- Primary brand color. -->\r\n        <item name=\"colorPrimary\">@color/purple_500</item>\r\n        <item name=\"colorPrimaryVariant\">@color/purple_700</item>\r\n        <item name=\"colorOnPrimary\">@color/white</item>\r\n        <!-- Secondary brand color. -->\r\n        <item name=\"colorSecondary\">@color/teal_200</item>\r\n        <item name=\"colorSecondaryVariant\">@color/teal_700</item>\r\n        <item name=\"colorOnSecondary\">@color/black</item>\r\n        <!-- Status bar color. -->\r\n        <item name=\"android:statusBarColor\" tools:targetApi=\"l\">?attr/colorPrimaryVariant</item>\r\n        <!-- Customize your theme here. -->\r\n    </style>\r\n</resources>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/res/values/themes.xml b/app/src/main/res/values/themes.xml
+--- a/app/src/main/res/values/themes.xml	(revision 8d529f6bb5ec13f18fb1a52653f8ae26a7f14d64)
++++ b/app/src/main/res/values/themes.xml	(date 1654712035082)
+@@ -1,6 +1,6 @@
+ <resources xmlns:tools="http://schemas.android.com/tools">
+     <!-- Base application theme. -->
+-    <style name="Theme.FinalGuessed" parent="Theme.MaterialComponents.DayNight.NoActionBar">
++    <style name="Theme.FinalGuessed" parent="Theme.MaterialComponents.Light.NoActionBar">
+         <!-- Primary brand color. -->
+         <item name="colorPrimary">@color/purple_500</item>
+         <item name="colorPrimaryVariant">@color/purple_700</item>
+Index: app/src/main/java/com/stomeo/finalguessed/AboutUsActivity.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.stomeo.finalguessed;\r\n\r\nimport androidx.appcompat.app.AppCompatActivity;\r\n\r\nimport android.content.BroadcastReceiver;\r\nimport android.content.Context;\r\nimport android.content.Intent;\r\nimport android.content.IntentFilter;\r\nimport android.net.Uri;\r\nimport android.os.Bundle;\r\nimport android.util.Log;\r\nimport android.view.View;\r\nimport android.widget.Button;\r\nimport android.widget.TextView;\r\n\r\npublic class AboutUsActivity extends AppCompatActivity {\r\n\r\n    Button volver;\r\n    TextView txtLink;\r\n    private final static String gitHub_URL = \"https://github.com/SergioTS2101/FinalGuessed\";\r\n\r\n    BroadcastReceiver miBroadcast = new BroadcastReceiver() {\r\n\r\n        @Override\r\n        public void onReceive(Context context, Intent intent) {\r\n            if (intent.getAction().equals(Intent.ACTION_SCREEN_ON)) {\r\n                Log.i(\"TAG\", \"Screen ON\");\r\n            } else if (intent.getAction().equals(Intent.ACTION_SCREEN_OFF)) {\r\n                Log.i(\"TAG\", \"Screen OFF\");\r\n                parar();\r\n            }\r\n\r\n        }\r\n    };\r\n\r\n    @Override\r\n    protected void onCreate(Bundle savedInstanceState) {\r\n        super.onCreate(savedInstanceState);\r\n        setContentView(R.layout.activity_about_us);\r\n\r\n        volver = findViewById(R.id.volver);\r\n\r\n        volver.setOnClickListener(new View.OnClickListener() {\r\n            @Override\r\n            public void onClick(View view) {\r\n                Intent intent = new Intent(AboutUsActivity.this, OptionsActivity.class);\r\n                startActivity(intent);\r\n                finish();\r\n            }\r\n        });\r\n\r\n        txtLink = findViewById(R.id.txtLink);\r\n\r\n        txtLink.setOnClickListener(new View.OnClickListener() {\r\n            @Override\r\n            public void onClick(View v) {\r\n                Intent intent = new Intent(Intent.ACTION_VIEW);\r\n                intent.setData(Uri.parse(gitHub_URL));\r\n                startActivity(intent);\r\n            }\r\n        });\r\n        registerReceiver(miBroadcast, new IntentFilter(Intent.ACTION_SCREEN_ON));\r\n        registerReceiver(miBroadcast, new IntentFilter(Intent.ACTION_SCREEN_OFF));\r\n    }\r\n\r\n    private void parar() {\r\n        stopService(new Intent(this, ServicioMusica.class));\r\n    }\r\n\r\n    @Override\r\n    public void onWindowFocusChanged(boolean hasFocus) {\r\n        super.onWindowFocusChanged(hasFocus);\r\n        if (hasFocus) {\r\n            hideSystemUI();\r\n        }\r\n    }\r\n\r\n    private void hideSystemUI() {\r\n        View decorView = getWindow().getDecorView();\r\n        decorView.setSystemUiVisibility(\r\n                View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY\r\n                        | View.SYSTEM_UI_FLAG_LAYOUT_STABLE\r\n                        | View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION\r\n                        | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN\r\n                        | View.SYSTEM_UI_FLAG_HIDE_NAVIGATION\r\n                        | View.SYSTEM_UI_FLAG_FULLSCREEN);\r\n    }\r\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/java/com/stomeo/finalguessed/AboutUsActivity.java b/app/src/main/java/com/stomeo/finalguessed/AboutUsActivity.java
+--- a/app/src/main/java/com/stomeo/finalguessed/AboutUsActivity.java	(revision 8d529f6bb5ec13f18fb1a52653f8ae26a7f14d64)
++++ b/app/src/main/java/com/stomeo/finalguessed/AboutUsActivity.java	(date 1654711225813)
+@@ -19,20 +19,6 @@
+     TextView txtLink;
+     private final static String gitHub_URL = "https://github.com/SergioTS2101/FinalGuessed";
+ 
+-    BroadcastReceiver miBroadcast = new BroadcastReceiver() {
+-
+-        @Override
+-        public void onReceive(Context context, Intent intent) {
+-            if (intent.getAction().equals(Intent.ACTION_SCREEN_ON)) {
+-                Log.i("TAG", "Screen ON");
+-            } else if (intent.getAction().equals(Intent.ACTION_SCREEN_OFF)) {
+-                Log.i("TAG", "Screen OFF");
+-                parar();
+-            }
+-
+-        }
+-    };
+-
+     @Override
+     protected void onCreate(Bundle savedInstanceState) {
+         super.onCreate(savedInstanceState);
+@@ -59,12 +45,6 @@
+                 startActivity(intent);
+             }
+         });
+-        registerReceiver(miBroadcast, new IntentFilter(Intent.ACTION_SCREEN_ON));
+-        registerReceiver(miBroadcast, new IntentFilter(Intent.ACTION_SCREEN_OFF));
+-    }
+-
+-    private void parar() {
+-        stopService(new Intent(this, ServicioMusica.class));
+     }
+ 
+     @Override
+Index: .idea/misc.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/misc.xml b/.idea/misc.xml
+deleted file mode 100644
+--- a/.idea/misc.xml	(revision 8d529f6bb5ec13f18fb1a52653f8ae26a7f14d64)
++++ /dev/null	(revision 8d529f6bb5ec13f18fb1a52653f8ae26a7f14d64)
+@@ -1,128 +0,0 @@
+-<?xml version="1.0" encoding="UTF-8"?>
+-<project version="4">
+-  <component name="DesignSurface">
+-    <option name="filePathToZoomLevelMap">
+-      <map>
+-        <entry key="..\:/FinalGuessedBueno/app/src/main/res/layout/activity_contact.xml" value="0.35989583333333336" />
+-        <entry key="..\:/FinalGuessedBueno/app/src/main/res/layout/activity_game.xml" value="0.25" />
+-        <entry key="..\:/FinalGuessedBueno/app/src/main/res/layout/activity_game_over.xml" value="0.35989583333333336" />
+-        <entry key="..\:/FinalGuessedBueno/app/src/main/res/layout/activity_game_win.xml" value="0.22" />
+-        <entry key="..\:/FinalGuessedBueno/app/src/main/res/layout/activity_list.xml" value="0.35989583333333336" />
+-        <entry key="..\:/FinalGuessedBueno/app/src/main/res/layout/activity_main.xml" value="0.16018518518518518" />
+-        <entry key="..\:/FinalGuessedBueno/app/src/main/res/layout/activity_options.xml" value="0.35989583333333336" />
+-        <entry key="..\:/FinalGuessedBueno/app/src/main/res/layout/activity_play.xml" value="0.33" />
+-        <entry key="..\:/FinalGuessedBueno/app/src/main/res/layout/activity_sound.xml" value="0.35989583333333336" />
+-        <entry key="..\:/FinalGuessedBueno/app/src/main/res/layout/activity_splash_screen.xml" value="0.35989583333333336" />
+-        <entry key="..\:/FinalGuessedBueno/app/src/main/res/layout/letras.xml" value="0.33" />
+-        <entry key="..\:/Users/sergi/AndroidStudioProjects/FinalGuessed/app/src/main/res/drawable-anydpi/ic_home.xml" value="0.1475" />
+-        <entry key="..\:/Users/sergi/AndroidStudioProjects/FinalGuessed/app/src/main/res/drawable-hdpi/answerbtn.xml" value="0.1475" />
+-        <entry key="..\:/Users/sergi/AndroidStudioProjects/FinalGuessed/app/src/main/res/drawable/ic_guessed_background.xml" value="0.1435" />
+-        <entry key="..\:/Users/sergi/AndroidStudioProjects/FinalGuessed/app/src/main/res/drawable/ic_music_off_foreground.xml" value="0.1" />
+-        <entry key="..\:/Users/sergi/AndroidStudioProjects/FinalGuessed/app/src/main/res/drawable/ic_music_on_foreground.xml" value="0.1" />
+-        <entry key="..\:/Users/sergi/AndroidStudioProjects/FinalGuessed/app/src/main/res/drawable/playbtn.xml" value="0.2035" />
+-        <entry key="..\:/Users/sergi/AndroidStudioProjects/FinalGuessed/app/src/main/res/layout-hdpi/activity_about_us.xml" value="0.24150485436893204" />
+-        <entry key="..\:/Users/sergi/AndroidStudioProjects/FinalGuessed/app/src/main/res/layout-hdpi/activity_contact.xml" value="0.3671586715867159" />
+-        <entry key="..\:/Users/sergi/AndroidStudioProjects/FinalGuessed/app/src/main/res/layout-hdpi/activity_game.xml" value="0.36446886446886445" />
+-        <entry key="..\:/Users/sergi/AndroidStudioProjects/FinalGuessed/app/src/main/res/layout-hdpi/activity_game_over.xml" value="0.3948412698412698" />
+-        <entry key="..\:/Users/sergi/AndroidStudioProjects/FinalGuessed/app/src/main/res/layout-hdpi/activity_game_win.xml" value="0.3948412698412698" />
+-        <entry key="..\:/Users/sergi/AndroidStudioProjects/FinalGuessed/app/src/main/res/layout-hdpi/activity_list.xml" value="0.3948412698412698" />
+-        <entry key="..\:/Users/sergi/AndroidStudioProjects/FinalGuessed/app/src/main/res/layout-hdpi/activity_main.xml" value="0.3948412698412698" />
+-        <entry key="..\:/Users/sergi/AndroidStudioProjects/FinalGuessed/app/src/main/res/layout-hdpi/activity_options.xml" value="0.3948412698412698" />
+-        <entry key="..\:/Users/sergi/AndroidStudioProjects/FinalGuessed/app/src/main/res/layout-hdpi/activity_play.xml" value="0.3948412698412698" />
+-        <entry key="..\:/Users/sergi/AndroidStudioProjects/FinalGuessed/app/src/main/res/layout-hdpi/activity_sound.xml" value="0.3948412698412698" />
+-        <entry key="..\:/Users/sergi/AndroidStudioProjects/FinalGuessed/app/src/main/res/layout-hdpi/activity_splash_screen.xml" value="0.3948412698412698" />
+-        <entry key="..\:/Users/sergi/AndroidStudioProjects/FinalGuessed/app/src/main/res/layout-hdpi/letras.xml" value="0.3948412698412698" />
+-        <entry key="..\:/Users/sergi/AndroidStudioProjects/FinalGuessed/app/src/main/res/layout-ldpi/activity_about_us.xml" value="0.6503267973856209" />
+-        <entry key="..\:/Users/sergi/AndroidStudioProjects/FinalGuessed/app/src/main/res/layout-ldpi/activity_contact.xml" value="0.7210144927536232" />
+-        <entry key="..\:/Users/sergi/AndroidStudioProjects/FinalGuessed/app/src/main/res/layout-ldpi/activity_game.xml" value="0.7537878787878788" />
+-        <entry key="..\:/Users/sergi/AndroidStudioProjects/FinalGuessed/app/src/main/res/layout-ldpi/activity_game_over.xml" value="0.3948412698412698" />
+-        <entry key="..\:/Users/sergi/AndroidStudioProjects/FinalGuessed/app/src/main/res/layout-ldpi/activity_game_win.xml" value="0.737037037037037" />
+-        <entry key="..\:/Users/sergi/AndroidStudioProjects/FinalGuessed/app/src/main/res/layout-ldpi/activity_list.xml" value="0.7537878787878788" />
+-        <entry key="..\:/Users/sergi/AndroidStudioProjects/FinalGuessed/app/src/main/res/layout-ldpi/activity_main.xml" value="0.7158273381294964" />
+-        <entry key="..\:/Users/sergi/AndroidStudioProjects/FinalGuessed/app/src/main/res/layout-ldpi/activity_options.xml" value="0.7158273381294964" />
+-        <entry key="..\:/Users/sergi/AndroidStudioProjects/FinalGuessed/app/src/main/res/layout-ldpi/activity_play.xml" value="0.7537878787878788" />
+-        <entry key="..\:/Users/sergi/AndroidStudioProjects/FinalGuessed/app/src/main/res/layout-ldpi/activity_sound.xml" value="0.7210144927536232" />
+-        <entry key="..\:/Users/sergi/AndroidStudioProjects/FinalGuessed/app/src/main/res/layout-ldpi/activity_splash_screen.xml" value="0.7158273381294964" />
+-        <entry key="..\:/Users/sergi/AndroidStudioProjects/FinalGuessed/app/src/main/res/layout-ldpi/letras.xml" value="0.737037037037037" />
+-        <entry key="..\:/Users/sergi/AndroidStudioProjects/FinalGuessed/app/src/main/res/layout-mdpi/activity_about_us.xml" value="0.3948412698412698" />
+-        <entry key="..\:/Users/sergi/AndroidStudioProjects/FinalGuessed/app/src/main/res/layout-mdpi/activity_contact.xml" value="0.5240641711229946" />
+-        <entry key="..\:/Users/sergi/AndroidStudioProjects/FinalGuessed/app/src/main/res/layout-mdpi/activity_game.xml" value="0.36704119850187267" />
+-        <entry key="..\:/Users/sergi/AndroidStudioProjects/FinalGuessed/app/src/main/res/layout-mdpi/activity_game_over.xml" value="0.36704119850187267" />
+-        <entry key="..\:/Users/sergi/AndroidStudioProjects/FinalGuessed/app/src/main/res/layout-mdpi/activity_game_win.xml" value="0.5784883720930233" />
+-        <entry key="..\:/Users/sergi/AndroidStudioProjects/FinalGuessed/app/src/main/res/layout-mdpi/activity_list.xml" value="0.5784883720930233" />
+-        <entry key="..\:/Users/sergi/AndroidStudioProjects/FinalGuessed/app/src/main/res/layout-mdpi/activity_main.xml" value="0.5784883720930233" />
+-        <entry key="..\:/Users/sergi/AndroidStudioProjects/FinalGuessed/app/src/main/res/layout-mdpi/activity_options.xml" value="0.5784883720930233" />
+-        <entry key="..\:/Users/sergi/AndroidStudioProjects/FinalGuessed/app/src/main/res/layout-mdpi/activity_play.xml" value="0.5784883720930233" />
+-        <entry key="..\:/Users/sergi/AndroidStudioProjects/FinalGuessed/app/src/main/res/layout-mdpi/activity_sound.xml" value="0.6119186046511628" />
+-        <entry key="..\:/Users/sergi/AndroidStudioProjects/FinalGuessed/app/src/main/res/layout-mdpi/activity_splash_screen.xml" value="0.5784883720930233" />
+-        <entry key="..\:/Users/sergi/AndroidStudioProjects/FinalGuessed/app/src/main/res/layout-mdpi/letras.xml" value="0.5784883720930233" />
+-        <entry key="..\:/Users/sergi/AndroidStudioProjects/FinalGuessed/app/src/main/res/layout-xhdpi/activity_about_us.xml" value="0.12756410256410255" />
+-        <entry key="..\:/Users/sergi/AndroidStudioProjects/FinalGuessed/app/src/main/res/layout-xhdpi/activity_contact.xml" value="0.16258169934640523" />
+-        <entry key="..\:/Users/sergi/AndroidStudioProjects/FinalGuessed/app/src/main/res/layout-xhdpi/activity_game.xml" value="0.12253694581280788" />
+-        <entry key="..\:/Users/sergi/AndroidStudioProjects/FinalGuessed/app/src/main/res/layout-xhdpi/activity_game_over.xml" value="0.2674731182795699" />
+-        <entry key="..\:/Users/sergi/AndroidStudioProjects/FinalGuessed/app/src/main/res/layout-xhdpi/activity_game_win.xml" value="0.2674731182795699" />
+-        <entry key="..\:/Users/sergi/AndroidStudioProjects/FinalGuessed/app/src/main/res/layout-xhdpi/activity_list.xml" value="0.2806666666666667" />
+-        <entry key="..\:/Users/sergi/AndroidStudioProjects/FinalGuessed/app/src/main/res/layout-xhdpi/activity_main.xml" value="0.2674731182795699" />
+-        <entry key="..\:/Users/sergi/AndroidStudioProjects/FinalGuessed/app/src/main/res/layout-xhdpi/activity_options.xml" value="0.2674731182795699" />
+-        <entry key="..\:/Users/sergi/AndroidStudioProjects/FinalGuessed/app/src/main/res/layout-xhdpi/activity_play.xml" value="0.28293010752688175" />
+-        <entry key="..\:/Users/sergi/AndroidStudioProjects/FinalGuessed/app/src/main/res/layout-xhdpi/activity_sound.xml" value="0.3621031746031746" />
+-        <entry key="..\:/Users/sergi/AndroidStudioProjects/FinalGuessed/app/src/main/res/layout-xhdpi/activity_splash_screen.xml" value="0.44730392156862747" />
+-        <entry key="..\:/Users/sergi/AndroidStudioProjects/FinalGuessed/app/src/main/res/layout-xhdpi/letras.xml" value="0.13493589743589743" />
+-        <entry key="..\:/Users/sergi/AndroidStudioProjects/FinalGuessed/app/src/main/res/layout-xxhdpi/activity_about_us.xml" value="0.1802536231884058" />
+-        <entry key="..\:/Users/sergi/AndroidStudioProjects/FinalGuessed/app/src/main/res/layout-xxhdpi/activity_contact.xml" value="0.17192982456140352" />
+-        <entry key="..\:/Users/sergi/AndroidStudioProjects/FinalGuessed/app/src/main/res/layout-xxhdpi/activity_game.xml" value="0.1675213675213675" />
+-        <entry key="..\:/Users/sergi/AndroidStudioProjects/FinalGuessed/app/src/main/res/layout-xxhdpi/activity_game_over.xml" value="0.3621031746031746" />
+-        <entry key="..\:/Users/sergi/AndroidStudioProjects/FinalGuessed/app/src/main/res/layout-xxhdpi/activity_game_win.xml" value="0.17192982456140352" />
+-        <entry key="..\:/Users/sergi/AndroidStudioProjects/FinalGuessed/app/src/main/res/layout-xxhdpi/activity_list.xml" value="0.17192982456140352" />
+-        <entry key="..\:/Users/sergi/AndroidStudioProjects/FinalGuessed/app/src/main/res/layout-xxhdpi/activity_main.xml" value="0.16545784224841342" />
+-        <entry key="..\:/Users/sergi/AndroidStudioProjects/FinalGuessed/app/src/main/res/layout-xxhdpi/activity_options.xml" value="0.17192982456140352" />
+-        <entry key="..\:/Users/sergi/AndroidStudioProjects/FinalGuessed/app/src/main/res/layout-xxhdpi/activity_play.xml" value="0.3621031746031746" />
+-        <entry key="..\:/Users/sergi/AndroidStudioProjects/FinalGuessed/app/src/main/res/layout-xxhdpi/activity_sound.xml" value="0.3621031746031746" />
+-        <entry key="..\:/Users/sergi/AndroidStudioProjects/FinalGuessed/app/src/main/res/layout-xxhdpi/activity_splash_screen.xml" value="0.3621031746031746" />
+-        <entry key="..\:/Users/sergi/AndroidStudioProjects/FinalGuessed/app/src/main/res/layout-xxhdpi/letras.xml" value="0.17192982456140352" />
+-        <entry key="..\:/Users/sergi/AndroidStudioProjects/FinalGuessed/app/src/main/res/layout-xxxhdpi/activity_about_us.xml" value="0.22" />
+-        <entry key="..\:/Users/sergi/AndroidStudioProjects/FinalGuessed/app/src/main/res/layout-xxxhdpi/activity_contact.xml" value="0.12894736842105264" />
+-        <entry key="..\:/Users/sergi/AndroidStudioProjects/FinalGuessed/app/src/main/res/layout-xxxhdpi/activity_game.xml" value="0.1675929884566054" />
+-        <entry key="..\:/Users/sergi/AndroidStudioProjects/FinalGuessed/app/src/main/res/layout-xxxhdpi/activity_game_over.xml" value="0.16545784224841342" />
+-        <entry key="..\:/Users/sergi/AndroidStudioProjects/FinalGuessed/app/src/main/res/layout-xxxhdpi/activity_game_win.xml" value="0.16545784224841342" />
+-        <entry key="..\:/Users/sergi/AndroidStudioProjects/FinalGuessed/app/src/main/res/layout-xxxhdpi/activity_list.xml" value="0.16545784224841342" />
+-        <entry key="..\:/Users/sergi/AndroidStudioProjects/FinalGuessed/app/src/main/res/layout-xxxhdpi/activity_main.xml" value="0.3621031746031746" />
+-        <entry key="..\:/Users/sergi/AndroidStudioProjects/FinalGuessed/app/src/main/res/layout-xxxhdpi/activity_options.xml" value="0.16545784224841342" />
+-        <entry key="..\:/Users/sergi/AndroidStudioProjects/FinalGuessed/app/src/main/res/layout-xxxhdpi/activity_play.xml" value="0.16545784224841342" />
+-        <entry key="..\:/Users/sergi/AndroidStudioProjects/FinalGuessed/app/src/main/res/layout-xxxhdpi/activity_sound.xml" value="0.16545784224841342" />
+-        <entry key="..\:/Users/sergi/AndroidStudioProjects/FinalGuessed/app/src/main/res/layout-xxxhdpi/activity_splash_screen.xml" value="0.16545784224841342" />
+-        <entry key="..\:/Users/sergi/AndroidStudioProjects/FinalGuessed/app/src/main/res/layout-xxxhdpi/letras.xml" value="0.16545784224841342" />
+-        <entry key="..\:/Users/sergi/AndroidStudioProjects/FinalGuessed/app/src/main/res/layout/activity_about_us.xml" value="0.17192982456140352" />
+-        <entry key="..\:/Users/sergi/AndroidStudioProjects/FinalGuessed/app/src/main/res/layout/activity_contact.xml" value="0.36704119850187267" />
+-        <entry key="..\:/Users/sergi/AndroidStudioProjects/FinalGuessed/app/src/main/res/layout/activity_eight_letters.xml" value="0.17391304347826086" />
+-        <entry key="..\:/Users/sergi/AndroidStudioProjects/FinalGuessed/app/src/main/res/layout/activity_five_letters.xml" value="0.17391304347826086" />
+-        <entry key="..\:/Users/sergi/AndroidStudioProjects/FinalGuessed/app/src/main/res/layout/activity_four_letters.xml" value="0.22" />
+-        <entry key="..\:/Users/sergi/AndroidStudioProjects/FinalGuessed/app/src/main/res/layout/activity_game.xml" value="0.37859712230215825" />
+-        <entry key="..\:/Users/sergi/AndroidStudioProjects/FinalGuessed/app/src/main/res/layout/activity_game_over.xml" value="0.17391304347826086" />
+-        <entry key="..\:/Users/sergi/AndroidStudioProjects/FinalGuessed/app/src/main/res/layout/activity_game_win.xml" value="0.20416666666666666" />
+-        <entry key="..\:/Users/sergi/AndroidStudioProjects/FinalGuessed/app/src/main/res/layout/activity_list.xml" value="0.17391304347826086" />
+-        <entry key="..\:/Users/sergi/AndroidStudioProjects/FinalGuessed/app/src/main/res/layout/activity_main.xml" value="0.22" />
+-        <entry key="..\:/Users/sergi/AndroidStudioProjects/FinalGuessed/app/src/main/res/layout/activity_nine_letters.xml" value="0.17391304347826086" />
+-        <entry key="..\:/Users/sergi/AndroidStudioProjects/FinalGuessed/app/src/main/res/layout/activity_options.xml" value="0.17074275362318841" />
+-        <entry key="..\:/Users/sergi/AndroidStudioProjects/FinalGuessed/app/src/main/res/layout/activity_play.xml" value="0.25" />
+-        <entry key="..\:/Users/sergi/AndroidStudioProjects/FinalGuessed/app/src/main/res/layout/activity_seven_letters.xml" value="0.17391304347826086" />
+-        <entry key="..\:/Users/sergi/AndroidStudioProjects/FinalGuessed/app/src/main/res/layout/activity_share.xml" value="0.17074275362318841" />
+-        <entry key="..\:/Users/sergi/AndroidStudioProjects/FinalGuessed/app/src/main/res/layout/activity_six_letters.xml" value="0.17391304347826086" />
+-        <entry key="..\:/Users/sergi/AndroidStudioProjects/FinalGuessed/app/src/main/res/layout/activity_sound.xml" value="0.17074275362318841" />
+-        <entry key="..\:/Users/sergi/AndroidStudioProjects/FinalGuessed/app/src/main/res/layout/activity_splash_screen.xml" value="0.17074275362318841" />
+-        <entry key="..\:/Users/sergi/AndroidStudioProjects/FinalGuessed/app/src/main/res/layout/activity_ten_letters.xml" value="0.17391304347826086" />
+-        <entry key="..\:/Users/sergi/AndroidStudioProjects/FinalGuessed/app/src/main/res/layout/activity_words.xml" value="0.17391304347826086" />
+-        <entry key="..\:/Users/sergi/AndroidStudioProjects/FinalGuessed/app/src/main/res/layout/letras.xml" value="0.1" />
+-        <entry key="..\:/Users/sergi/AndroidStudioProjects/FinalGuessed/app/src/main/res/layout/lista_activity.xml" value="0.17074275362318841" />
+-        <entry key="..\:/Users/sergi/AndroidStudioProjects/FinalGuessed/app/src/main/res/mipmap-anydpi-v26/ic_guessed.xml" value="0.1435" />
+-        <entry key="..\:/Users/sergi/AndroidStudioProjects/FinalGuessed/app/src/main/res/mipmap-anydpi-v26/ic_guessed_round.xml" value="0.1" />
+-      </map>
+-    </option>
+-  </component>
+-  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
+-    <output url="file://$PROJECT_DIR$/build/classes" />
+-  </component>
+-  <component name="ProjectType">
+-    <option name="id" value="Android" />
+-  </component>
+-</project>
+\ No newline at end of file
+Index: app/src/main/res/values-night/themes.xml
+===================================================================
+diff --git a/app/src/main/res/values-night/themes.xml b/app/src/main/res/values-night/themes.xml
+deleted file mode 100644
+--- a/app/src/main/res/values-night/themes.xml	(revision 8d529f6bb5ec13f18fb1a52653f8ae26a7f14d64)
++++ /dev/null	(revision 8d529f6bb5ec13f18fb1a52653f8ae26a7f14d64)
+@@ -1,16 +0,0 @@
+-<resources xmlns:tools="http://schemas.android.com/tools">
+-    <!-- Base application theme. -->
+-    <style name="Theme.FinalGuessed" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+-        <!-- Primary brand color. -->
+-        <item name="colorPrimary">@color/purple_200</item>
+-        <item name="colorPrimaryVariant">@color/purple_700</item>
+-        <item name="colorOnPrimary">@color/black</item>
+-        <!-- Secondary brand color. -->
+-        <item name="colorSecondary">@color/teal_200</item>
+-        <item name="colorSecondaryVariant">@color/teal_200</item>
+-        <item name="colorOnSecondary">@color/black</item>
+-        <!-- Status bar color. -->
+-        <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
+-        <!-- Customize your theme here. -->
+-    </style>
+-</resources>
+\ No newline at end of file
+Index: .idea/.name
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/.name b/.idea/.name
+deleted file mode 100644
+--- a/.idea/.name	(revision 8d529f6bb5ec13f18fb1a52653f8ae26a7f14d64)
++++ /dev/null	(revision 8d529f6bb5ec13f18fb1a52653f8ae26a7f14d64)
+@@ -1,1 +0,0 @@
+-FinalGuessed
+\ No newline at end of file
+Index: .idea/compiler.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/compiler.xml b/.idea/compiler.xml
+deleted file mode 100644
+--- a/.idea/compiler.xml	(revision 8d529f6bb5ec13f18fb1a52653f8ae26a7f14d64)
++++ /dev/null	(revision 8d529f6bb5ec13f18fb1a52653f8ae26a7f14d64)
+@@ -1,6 +0,0 @@
+-<?xml version="1.0" encoding="UTF-8"?>
+-<project version="4">
+-  <component name="CompilerConfiguration">
+-    <bytecodeTargetLevel target="11" />
+-  </component>
+-</project>
+\ No newline at end of file
+Index: app/src/main/java/com/stomeo/finalguessed/SoundActivity.java
+===================================================================
+diff --git a/app/src/main/java/com/stomeo/finalguessed/SoundActivity.java b/app/src/main/java/com/stomeo/finalguessed/SoundActivity.java
+deleted file mode 100644
+--- a/app/src/main/java/com/stomeo/finalguessed/SoundActivity.java	(revision 8d529f6bb5ec13f18fb1a52653f8ae26a7f14d64)
++++ /dev/null	(revision 8d529f6bb5ec13f18fb1a52653f8ae26a7f14d64)
+@@ -1,84 +0,0 @@
+-package com.stomeo.finalguessed;
+-
+-import androidx.appcompat.app.AppCompatActivity;
+-
+-import android.content.BroadcastReceiver;
+-import android.content.Context;
+-import android.content.Intent;
+-import android.content.IntentFilter;
+-import android.os.Bundle;
+-import android.util.Log;
+-import android.view.View;
+-import android.widget.ImageView;
+-
+-public class SoundActivity extends AppCompatActivity {
+-
+-    BroadcastReceiver miBroadcast = new BroadcastReceiver() {
+-
+-        @Override
+-        public void onReceive(Context context, Intent intent) {
+-            if (intent.getAction().equals(Intent.ACTION_SCREEN_ON)) {
+-                Log.i("TAG", "Screen ON");
+-            } else if (intent.getAction().equals(Intent.ACTION_SCREEN_OFF)) {
+-                Log.i("TAG", "Screen OFF");
+-                parar();
+-            }
+-
+-        }
+-    };
+-
+-    @Override
+-    protected void onCreate(Bundle savedInstanceState) {
+-        super.onCreate(savedInstanceState);
+-        setContentView(R.layout.activity_sound);
+-
+-
+-        ImageView encender = findViewById(R.id.encender);
+-        ImageView apagar = findViewById(R.id.apagar);
+-
+-        encender.setOnClickListener(new View.OnClickListener() {
+-            @Override
+-            public void onClick(View v) {
+-                reproducir();
+-            }
+-        });
+-
+-        apagar.setOnClickListener(new View.OnClickListener() {
+-            @Override
+-            public void onClick(View v) {
+-                parar();
+-            }
+-        });
+-
+-        registerReceiver(miBroadcast, new IntentFilter(Intent.ACTION_SCREEN_ON));
+-        registerReceiver(miBroadcast, new IntentFilter(Intent.ACTION_SCREEN_OFF));
+-
+-    }
+-
+-    private void reproducir() {
+-        startService(new Intent(this, ServicioMusica.class));
+-    }
+-
+-    private void parar() {
+-        stopService(new Intent(this, ServicioMusica.class));
+-    }
+-
+-    @Override
+-    public void onWindowFocusChanged(boolean hasFocus) {
+-        super.onWindowFocusChanged(hasFocus);
+-        if (hasFocus) {
+-            hideSystemUI();
+-        }
+-    }
+-
+-    private void hideSystemUI() {
+-        View decorView = getWindow().getDecorView();
+-        decorView.setSystemUiVisibility(
+-                View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY
+-                        | View.SYSTEM_UI_FLAG_LAYOUT_STABLE
+-                        | View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
+-                        | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
+-                        | View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
+-                        | View.SYSTEM_UI_FLAG_FULLSCREEN);
+-    }
+-}
+\ No newline at end of file
+Index: app/src/main/res/layout-hdpi/activity_sound.xml
+===================================================================
+diff --git a/app/src/main/res/layout-hdpi/activity_sound.xml b/app/src/main/res/layout-hdpi/activity_sound.xml
+deleted file mode 100644
+--- a/app/src/main/res/layout-hdpi/activity_sound.xml	(revision 8d529f6bb5ec13f18fb1a52653f8ae26a7f14d64)
++++ /dev/null	(revision 8d529f6bb5ec13f18fb1a52653f8ae26a7f14d64)
+@@ -1,36 +0,0 @@
+-<?xml version="1.0" encoding="utf-8"?>
+-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+-    xmlns:app="http://schemas.android.com/apk/res-auto"
+-    xmlns:tools="http://schemas.android.com/tools"
+-    android:layout_width="match_parent"
+-    android:layout_height="match_parent"
+-    tools:context=".SoundActivity"
+-    android:background="@drawable/hoja">
+-
+-    <ImageView
+-        android:id="@+id/encender"
+-        android:layout_width="200dp"
+-        android:layout_height="200dp"
+-        android:src="@drawable/ic_music_on_foreground"
+-        app:layout_constraintBottom_toBottomOf="parent"
+-        app:layout_constraintEnd_toEndOf="parent"
+-        app:layout_constraintHorizontal_bias="0.454"
+-        app:layout_constraintStart_toStartOf="parent"
+-        app:layout_constraintTop_toTopOf="parent"
+-        app:layout_constraintVertical_bias="0.188"
+-        android:contentDescription="@string/TurnOnMusicImage" />
+-
+-    <ImageView
+-        android:id="@+id/apagar"
+-        android:layout_width="200dp"
+-        android:layout_height="200dp"
+-        android:src="@drawable/ic_music_off_foreground"
+-        app:layout_constraintBottom_toBottomOf="parent"
+-        app:layout_constraintEnd_toEndOf="parent"
+-        app:layout_constraintHorizontal_bias="0.454"
+-        app:layout_constraintStart_toStartOf="parent"
+-        app:layout_constraintTop_toBottomOf="@+id/encender"
+-        app:layout_constraintVertical_bias="0.32"
+-        android:contentDescription="@string/TurnOffMusicImage" />
+-
+-</androidx.constraintlayout.widget.ConstraintLayout>
+\ No newline at end of file
+Index: app/src/main/res/layout-xxhdpi/activity_sound.xml
+===================================================================
+diff --git a/app/src/main/res/layout-xxhdpi/activity_sound.xml b/app/src/main/res/layout-xxhdpi/activity_sound.xml
+deleted file mode 100644
+--- a/app/src/main/res/layout-xxhdpi/activity_sound.xml	(revision 8d529f6bb5ec13f18fb1a52653f8ae26a7f14d64)
++++ /dev/null	(revision 8d529f6bb5ec13f18fb1a52653f8ae26a7f14d64)
+@@ -1,36 +0,0 @@
+-<?xml version="1.0" encoding="utf-8"?>
+-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+-    xmlns:app="http://schemas.android.com/apk/res-auto"
+-    xmlns:tools="http://schemas.android.com/tools"
+-    android:layout_width="match_parent"
+-    android:layout_height="match_parent"
+-    tools:context=".SoundActivity"
+-    android:background="@drawable/hoja">
+-
+-    <ImageView
+-        android:id="@+id/encender"
+-        android:layout_width="200dp"
+-        android:layout_height="200dp"
+-        android:src="@drawable/ic_music_on_foreground"
+-        app:layout_constraintBottom_toBottomOf="parent"
+-        app:layout_constraintEnd_toEndOf="parent"
+-        app:layout_constraintHorizontal_bias="0.454"
+-        app:layout_constraintStart_toStartOf="parent"
+-        app:layout_constraintTop_toTopOf="parent"
+-        app:layout_constraintVertical_bias="0.188"
+-        android:contentDescription="@string/TurnOnMusicImage" />
+-
+-    <ImageView
+-        android:id="@+id/apagar"
+-        android:layout_width="200dp"
+-        android:layout_height="200dp"
+-        android:src="@drawable/ic_music_off_foreground"
+-        app:layout_constraintBottom_toBottomOf="parent"
+-        app:layout_constraintEnd_toEndOf="parent"
+-        app:layout_constraintHorizontal_bias="0.454"
+-        app:layout_constraintStart_toStartOf="parent"
+-        app:layout_constraintTop_toBottomOf="@+id/encender"
+-        app:layout_constraintVertical_bias="0.32"
+-        android:contentDescription="@string/TurnOffMusicImage" />
+-
+-</androidx.constraintlayout.widget.ConstraintLayout>
+\ No newline at end of file
+Index: app/src/main/res/layout-ldpi/activity_sound.xml
+===================================================================
+diff --git a/app/src/main/res/layout-ldpi/activity_sound.xml b/app/src/main/res/layout-ldpi/activity_sound.xml
+deleted file mode 100644
+--- a/app/src/main/res/layout-ldpi/activity_sound.xml	(revision 8d529f6bb5ec13f18fb1a52653f8ae26a7f14d64)
++++ /dev/null	(revision 8d529f6bb5ec13f18fb1a52653f8ae26a7f14d64)
+@@ -1,36 +0,0 @@
+-<?xml version="1.0" encoding="utf-8"?>
+-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+-    xmlns:app="http://schemas.android.com/apk/res-auto"
+-    xmlns:tools="http://schemas.android.com/tools"
+-    android:layout_width="match_parent"
+-    android:layout_height="match_parent"
+-    tools:context=".SoundActivity"
+-    android:background="@drawable/hoja">
+-
+-    <ImageView
+-        android:id="@+id/encender"
+-        android:layout_width="200dp"
+-        android:layout_height="150dp"
+-        android:src="@drawable/ic_music_on_foreground"
+-        app:layout_constraintBottom_toBottomOf="parent"
+-        app:layout_constraintEnd_toEndOf="parent"
+-        app:layout_constraintHorizontal_bias="0.454"
+-        app:layout_constraintStart_toStartOf="parent"
+-        app:layout_constraintTop_toTopOf="parent"
+-        app:layout_constraintVertical_bias="0.188"
+-        android:contentDescription="@string/TurnOnMusicImage" />
+-
+-    <ImageView
+-        android:id="@+id/apagar"
+-        android:layout_width="200dp"
+-        android:layout_height="150dp"
+-        android:src="@drawable/ic_music_off_foreground"
+-        app:layout_constraintBottom_toBottomOf="parent"
+-        app:layout_constraintEnd_toEndOf="parent"
+-        app:layout_constraintHorizontal_bias="0.454"
+-        app:layout_constraintStart_toStartOf="parent"
+-        app:layout_constraintTop_toBottomOf="@+id/encender"
+-        app:layout_constraintVertical_bias="0.32"
+-        android:contentDescription="@string/TurnOffMusicImage" />
+-
+-</androidx.constraintlayout.widget.ConstraintLayout>
+\ No newline at end of file
+Index: .idea/.gitignore
+===================================================================
+diff --git a/.idea/.gitignore b/.idea/.gitignore
+deleted file mode 100644
+--- a/.idea/.gitignore	(revision 8d529f6bb5ec13f18fb1a52653f8ae26a7f14d64)
++++ /dev/null	(revision 8d529f6bb5ec13f18fb1a52653f8ae26a7f14d64)
+@@ -1,3 +0,0 @@
+-# Default ignored files
+-/shelf/
+-/workspace.xml
+Index: app/src/main/res/layout-xxxhdpi/activity_sound.xml
+===================================================================
+diff --git a/app/src/main/res/layout-xxxhdpi/activity_sound.xml b/app/src/main/res/layout-xxxhdpi/activity_sound.xml
+deleted file mode 100644
+--- a/app/src/main/res/layout-xxxhdpi/activity_sound.xml	(revision 8d529f6bb5ec13f18fb1a52653f8ae26a7f14d64)
++++ /dev/null	(revision 8d529f6bb5ec13f18fb1a52653f8ae26a7f14d64)
+@@ -1,36 +0,0 @@
+-<?xml version="1.0" encoding="utf-8"?>
+-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+-    xmlns:app="http://schemas.android.com/apk/res-auto"
+-    xmlns:tools="http://schemas.android.com/tools"
+-    android:layout_width="match_parent"
+-    android:layout_height="match_parent"
+-    tools:context=".SoundActivity"
+-    android:background="@drawable/hoja">
+-
+-    <ImageView
+-        android:id="@+id/encender"
+-        android:layout_width="200dp"
+-        android:layout_height="200dp"
+-        android:src="@drawable/ic_music_on_foreground"
+-        app:layout_constraintBottom_toBottomOf="parent"
+-        app:layout_constraintEnd_toEndOf="parent"
+-        app:layout_constraintHorizontal_bias="0.454"
+-        app:layout_constraintStart_toStartOf="parent"
+-        app:layout_constraintTop_toTopOf="parent"
+-        app:layout_constraintVertical_bias="0.188"
+-        android:contentDescription="@string/TurnOnMusicImage" />
+-
+-    <ImageView
+-        android:id="@+id/apagar"
+-        android:layout_width="200dp"
+-        android:layout_height="200dp"
+-        android:src="@drawable/ic_music_off_foreground"
+-        app:layout_constraintBottom_toBottomOf="parent"
+-        app:layout_constraintEnd_toEndOf="parent"
+-        app:layout_constraintHorizontal_bias="0.454"
+-        app:layout_constraintStart_toStartOf="parent"
+-        app:layout_constraintTop_toBottomOf="@+id/encender"
+-        app:layout_constraintVertical_bias="0.32"
+-        android:contentDescription="@string/TurnOffMusicImage" />
+-
+-</androidx.constraintlayout.widget.ConstraintLayout>
+\ No newline at end of file
+Index: app/src/main/res/layout/activity_sound.xml
+===================================================================
+diff --git a/app/src/main/res/layout/activity_sound.xml b/app/src/main/res/layout/activity_sound.xml
+deleted file mode 100644
+--- a/app/src/main/res/layout/activity_sound.xml	(revision 8d529f6bb5ec13f18fb1a52653f8ae26a7f14d64)
++++ /dev/null	(revision 8d529f6bb5ec13f18fb1a52653f8ae26a7f14d64)
+@@ -1,36 +0,0 @@
+-<?xml version="1.0" encoding="utf-8"?>
+-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+-    xmlns:app="http://schemas.android.com/apk/res-auto"
+-    xmlns:tools="http://schemas.android.com/tools"
+-    android:layout_width="match_parent"
+-    android:layout_height="match_parent"
+-    tools:context=".SoundActivity"
+-    android:background="@drawable/hoja">
+-
+-    <ImageView
+-        android:id="@+id/encender"
+-        android:layout_width="200dp"
+-        android:layout_height="200dp"
+-        android:src="@drawable/ic_music_on_foreground"
+-        app:layout_constraintBottom_toBottomOf="parent"
+-        app:layout_constraintEnd_toEndOf="parent"
+-        app:layout_constraintHorizontal_bias="0.454"
+-        app:layout_constraintStart_toStartOf="parent"
+-        app:layout_constraintTop_toTopOf="parent"
+-        app:layout_constraintVertical_bias="0.188"
+-        android:contentDescription="@string/TurnOnMusicImage" />
+-
+-    <ImageView
+-        android:id="@+id/apagar"
+-        android:layout_width="200dp"
+-        android:layout_height="200dp"
+-        android:src="@drawable/ic_music_off_foreground"
+-        app:layout_constraintBottom_toBottomOf="parent"
+-        app:layout_constraintEnd_toEndOf="parent"
+-        app:layout_constraintHorizontal_bias="0.454"
+-        app:layout_constraintStart_toStartOf="parent"
+-        app:layout_constraintTop_toBottomOf="@+id/encender"
+-        app:layout_constraintVertical_bias="0.32"
+-        android:contentDescription="@string/TurnOffMusicImage" />
+-
+-</androidx.constraintlayout.widget.ConstraintLayout>
+\ No newline at end of file
+Index: .idea/vcs.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/vcs.xml b/.idea/vcs.xml
+deleted file mode 100644
+--- a/.idea/vcs.xml	(revision 8d529f6bb5ec13f18fb1a52653f8ae26a7f14d64)
++++ /dev/null	(revision 8d529f6bb5ec13f18fb1a52653f8ae26a7f14d64)
+@@ -1,6 +0,0 @@
+-<?xml version="1.0" encoding="UTF-8"?>
+-<project version="4">
+-  <component name="VcsDirectoryMappings">
+-    <mapping directory="$PROJECT_DIR$" vcs="Git" />
+-  </component>
+-</project>
+\ No newline at end of file
+Index: .idea/gradle.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/gradle.xml b/.idea/gradle.xml
+deleted file mode 100644
+--- a/.idea/gradle.xml	(revision 8d529f6bb5ec13f18fb1a52653f8ae26a7f14d64)
++++ /dev/null	(revision 8d529f6bb5ec13f18fb1a52653f8ae26a7f14d64)
+@@ -1,19 +0,0 @@
+-<?xml version="1.0" encoding="UTF-8"?>
+-<project version="4">
+-  <component name="GradleMigrationSettings" migrationVersion="1" />
+-  <component name="GradleSettings">
+-    <option name="linkedExternalProjectsSettings">
+-      <GradleProjectSettings>
+-        <option name="testRunner" value="GRADLE" />
+-        <option name="distributionType" value="DEFAULT_WRAPPED" />
+-        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+-        <option name="modules">
+-          <set>
+-            <option value="$PROJECT_DIR$" />
+-            <option value="$PROJECT_DIR$/app" />
+-          </set>
+-        </option>
+-      </GradleProjectSettings>
+-    </option>
+-  </component>
+-</project>
+\ No newline at end of file
+Index: app/src/main/res/layout-mdpi/activity_sound.xml
+===================================================================
+diff --git a/app/src/main/res/layout-mdpi/activity_sound.xml b/app/src/main/res/layout-mdpi/activity_sound.xml
+deleted file mode 100644
+--- a/app/src/main/res/layout-mdpi/activity_sound.xml	(revision 8d529f6bb5ec13f18fb1a52653f8ae26a7f14d64)
++++ /dev/null	(revision 8d529f6bb5ec13f18fb1a52653f8ae26a7f14d64)
+@@ -1,36 +0,0 @@
+-<?xml version="1.0" encoding="utf-8"?>
+-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+-    xmlns:app="http://schemas.android.com/apk/res-auto"
+-    xmlns:tools="http://schemas.android.com/tools"
+-    android:layout_width="match_parent"
+-    android:layout_height="match_parent"
+-    tools:context=".SoundActivity"
+-    android:background="@drawable/hoja">
+-
+-    <ImageView
+-        android:id="@+id/encender"
+-        android:layout_width="200dp"
+-        android:layout_height="200dp"
+-        android:src="@drawable/ic_music_on_foreground"
+-        app:layout_constraintBottom_toBottomOf="parent"
+-        app:layout_constraintEnd_toEndOf="parent"
+-        app:layout_constraintHorizontal_bias="0.454"
+-        app:layout_constraintStart_toStartOf="parent"
+-        app:layout_constraintTop_toTopOf="parent"
+-        app:layout_constraintVertical_bias="0.188"
+-        android:contentDescription="@string/TurnOnMusicImage" />
+-
+-    <ImageView
+-        android:id="@+id/apagar"
+-        android:layout_width="200dp"
+-        android:layout_height="200dp"
+-        android:src="@drawable/ic_music_off_foreground"
+-        app:layout_constraintBottom_toBottomOf="parent"
+-        app:layout_constraintEnd_toEndOf="parent"
+-        app:layout_constraintHorizontal_bias="0.454"
+-        app:layout_constraintStart_toStartOf="parent"
+-        app:layout_constraintTop_toBottomOf="@+id/encender"
+-        app:layout_constraintVertical_bias="0.32"
+-        android:contentDescription="@string/TurnOffMusicImage" />
+-
+-</androidx.constraintlayout.widget.ConstraintLayout>
+\ No newline at end of file
+Index: app/src/main/java/com/stomeo/finalguessed/ServicioMusica.java
+===================================================================
+diff --git a/app/src/main/java/com/stomeo/finalguessed/ServicioMusica.java b/app/src/main/java/com/stomeo/finalguessed/ServicioMusica.java
+deleted file mode 100644
+--- a/app/src/main/java/com/stomeo/finalguessed/ServicioMusica.java	(revision 8d529f6bb5ec13f18fb1a52653f8ae26a7f14d64)
++++ /dev/null	(revision 8d529f6bb5ec13f18fb1a52653f8ae26a7f14d64)
+@@ -1,39 +0,0 @@
+-package com.stomeo.finalguessed;
+-
+-import android.app.Service;
+-import android.content.Intent;
+-import android.media.MediaPlayer;
+-import android.os.IBinder;
+-
+-import androidx.annotation.Nullable;
+-
+-public class ServicioMusica extends Service {
+-
+-    private MediaPlayer miReproductor;
+-
+-    @Override
+-    public void onCreate() {
+-
+-    }
+-
+-    @Override
+-    public int onStartCommand(Intent intent, int flags, int startId) {
+-        miReproductor = MediaPlayer.create(this, R.raw.game);
+-        miReproductor.start();
+-
+-        miReproductor.setLooping(true);
+-
+-        return START_STICKY;
+-    }
+-
+-    @Override
+-    public void onDestroy() {
+-        miReproductor.stop();
+-    }
+-
+-    @Nullable
+-    @Override
+-    public IBinder onBind(Intent intent) {
+-        return null;
+-    }
+-}
+Index: app/src/main/res/layout-xhdpi/activity_sound.xml
+===================================================================
+diff --git a/app/src/main/res/layout-xhdpi/activity_sound.xml b/app/src/main/res/layout-xhdpi/activity_sound.xml
+deleted file mode 100644
+--- a/app/src/main/res/layout-xhdpi/activity_sound.xml	(revision 8d529f6bb5ec13f18fb1a52653f8ae26a7f14d64)
++++ /dev/null	(revision 8d529f6bb5ec13f18fb1a52653f8ae26a7f14d64)
+@@ -1,36 +0,0 @@
+-<?xml version="1.0" encoding="utf-8"?>
+-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+-    xmlns:app="http://schemas.android.com/apk/res-auto"
+-    xmlns:tools="http://schemas.android.com/tools"
+-    android:layout_width="match_parent"
+-    android:layout_height="match_parent"
+-    tools:context=".SoundActivity"
+-    android:background="@drawable/hoja">
+-
+-    <ImageView
+-        android:id="@+id/encender"
+-        android:layout_width="200dp"
+-        android:layout_height="200dp"
+-        android:src="@drawable/ic_music_on_foreground"
+-        app:layout_constraintBottom_toBottomOf="parent"
+-        app:layout_constraintEnd_toEndOf="parent"
+-        app:layout_constraintHorizontal_bias="0.454"
+-        app:layout_constraintStart_toStartOf="parent"
+-        app:layout_constraintTop_toTopOf="parent"
+-        app:layout_constraintVertical_bias="0.188"
+-        android:contentDescription="@string/TurnOnMusicImage" />
+-
+-    <ImageView
+-        android:id="@+id/apagar"
+-        android:layout_width="200dp"
+-        android:layout_height="200dp"
+-        android:src="@drawable/ic_music_off_foreground"
+-        app:layout_constraintBottom_toBottomOf="parent"
+-        app:layout_constraintEnd_toEndOf="parent"
+-        app:layout_constraintHorizontal_bias="0.454"
+-        app:layout_constraintStart_toStartOf="parent"
+-        app:layout_constraintTop_toBottomOf="@+id/encender"
+-        app:layout_constraintVertical_bias="0.32"
+-        android:contentDescription="@string/TurnOffMusicImage" />
+-
+-</androidx.constraintlayout.widget.ConstraintLayout>
+\ No newline at end of file
+Index: app/src/main/res/layout-xxhdpi/activity_main.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"utf-8\"?>\r\n<androidx.constraintlayout.widget.ConstraintLayout xmlns:android=\"http://schemas.android.com/apk/res/android\"\r\n    xmlns:app=\"http://schemas.android.com/apk/res-auto\"\r\n    xmlns:tools=\"http://schemas.android.com/tools\"\r\n    android:layout_width=\"match_parent\"\r\n    android:layout_height=\"match_parent\"\r\n    android:background=\"@drawable/hoja\"\r\n    tools:context=\".MainActivity\">\r\n\r\n    <ImageView\r\n        android:id=\"@+id/mainGIF\"\r\n        android:layout_width=\"match_parent\"\r\n        android:layout_height=\"250dp\"\r\n        android:contentDescription=\"@string/mainGIFDescription\"\r\n        app:layout_constraintBottom_toTopOf=\"@+id/textView\"\r\n        app:layout_constraintTop_toTopOf=\"parent\"\r\n        app:layout_constraintVertical_bias=\"0.618\"\r\n        tools:ignore=\"ImageContrastCheck\"\r\n        tools:layout_editor_absoluteX=\"0dp\" />\r\n\r\n    <TextView\r\n        android:id=\"@+id/textView\"\r\n        android:layout_width=\"wrap_content\"\r\n        android:layout_height=\"wrap_content\"\r\n        android:fontFamily=\"@font/organic_relief\"\r\n        android:text=\"@string/guessed\"\r\n        android:textColor=\"@color/black\"\r\n        android:textSize=\"40sp\"\r\n        app:layout_constraintBottom_toBottomOf=\"parent\"\r\n        app:layout_constraintLeft_toLeftOf=\"parent\"\r\n        app:layout_constraintRight_toRightOf=\"parent\"\r\n        app:layout_constraintTop_toTopOf=\"parent\" />\r\n\r\n    <TextView\r\n        android:id=\"@+id/_1\"\r\n        android:layout_width=\"wrap_content\"\r\n        android:layout_height=\"wrap_content\"\r\n        android:fontFamily=\"@font/organic_relief\"\r\n        android:text=\"@string/barra_baja\"\r\n        android:textColor=\"@android:color/holo_blue_dark\"\r\n        android:textSize=\"40sp\"\r\n        app:layout_constraintBottom_toBottomOf=\"parent\"\r\n        app:layout_constraintHorizontal_bias=\"0.123\"\r\n        app:layout_constraintLeft_toLeftOf=\"parent\"\r\n        app:layout_constraintRight_toRightOf=\"parent\"\r\n        app:layout_constraintTop_toTopOf=\"parent\"\r\n        app:layout_constraintVertical_bias=\"0.543\" />\r\n\r\n    <TextView\r\n        android:id=\"@+id/_2\"\r\n        android:layout_width=\"wrap_content\"\r\n        android:layout_height=\"wrap_content\"\r\n        android:fontFamily=\"@font/organic_relief\"\r\n        android:text=\"@string/barra_baja\"\r\n        android:textColor=\"@android:color/holo_blue_dark\"\r\n        android:textSize=\"40sp\"\r\n        app:layout_constraintBottom_toBottomOf=\"parent\"\r\n        app:layout_constraintHorizontal_bias=\"0.249\"\r\n        app:layout_constraintLeft_toLeftOf=\"parent\"\r\n        app:layout_constraintRight_toRightOf=\"parent\"\r\n        app:layout_constraintTop_toTopOf=\"parent\"\r\n        app:layout_constraintVertical_bias=\"0.543\" />\r\n\r\n    <TextView\r\n        android:id=\"@+id/_3\"\r\n        android:layout_width=\"wrap_content\"\r\n        android:layout_height=\"wrap_content\"\r\n        android:fontFamily=\"@font/organic_relief\"\r\n        android:text=\"@string/barra_baja\"\r\n        android:textColor=\"@android:color/holo_blue_dark\"\r\n        android:textSize=\"40sp\"\r\n        app:layout_constraintBottom_toBottomOf=\"parent\"\r\n        app:layout_constraintHorizontal_bias=\"0.375\"\r\n        app:layout_constraintLeft_toLeftOf=\"parent\"\r\n        app:layout_constraintRight_toRightOf=\"parent\"\r\n        app:layout_constraintTop_toTopOf=\"parent\"\r\n        app:layout_constraintVertical_bias=\"0.543\" />\r\n\r\n    <TextView\r\n        android:id=\"@+id/_4\"\r\n        android:layout_width=\"wrap_content\"\r\n        android:layout_height=\"wrap_content\"\r\n        android:fontFamily=\"@font/organic_relief\"\r\n        android:text=\"@string/barra_baja\"\r\n        android:textColor=\"@android:color/holo_blue_dark\"\r\n        android:textSize=\"40sp\"\r\n        app:layout_constraintBottom_toBottomOf=\"parent\"\r\n        app:layout_constraintHorizontal_bias=\"0.501\"\r\n        app:layout_constraintLeft_toLeftOf=\"parent\"\r\n        app:layout_constraintRight_toRightOf=\"parent\"\r\n        app:layout_constraintTop_toTopOf=\"parent\"\r\n        app:layout_constraintVertical_bias=\"0.543\" />\r\n\r\n    <TextView\r\n        android:id=\"@+id/_5\"\r\n        android:layout_width=\"wrap_content\"\r\n        android:layout_height=\"wrap_content\"\r\n        android:fontFamily=\"@font/organic_relief\"\r\n        android:text=\"@string/barra_baja\"\r\n        android:textColor=\"@android:color/holo_blue_dark\"\r\n        android:textSize=\"40sp\"\r\n        app:layout_constraintBottom_toBottomOf=\"parent\"\r\n        app:layout_constraintHorizontal_bias=\"0.627\"\r\n        app:layout_constraintLeft_toLeftOf=\"parent\"\r\n        app:layout_constraintRight_toRightOf=\"parent\"\r\n        app:layout_constraintTop_toTopOf=\"parent\"\r\n        app:layout_constraintVertical_bias=\"0.543\" />\r\n\r\n    <TextView\r\n        android:id=\"@+id/_6\"\r\n        android:layout_width=\"wrap_content\"\r\n        android:layout_height=\"wrap_content\"\r\n        android:fontFamily=\"@font/organic_relief\"\r\n        android:text=\"@string/barra_baja\"\r\n        android:textColor=\"@android:color/holo_blue_dark\"\r\n        android:textSize=\"40sp\"\r\n        app:layout_constraintBottom_toBottomOf=\"parent\"\r\n        app:layout_constraintHorizontal_bias=\"0.753\"\r\n        app:layout_constraintLeft_toLeftOf=\"parent\"\r\n        app:layout_constraintRight_toRightOf=\"parent\"\r\n        app:layout_constraintTop_toTopOf=\"parent\"\r\n        app:layout_constraintVertical_bias=\"0.543\" />\r\n\r\n    <TextView\r\n        android:id=\"@+id/_7\"\r\n        android:layout_width=\"wrap_content\"\r\n        android:layout_height=\"wrap_content\"\r\n        android:fontFamily=\"@font/organic_relief\"\r\n        android:text=\"@string/barra_baja\"\r\n        android:textColor=\"@android:color/holo_blue_dark\"\r\n        android:textSize=\"40sp\"\r\n        app:layout_constraintBottom_toBottomOf=\"parent\"\r\n        app:layout_constraintHorizontal_bias=\"0.857\"\r\n        app:layout_constraintLeft_toLeftOf=\"parent\"\r\n        app:layout_constraintRight_toRightOf=\"parent\"\r\n        app:layout_constraintTop_toTopOf=\"parent\"\r\n        app:layout_constraintVertical_bias=\"0.543\" />\r\n\r\n    <Button\r\n        android:id=\"@+id/jugar\"\r\n        android:layout_width=\"match_parent\"\r\n        android:layout_height=\"50dp\"\r\n        android:layout_gravity=\"center|center\"\r\n        android:backgroundTint=\"@android:color/holo_red_light\"\r\n        android:fontFamily=\"@font/hollaboi_2\"\r\n        android:text=\"@string/jugar\"\r\n        android:textAllCaps=\"false\"\r\n        android:textColor=\"@color/white\"\r\n        android:textSize=\"35sp\"\r\n        app:layout_constraintBottom_toBottomOf=\"parent\"\r\n        app:layout_constraintEnd_toEndOf=\"parent\"\r\n        app:layout_constraintStart_toStartOf=\"parent\"\r\n        app:layout_constraintTop_toBottomOf=\"@+id/textView\" />\r\n\r\n    <Button\r\n        android:id=\"@+id/opciones\"\r\n        android:layout_width=\"match_parent\"\r\n        android:layout_height=\"50dp\"\r\n        android:layout_gravity=\"center|center\"\r\n        android:backgroundTint=\"@android:color/holo_blue_light\"\r\n        android:fontFamily=\"@font/hollaboi_2\"\r\n        android:text=\"@string/opciones\"\r\n        android:textAllCaps=\"false\"\r\n        android:textColor=\"@color/black\"\r\n        android:textSize=\"35sp\"\r\n        app:layout_constraintBottom_toBottomOf=\"parent\"\r\n        app:layout_constraintEnd_toEndOf=\"parent\"\r\n        app:layout_constraintHorizontal_bias=\"0.0\"\r\n        app:layout_constraintStart_toStartOf=\"parent\"\r\n        app:layout_constraintTop_toBottomOf=\"@+id/jugar\"\r\n        app:layout_constraintVertical_bias=\"0.172\"\r\n        tools:ignore=\"TextContrastCheck\" />\r\n\r\n</androidx.constraintlayout.widget.ConstraintLayout>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/res/layout-xxhdpi/activity_main.xml b/app/src/main/res/layout-xxhdpi/activity_main.xml
+--- a/app/src/main/res/layout-xxhdpi/activity_main.xml	(revision 8d529f6bb5ec13f18fb1a52653f8ae26a7f14d64)
++++ b/app/src/main/res/layout-xxhdpi/activity_main.xml	(date 1654707530259)
+@@ -136,6 +136,24 @@
+         app:layout_constraintTop_toTopOf="parent"
+         app:layout_constraintVertical_bias="0.543" />
+ 
++    <Button
++        android:id="@+id/btn2jugadores"
++        android:layout_width="match_parent"
++        android:layout_height="50dp"
++        android:layout_gravity="center|center"
++        android:backgroundTint="@android:color/holo_purple"
++        android:fontFamily="@font/hollaboi_2"
++        android:text="2 jugadores"
++        android:textAllCaps="false"
++        android:textColor="@color/white"
++        android:textSize="35sp"
++        app:layout_constraintBottom_toTopOf="@+id/jugar"
++        app:layout_constraintEnd_toEndOf="parent"
++        app:layout_constraintHorizontal_bias="0.0"
++        app:layout_constraintStart_toStartOf="parent"
++        app:layout_constraintTop_toBottomOf="@+id/textView"
++        app:layout_constraintVertical_bias="0.818" />
++
+     <Button
+         android:id="@+id/jugar"
+         android:layout_width="match_parent"
+Index: app/src/main/AndroidManifest.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"utf-8\"?>\r\n<manifest xmlns:android=\"http://schemas.android.com/apk/res/android\"\r\n    xmlns:tools=\"http://schemas.android.com/tools\"\r\n    package=\"com.stomeo.finalguessed\">\r\n\r\n    <application\r\n        android:allowBackup=\"true\"\r\n        android:icon=\"@mipmap/ic_final\"\r\n        android:label=\"Guessed\"\r\n        android:supportsRtl=\"true\"\r\n        android:theme=\"@style/Theme.FinalGuessed\">\r\n        <activity\r\n            android:name=\".AboutUsActivity\"\r\n            android:exported=\"false\"\r\n            tools:ignore=\"LockedOrientationActivity\" />\r\n        <activity\r\n            android:name=\".GameWinActivity\"\r\n            android:exported=\"false\"\r\n            tools:ignore=\"LockedOrientationActivity\" />\r\n        <activity\r\n            android:name=\".GameOverActivity\"\r\n            android:exported=\"false\"\r\n            android:screenOrientation=\"portrait\"\r\n            tools:ignore=\"LockedOrientationActivity\" />\r\n        <activity\r\n            android:name=\".GameActivity\"\r\n            android:exported=\"false\"\r\n            android:screenOrientation=\"portrait\"\r\n            tools:ignore=\"LockedOrientationActivity\" />\r\n        <activity\r\n            android:name=\".PlayActivity\"\r\n            android:exported=\"false\"\r\n            android:screenOrientation=\"portrait\"\r\n            tools:ignore=\"LockedOrientationActivity\" />\r\n        <activity\r\n            android:name=\".OptionsActivity\"\r\n            android:exported=\"false\"\r\n            android:screenOrientation=\"portrait\"\r\n            tools:ignore=\"LockedOrientationActivity\" />\r\n        <activity\r\n            android:name=\".SoundActivity\"\r\n            android:exported=\"false\"\r\n            android:screenOrientation=\"portrait\"\r\n            tools:ignore=\"LockedOrientationActivity\" />\r\n        <activity\r\n            android:name=\".ContactActivity\"\r\n            android:exported=\"false\"\r\n            android:screenOrientation=\"portrait\"\r\n            tools:ignore=\"LockedOrientationActivity\" />\r\n        <activity\r\n            android:name=\".MainActivity\"\r\n            android:exported=\"true\"\r\n            android:screenOrientation=\"portrait\"\r\n            tools:ignore=\"LockedOrientationActivity\" />\r\n        <activity\r\n            android:name=\".SplashScreen\"\r\n            android:exported=\"true\"\r\n            android:screenOrientation=\"portrait\"\r\n            tools:ignore=\"LockedOrientationActivity\">\r\n            <intent-filter>\r\n                <action android:name=\"android.intent.action.MAIN\" />\r\n\r\n                <category android:name=\"android.intent.category.LAUNCHER\" />\r\n            </intent-filter>\r\n        </activity>\r\n\r\n        <service android:name=\".ServicioMusica\" />\r\n    </application>\r\n\r\n</manifest>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/AndroidManifest.xml b/app/src/main/AndroidManifest.xml
+--- a/app/src/main/AndroidManifest.xml	(revision 8d529f6bb5ec13f18fb1a52653f8ae26a7f14d64)
++++ b/app/src/main/AndroidManifest.xml	(date 1654711253135)
+@@ -10,12 +10,19 @@
+         android:supportsRtl="true"
+         android:theme="@style/Theme.FinalGuessed">
+         <activity
++            android:name=".MultiplayerActivity"
++            android:exported="false"
++            android:screenOrientation="portrait"
++            tools:ignore="LockedOrientationActivity" />
++        <activity
+             android:name=".AboutUsActivity"
+             android:exported="false"
++            android:screenOrientation="portrait"
+             tools:ignore="LockedOrientationActivity" />
+         <activity
+             android:name=".GameWinActivity"
+             android:exported="false"
++            android:screenOrientation="portrait"
+             tools:ignore="LockedOrientationActivity" />
+         <activity
+             android:name=".GameOverActivity"
+@@ -38,11 +45,6 @@
+             android:screenOrientation="portrait"
+             tools:ignore="LockedOrientationActivity" />
+         <activity
+-            android:name=".SoundActivity"
+-            android:exported="false"
+-            android:screenOrientation="portrait"
+-            tools:ignore="LockedOrientationActivity" />
+-        <activity
+             android:name=".ContactActivity"
+             android:exported="false"
+             android:screenOrientation="portrait"
+@@ -63,8 +65,6 @@
+                 <category android:name="android.intent.category.LAUNCHER" />
+             </intent-filter>
+         </activity>
+-
+-        <service android:name=".ServicioMusica" />
+     </application>
+ 
+ </manifest>
+\ No newline at end of file
+Index: app/src/main/java/com/stomeo/finalguessed/GameWinActivity.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.stomeo.finalguessed;\r\n\r\nimport androidx.appcompat.app.AppCompatActivity;\r\n\r\nimport android.content.BroadcastReceiver;\r\nimport android.content.Context;\r\nimport android.content.Intent;\r\nimport android.content.IntentFilter;\r\nimport android.os.Bundle;\r\nimport android.util.Log;\r\nimport android.view.View;\r\nimport android.widget.Button;\r\nimport android.widget.ImageView;\r\nimport android.widget.TextView;\r\n\r\nimport com.bumptech.glide.Glide;\r\n\r\npublic class GameWinActivity extends AppCompatActivity {\r\n\r\n    TextView tvPalabra;\r\n    Button btn1, btn2;\r\n    String temaElegido;\r\n\r\n    BroadcastReceiver miBroadcast = new BroadcastReceiver() {\r\n\r\n        @Override\r\n        public void onReceive(Context context, Intent intent) {\r\n            if (intent.getAction().equals(Intent.ACTION_SCREEN_ON)) {\r\n                Log.i(\"TAG\", \"Screen ON\");\r\n            } else if (intent.getAction().equals(Intent.ACTION_SCREEN_OFF)) {\r\n                Log.i(\"TAG\", \"Screen OFF\");\r\n                parar();\r\n            }\r\n\r\n        }\r\n    };\r\n\r\n    @Override\r\n    protected void onCreate(Bundle savedInstanceState) {\r\n        super.onCreate(savedInstanceState);\r\n        setContentView(R.layout.activity_game_win);\r\n\r\n        ImageView imageView = findViewById(R.id.gamewinGIF);\r\n        Glide.with(this).asGif().load(R.raw.stickman_dancing).into(imageView);\r\n\r\n        tvPalabra = findViewById(R.id.tvPalabra);\r\n        btn1 = findViewById(R.id.btn1);\r\n        btn2 = findViewById(R.id.btn2);\r\n\r\n        String palabraCorrecta = getIntent().getStringExtra(\"palabraCorrecta\");\r\n\r\n        temaElegido = getIntent().getStringExtra(\"temaElegido\");\r\n\r\n        tvPalabra.setText(palabraCorrecta);\r\n\r\n        btn1.setOnClickListener(new View.OnClickListener() {\r\n            @Override\r\n            public void onClick(View v) {\r\n                Intent intent = new Intent(getApplicationContext(), GameActivity.class);\r\n                intent.putExtra(\"temaElegido\", temaElegido);\r\n                startActivity(intent);\r\n                finish();\r\n            }\r\n        });\r\n\r\n        btn2.setOnClickListener(new View.OnClickListener() {\r\n            @Override\r\n            public void onClick(View v) {\r\n                Intent intent = new Intent(getApplicationContext(), PlayActivity.class);\r\n                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);\r\n                startActivity(intent);\r\n                finish();\r\n            }\r\n        });\r\n\r\n        registerReceiver(miBroadcast, new IntentFilter(Intent.ACTION_SCREEN_ON));\r\n        registerReceiver(miBroadcast, new IntentFilter(Intent.ACTION_SCREEN_OFF));\r\n    }\r\n\r\n    private void reproducir() {\r\n        startService(new Intent(this, ServicioMusica.class));\r\n    }\r\n\r\n    private void parar() {\r\n        stopService(new Intent(this, ServicioMusica.class));\r\n    }\r\n\r\n\r\n    @Override\r\n    public void onWindowFocusChanged(boolean hasFocus) {\r\n        super.onWindowFocusChanged(hasFocus);\r\n        if (hasFocus) {\r\n            hideSystemUI();\r\n        }\r\n    }\r\n\r\n    private void hideSystemUI() {\r\n        View decorView = getWindow().getDecorView();\r\n        decorView.setSystemUiVisibility(\r\n                View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY\r\n                        | View.SYSTEM_UI_FLAG_LAYOUT_STABLE\r\n                        | View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION\r\n                        | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN\r\n                        | View.SYSTEM_UI_FLAG_HIDE_NAVIGATION\r\n                        | View.SYSTEM_UI_FLAG_FULLSCREEN);\r\n    }\r\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/java/com/stomeo/finalguessed/GameWinActivity.java b/app/src/main/java/com/stomeo/finalguessed/GameWinActivity.java
+--- a/app/src/main/java/com/stomeo/finalguessed/GameWinActivity.java	(revision 8d529f6bb5ec13f18fb1a52653f8ae26a7f14d64)
++++ b/app/src/main/java/com/stomeo/finalguessed/GameWinActivity.java	(date 1654711225016)
+@@ -21,20 +21,6 @@
+     Button btn1, btn2;
+     String temaElegido;
+ 
+-    BroadcastReceiver miBroadcast = new BroadcastReceiver() {
+-
+-        @Override
+-        public void onReceive(Context context, Intent intent) {
+-            if (intent.getAction().equals(Intent.ACTION_SCREEN_ON)) {
+-                Log.i("TAG", "Screen ON");
+-            } else if (intent.getAction().equals(Intent.ACTION_SCREEN_OFF)) {
+-                Log.i("TAG", "Screen OFF");
+-                parar();
+-            }
+-
+-        }
+-    };
+-
+     @Override
+     protected void onCreate(Bundle savedInstanceState) {
+         super.onCreate(savedInstanceState);
+@@ -72,17 +58,6 @@
+                 finish();
+             }
+         });
+-
+-        registerReceiver(miBroadcast, new IntentFilter(Intent.ACTION_SCREEN_ON));
+-        registerReceiver(miBroadcast, new IntentFilter(Intent.ACTION_SCREEN_OFF));
+-    }
+-
+-    private void reproducir() {
+-        startService(new Intent(this, ServicioMusica.class));
+-    }
+-
+-    private void parar() {
+-        stopService(new Intent(this, ServicioMusica.class));
+     }
+ 
+ 
+Index: app/src/main/java/com/stomeo/finalguessed/GameActivity.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.stomeo.finalguessed;\r\n\r\nimport androidx.appcompat.app.AppCompatActivity;\r\nimport androidx.recyclerview.widget.DefaultItemAnimator;\r\nimport androidx.recyclerview.widget.LinearLayoutManager;\r\nimport androidx.recyclerview.widget.RecyclerView;\r\n\r\nimport android.annotation.SuppressLint;\r\nimport android.content.BroadcastReceiver;\r\nimport android.content.Context;\r\nimport android.content.Intent;\r\nimport android.content.IntentFilter;\r\nimport android.os.Bundle;\r\nimport android.util.Log;\r\nimport android.view.View;\r\nimport android.widget.ImageButton;\r\nimport android.widget.ImageView;\r\nimport android.widget.TextView;\r\n\r\nimport com.stomeo.finalguessed.adapter.LetrasAdapter;\r\n\r\nimport java.util.ArrayList;\r\nimport java.util.List;\r\nimport java.util.Stack;\r\n\r\npublic class GameActivity extends AppCompatActivity {\r\n\r\n    BroadcastReceiver miBroadcast = new BroadcastReceiver() {\r\n\r\n        @Override\r\n        public void onReceive(Context context, Intent intent) {\r\n            if (intent.getAction().equals(Intent.ACTION_SCREEN_ON)) {\r\n                Log.i(\"TAG\", \"Screen ON\");\r\n            } else if (intent.getAction().equals(Intent.ACTION_SCREEN_OFF)) {\r\n                Log.i(\"TAG\", \"Screen OFF\");\r\n                parar();\r\n            }\r\n\r\n        }\r\n    };\r\n\r\n    private enum Temas {\r\n        comida, deportes, animales, capitales, profesiones, cine\r\n    }\r\n\r\n    @SuppressLint(\"StaticFieldLeak\")\r\n    private static Context mContext;\r\n    ImageButton btn;\r\n    ImageView hangman;\r\n    static int contfallos;\r\n    static int contaciertos;\r\n    String temaElegido;\r\n    String palabraCorrecta;\r\n    TextView tvTema;\r\n\r\n    TextView tvA;\r\n    TextView tvB;\r\n    TextView tvC;\r\n    TextView tvD;\r\n    TextView tvE;\r\n    TextView tvF;\r\n    TextView tvG;\r\n    TextView tvH;\r\n    TextView tvI;\r\n    TextView tvJ;\r\n    TextView tvK;\r\n    TextView tvL;\r\n    TextView tvM;\r\n    TextView tvN;\r\n    TextView tvO;\r\n    TextView tvP;\r\n    TextView tvQ;\r\n    TextView tvR;\r\n    TextView tvS;\r\n    TextView tvT;\r\n    TextView tvU;\r\n    TextView tvV;\r\n    TextView tvW;\r\n    TextView tvX;\r\n    TextView tvY;\r\n    TextView tvZ;\r\n\r\n    char[] caracteres;\r\n\r\n    //Recycler letras\r\n    RecyclerView recyclerView;\r\n    ArrayList<LetrasList> letrasList;\r\n    LetrasAdapter letrasAdapter;\r\n\r\n\r\n    @Override\r\n    protected void onCreate(Bundle savedInstanceState) {\r\n        super.onCreate(savedInstanceState);\r\n        setContentView(R.layout.activity_game);\r\n        mContext = this;\r\n        btn = findViewById(R.id.mainButton);\r\n        hangman = findViewById(R.id.hangman);\r\n\r\n        tvA = findViewById(R.id.a);\r\n        tvB = findViewById(R.id.b);\r\n        tvC = findViewById(R.id.c);\r\n        tvD = findViewById(R.id.d);\r\n        tvE = findViewById(R.id.e);\r\n        tvF = findViewById(R.id.f);\r\n        tvG = findViewById(R.id.g);\r\n        tvH = findViewById(R.id.h);\r\n        tvI = findViewById(R.id.i);\r\n        tvJ = findViewById(R.id.j);\r\n        tvK = findViewById(R.id.k);\r\n        tvL = findViewById(R.id.l);\r\n        tvM = findViewById(R.id.m);\r\n        tvN = findViewById(R.id.n);\r\n        tvO = findViewById(R.id.o);\r\n        tvP = findViewById(R.id.p);\r\n        tvQ = findViewById(R.id.q);\r\n        tvR = findViewById(R.id.r);\r\n        tvS = findViewById(R.id.s);\r\n        tvT = findViewById(R.id.t);\r\n        tvU = findViewById(R.id.u);\r\n        tvV = findViewById(R.id.v);\r\n        tvW = findViewById(R.id.w);\r\n        tvX = findViewById(R.id.x);\r\n        tvY = findViewById(R.id.y);\r\n        tvZ = findViewById(R.id.z);\r\n\r\n        tvTema = findViewById(R.id.tvTema);\r\n\r\n        recyclerView = findViewById(R.id.rvLetras);\r\n        contaciertos = 0;\r\n        contfallos = 0;\r\n        btn.setOnClickListener(new View.OnClickListener() {\r\n            @Override\r\n            public void onClick(View v) {\r\n                Intent intent = new Intent(getApplicationContext(), MainActivity.class);\r\n                startActivity(intent);\r\n            }\r\n        });\r\n\r\n        temaElegido = getIntent().getStringExtra(\"temaElegido\");\r\n        Temas tema = Temas.valueOf(temaElegido);\r\n        switch (tema) {\r\n            case comida:\r\n                tvTema.setText(R.string.comida);\r\n                break;\r\n            case deportes:\r\n                tvTema.setText(R.string.deportes);\r\n                break;\r\n            case animales:\r\n                tvTema.setText(R.string.animales);\r\n                break;\r\n            case capitales:\r\n                tvTema.setText(R.string.capitales);\r\n                break;\r\n            case profesiones:\r\n                tvTema.setText(R.string.profesiones);\r\n                break;\r\n            case cine:\r\n                tvTema.setText(R.string.cine);\r\n                break;\r\n        }\r\n\r\n        List<ListaPalabras> listaPalabras = ArrayListPalabras.getPalabras(temaElegido);\r\n\r\n\r\n        int pos;\r\n        int numero = (int) (Math.random() * 29 + 0);\r\n        Stack<Integer> pNumeros = new Stack<Integer>();\r\n        for (int i = 0; i < numero; i++) {\r\n            pos = (int) Math.floor(Math.random() * numero);\r\n            while (pNumeros.contains(pos)) {\r\n                pos = (int) Math.floor(Math.random() * numero);\r\n            }\r\n            pNumeros.push(pos);\r\n        }\r\n\r\n\r\n        String palabraAleatoria = listaPalabras.get(numero).getPalabra();\r\n        palabraCorrecta = palabraAleatoria;\r\n\r\n        caracteres = palabraAleatoria.toCharArray();\r\n\r\n        letrasList = new ArrayList<>();\r\n        for (int i = 0; i < caracteres.length; i++) {\r\n            letrasList.add(new LetrasList(' '));\r\n        }\r\n\r\n        LinearLayoutManager layoutManager = new LinearLayoutManager(\r\n                GameActivity.this, LinearLayoutManager.HORIZONTAL, false\r\n        );\r\n\r\n        recyclerView.setLayoutManager(layoutManager);\r\n        recyclerView.setItemAnimator(new DefaultItemAnimator());\r\n\r\n        letrasAdapter = new LetrasAdapter(GameActivity.this, letrasList);\r\n\r\n        recyclerView.setAdapter(letrasAdapter);\r\n\r\n\r\n        tvA.setOnClickListener(new View.OnClickListener() {\r\n            @Override\r\n            public void onClick(View v) {\r\n                boolean pressed = false;\r\n                if (!pressed) {\r\n                    if (guessWord('A', caracteres, letrasList)) {\r\n                        letrasAdapter = new LetrasAdapter(GameActivity.this, letrasList);\r\n                        recyclerView.setAdapter(letrasAdapter);\r\n                    }\r\n                    tvA.setVisibility(View.INVISIBLE);\r\n                    pressed = true;\r\n                    checkConds(hangman, caracteres);\r\n                }\r\n            }\r\n        });\r\n\r\n        tvB.setOnClickListener(new View.OnClickListener() {\r\n            @Override\r\n            public void onClick(View v) {\r\n                boolean pressed = false;\r\n                if (!pressed) {\r\n                    if (guessWord('B', caracteres, letrasList)) {\r\n                        letrasAdapter = new LetrasAdapter(GameActivity.this, letrasList);\r\n                        recyclerView.setAdapter(letrasAdapter);\r\n                    }\r\n                    tvB.setVisibility(View.INVISIBLE);\r\n                    pressed = true;\r\n                    checkConds(hangman, caracteres);\r\n                }\r\n            }\r\n\r\n        });\r\n\r\n        tvC.setOnClickListener(new View.OnClickListener() {\r\n            @Override\r\n            public void onClick(View v) {\r\n                boolean pressed = false;\r\n                if (!pressed) {\r\n                    if (guessWord('C', caracteres, letrasList)) {\r\n                        letrasAdapter = new LetrasAdapter(GameActivity.this, letrasList);\r\n                        recyclerView.setAdapter(letrasAdapter);\r\n                    }\r\n                    tvC.setVisibility(View.INVISIBLE);\r\n                    pressed = true;\r\n                    checkConds(hangman, caracteres);\r\n                }\r\n            }\r\n        });\r\n\r\n        tvD.setOnClickListener(new View.OnClickListener() {\r\n            @Override\r\n            public void onClick(View v) {\r\n                boolean pressed = false;\r\n                if (!pressed) {\r\n                    if (guessWord('D', caracteres, letrasList)) {\r\n                        letrasAdapter = new LetrasAdapter(GameActivity.this, letrasList);\r\n                        recyclerView.setAdapter(letrasAdapter);\r\n                    }\r\n                    tvD.setVisibility(View.INVISIBLE);\r\n                    pressed = true;\r\n                    checkConds(hangman, caracteres);\r\n                }\r\n            }\r\n        });\r\n\r\n        tvE.setOnClickListener(new View.OnClickListener() {\r\n            @Override\r\n            public void onClick(View v) {\r\n                boolean pressed = false;\r\n                if (!pressed) {\r\n                    if (guessWord('E', caracteres, letrasList)) {\r\n                        letrasAdapter = new LetrasAdapter(GameActivity.this, letrasList);\r\n                        recyclerView.setAdapter(letrasAdapter);\r\n                    }\r\n                    tvE.setVisibility(View.INVISIBLE);\r\n                    pressed = true;\r\n                    checkConds(hangman, caracteres);\r\n                }\r\n            }\r\n        });\r\n\r\n        tvF.setOnClickListener(new View.OnClickListener() {\r\n            @Override\r\n            public void onClick(View v) {\r\n                boolean pressed = false;\r\n                if (!pressed) {\r\n                    if (guessWord('F', caracteres, letrasList)) {\r\n                        letrasAdapter = new LetrasAdapter(GameActivity.this, letrasList);\r\n                        recyclerView.setAdapter(letrasAdapter);\r\n                    }\r\n                    tvF.setVisibility(View.INVISIBLE);\r\n                    pressed = true;\r\n                    checkConds(hangman, caracteres);\r\n                }\r\n            }\r\n        });\r\n\r\n        tvG.setOnClickListener(new View.OnClickListener() {\r\n            @Override\r\n            public void onClick(View v) {\r\n                boolean pressed = false;\r\n                if (!pressed) {\r\n                    if (guessWord('G', caracteres, letrasList)) {\r\n                        letrasAdapter = new LetrasAdapter(GameActivity.this, letrasList);\r\n                        recyclerView.setAdapter(letrasAdapter);\r\n                    }\r\n                    tvG.setVisibility(View.INVISIBLE);\r\n                    pressed = true;\r\n                    checkConds(hangman, caracteres);\r\n                }\r\n            }\r\n        });\r\n\r\n        tvH.setOnClickListener(new View.OnClickListener() {\r\n            @Override\r\n            public void onClick(View v) {\r\n                boolean pressed = false;\r\n                if (!pressed) {\r\n                    if (guessWord('H', caracteres, letrasList)) {\r\n                        letrasAdapter = new LetrasAdapter(GameActivity.this, letrasList);\r\n                        recyclerView.setAdapter(letrasAdapter);\r\n                    }\r\n                    tvH.setVisibility(View.INVISIBLE);\r\n                    pressed = true;\r\n                    checkConds(hangman, caracteres);\r\n                }\r\n            }\r\n        });\r\n\r\n        tvI.setOnClickListener(new View.OnClickListener() {\r\n            @Override\r\n            public void onClick(View v) {\r\n                boolean pressed = false;\r\n                if (!pressed) {\r\n                    if (guessWord('I', caracteres, letrasList)) {\r\n                        letrasAdapter = new LetrasAdapter(GameActivity.this, letrasList);\r\n                        recyclerView.setAdapter(letrasAdapter);\r\n                    }\r\n                    tvI.setVisibility(View.INVISIBLE);\r\n                    pressed = true;\r\n                    checkConds(hangman, caracteres);\r\n                }\r\n            }\r\n        });\r\n\r\n        tvJ.setOnClickListener(new View.OnClickListener() {\r\n            @Override\r\n            public void onClick(View v) {\r\n                boolean pressed = false;\r\n                if (!pressed) {\r\n                    if (guessWord('J', caracteres, letrasList)) {\r\n                        letrasAdapter = new LetrasAdapter(GameActivity.this, letrasList);\r\n                        recyclerView.setAdapter(letrasAdapter);\r\n                    }\r\n                    tvJ.setVisibility(View.INVISIBLE);\r\n                    pressed = true;\r\n                    checkConds(hangman, caracteres);\r\n                }\r\n            }\r\n        });\r\n\r\n        tvK.setOnClickListener(new View.OnClickListener() {\r\n            @Override\r\n            public void onClick(View v) {\r\n                boolean pressed = false;\r\n                if (!pressed) {\r\n                    if (guessWord('K', caracteres, letrasList)) {\r\n                        letrasAdapter = new LetrasAdapter(GameActivity.this, letrasList);\r\n                        recyclerView.setAdapter(letrasAdapter);\r\n                    }\r\n                    tvK.setVisibility(View.INVISIBLE);\r\n                    pressed = true;\r\n                    checkConds(hangman, caracteres);\r\n                }\r\n            }\r\n        });\r\n\r\n        tvL.setOnClickListener(new View.OnClickListener() {\r\n            @Override\r\n            public void onClick(View v) {\r\n                boolean pressed = false;\r\n                if (!pressed) {\r\n                    if (guessWord('L', caracteres, letrasList)) {\r\n                        letrasAdapter = new LetrasAdapter(GameActivity.this, letrasList);\r\n                        recyclerView.setAdapter(letrasAdapter);\r\n                    }\r\n                    tvL.setVisibility(View.INVISIBLE);\r\n                    pressed = true;\r\n                    checkConds(hangman, caracteres);\r\n                }\r\n            }\r\n        });\r\n\r\n        tvM.setOnClickListener(new View.OnClickListener() {\r\n            @Override\r\n            public void onClick(View v) {\r\n                boolean pressed = false;\r\n                if (!pressed) {\r\n                    if (guessWord('M', caracteres, letrasList)) {\r\n                        letrasAdapter = new LetrasAdapter(GameActivity.this, letrasList);\r\n                        recyclerView.setAdapter(letrasAdapter);\r\n                    }\r\n                    tvM.setVisibility(View.INVISIBLE);\r\n                    pressed = true;\r\n                    checkConds(hangman, caracteres);\r\n                }\r\n            }\r\n        });\r\n\r\n        tvN.setOnClickListener(new View.OnClickListener() {\r\n            @Override\r\n            public void onClick(View v) {\r\n                boolean pressed = false;\r\n                if (!pressed) {\r\n                    if (guessWord('N', caracteres, letrasList)) {\r\n                        letrasAdapter = new LetrasAdapter(GameActivity.this, letrasList);\r\n                        recyclerView.setAdapter(letrasAdapter);\r\n                    }\r\n                    tvN.setVisibility(View.INVISIBLE);\r\n                    pressed = true;\r\n                    checkConds(hangman, caracteres);\r\n                }\r\n            }\r\n        });\r\n\r\n        tvO.setOnClickListener(new View.OnClickListener() {\r\n            @Override\r\n            public void onClick(View v) {\r\n                boolean pressed = false;\r\n                if (!pressed) {\r\n                    if (guessWord('O', caracteres, letrasList)) {\r\n                        letrasAdapter = new LetrasAdapter(GameActivity.this, letrasList);\r\n                        recyclerView.setAdapter(letrasAdapter);\r\n                    }\r\n                    tvO.setVisibility(View.INVISIBLE);\r\n                    pressed = true;\r\n                    checkConds(hangman, caracteres);\r\n                }\r\n            }\r\n        });\r\n\r\n        tvP.setOnClickListener(new View.OnClickListener() {\r\n            @Override\r\n            public void onClick(View v) {\r\n                boolean pressed = false;\r\n                if (!pressed) {\r\n                    if (guessWord('P', caracteres, letrasList)) {\r\n                        letrasAdapter = new LetrasAdapter(GameActivity.this, letrasList);\r\n                        recyclerView.setAdapter(letrasAdapter);\r\n                    }\r\n                    tvP.setVisibility(View.INVISIBLE);\r\n                    pressed = true;\r\n                    checkConds(hangman, caracteres);\r\n                }\r\n            }\r\n        });\r\n\r\n        tvQ.setOnClickListener(new View.OnClickListener() {\r\n            @Override\r\n            public void onClick(View v) {\r\n                boolean pressed = false;\r\n                if (!pressed) {\r\n                    if (guessWord('Q', caracteres, letrasList)) {\r\n                        letrasAdapter = new LetrasAdapter(GameActivity.this, letrasList);\r\n                        recyclerView.setAdapter(letrasAdapter);\r\n                    }\r\n                    tvQ.setVisibility(View.INVISIBLE);\r\n                    pressed = true;\r\n                    checkConds(hangman, caracteres);\r\n                }\r\n            }\r\n        });\r\n\r\n        tvR.setOnClickListener(new View.OnClickListener() {\r\n            @Override\r\n            public void onClick(View v) {\r\n                boolean pressed = false;\r\n                if (!pressed) {\r\n                    if (guessWord('R', caracteres, letrasList)) {\r\n                        letrasAdapter = new LetrasAdapter(GameActivity.this, letrasList);\r\n                        recyclerView.setAdapter(letrasAdapter);\r\n                    }\r\n                    tvR.setVisibility(View.INVISIBLE);\r\n                    pressed = true;\r\n                    checkConds(hangman, caracteres);\r\n                }\r\n            }\r\n        });\r\n\r\n        tvS.setOnClickListener(new View.OnClickListener() {\r\n            @Override\r\n            public void onClick(View v) {\r\n                boolean pressed = false;\r\n                if (!pressed) {\r\n                    if (guessWord('S', caracteres, letrasList)) {\r\n                        letrasAdapter = new LetrasAdapter(GameActivity.this, letrasList);\r\n                        recyclerView.setAdapter(letrasAdapter);\r\n                    }\r\n                    tvS.setVisibility(View.INVISIBLE);\r\n                    pressed = true;\r\n                    checkConds(hangman, caracteres);\r\n                }\r\n            }\r\n        });\r\n\r\n        tvT.setOnClickListener(new View.OnClickListener() {\r\n            @Override\r\n            public void onClick(View v) {\r\n                boolean pressed = false;\r\n                if (!pressed) {\r\n                    if (guessWord('T', caracteres, letrasList)) {\r\n                        letrasAdapter = new LetrasAdapter(GameActivity.this, letrasList);\r\n                        recyclerView.setAdapter(letrasAdapter);\r\n                    }\r\n                    tvT.setVisibility(View.INVISIBLE);\r\n                    pressed = true;\r\n                    checkConds(hangman, caracteres);\r\n                }\r\n            }\r\n        });\r\n\r\n        tvU.setOnClickListener(new View.OnClickListener() {\r\n            @Override\r\n            public void onClick(View v) {\r\n                boolean pressed = false;\r\n                if (!pressed) {\r\n                    if (guessWord('U', caracteres, letrasList)) {\r\n                        letrasAdapter = new LetrasAdapter(GameActivity.this, letrasList);\r\n                        recyclerView.setAdapter(letrasAdapter);\r\n                    }\r\n                    tvU.setVisibility(View.INVISIBLE);\r\n                    pressed = true;\r\n                    checkConds(hangman, caracteres);\r\n                }\r\n            }\r\n        });\r\n\r\n        tvV.setOnClickListener(new View.OnClickListener() {\r\n            @Override\r\n            public void onClick(View v) {\r\n                boolean pressed = false;\r\n                if (!pressed) {\r\n                    if (guessWord('V', caracteres, letrasList)) {\r\n                        letrasAdapter = new LetrasAdapter(GameActivity.this, letrasList);\r\n                        recyclerView.setAdapter(letrasAdapter);\r\n                    }\r\n                    tvV.setVisibility(View.INVISIBLE);\r\n                    pressed = true;\r\n                    checkConds(hangman, caracteres);\r\n                }\r\n            }\r\n        });\r\n\r\n        tvW.setOnClickListener(new View.OnClickListener() {\r\n            @Override\r\n            public void onClick(View v) {\r\n                boolean pressed = false;\r\n                if (!pressed) {\r\n                    if (guessWord('W', caracteres, letrasList)) {\r\n                        letrasAdapter = new LetrasAdapter(GameActivity.this, letrasList);\r\n                        recyclerView.setAdapter(letrasAdapter);\r\n                    }\r\n                    tvW.setVisibility(View.INVISIBLE);\r\n                    pressed = true;\r\n                    checkConds(hangman, caracteres);\r\n                }\r\n            }\r\n        });\r\n\r\n        tvX.setOnClickListener(new View.OnClickListener() {\r\n            @Override\r\n            public void onClick(View v) {\r\n                boolean pressed = false;\r\n                if (!pressed) {\r\n                    if (guessWord('X', caracteres, letrasList)) {\r\n                        letrasAdapter = new LetrasAdapter(GameActivity.this, letrasList);\r\n                        recyclerView.setAdapter(letrasAdapter);\r\n                    }\r\n                    tvX.setVisibility(View.INVISIBLE);\r\n                    pressed = true;\r\n                    checkConds(hangman, caracteres);\r\n                }\r\n            }\r\n        });\r\n\r\n        tvY.setOnClickListener(new View.OnClickListener() {\r\n            @Override\r\n            public void onClick(View v) {\r\n                boolean pressed = false;\r\n                if (!pressed) {\r\n                    if (guessWord('Y', caracteres, letrasList)) {\r\n                        letrasAdapter = new LetrasAdapter(GameActivity.this, letrasList);\r\n                        recyclerView.setAdapter(letrasAdapter);\r\n                    }\r\n                    tvY.setVisibility(View.INVISIBLE);\r\n                    pressed = true;\r\n                    checkConds(hangman, caracteres);\r\n                }\r\n            }\r\n        });\r\n\r\n        tvZ.setOnClickListener(new View.OnClickListener() {\r\n            @Override\r\n            public void onClick(View v) {\r\n                boolean pressed = false;\r\n                if (!pressed) {\r\n                    if (guessWord('Z', caracteres, letrasList)) {\r\n                        letrasAdapter = new LetrasAdapter(GameActivity.this, letrasList);\r\n                        recyclerView.setAdapter(letrasAdapter);\r\n                    }\r\n                    tvZ.setVisibility(View.INVISIBLE);\r\n                    pressed = true;\r\n                    checkConds(hangman, caracteres);\r\n                }\r\n            }\r\n        });\r\n\r\n        registerReceiver(miBroadcast, new IntentFilter(Intent.ACTION_SCREEN_ON));\r\n        registerReceiver(miBroadcast, new IntentFilter(Intent.ACTION_SCREEN_OFF));\r\n    }\r\n\r\n    private void reproducir() {\r\n        startService(new Intent(this, ServicioMusica.class));\r\n    }\r\n\r\n    private void parar() {\r\n        stopService(new Intent(this, ServicioMusica.class));\r\n    }\r\n\r\n    @Override\r\n    public void onWindowFocusChanged(boolean hasFocus) {\r\n        super.onWindowFocusChanged(hasFocus);\r\n        if (hasFocus) {\r\n            hideSystemUI();\r\n        }\r\n    }\r\n\r\n    private void hideSystemUI() {\r\n        View decorView = getWindow().getDecorView();\r\n        decorView.setSystemUiVisibility(\r\n                View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY\r\n                        | View.SYSTEM_UI_FLAG_LAYOUT_STABLE\r\n                        | View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION\r\n                        | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN\r\n                        | View.SYSTEM_UI_FLAG_HIDE_NAVIGATION\r\n                        | View.SYSTEM_UI_FLAG_FULLSCREEN);\r\n    }\r\n\r\n    @Override\r\n    public void onBackPressed()\r\n    {\r\n        Intent intent = new Intent(GameActivity.this, PlayActivity.class);\r\n        startActivity(intent);\r\n        finish();\r\n        super.onBackPressed();\r\n    }\r\n\r\n    public static boolean guessWord(char c, char[] caracteres, ArrayList<LetrasList> letrasList) {\r\n        boolean fail = true;\r\n        for (int i = 0; i < caracteres.length; i++) {\r\n            if (caracteres[i] == c) {\r\n                fail = false;\r\n                contaciertos++;\r\n                letrasList.set(i, new LetrasList(c));\r\n\r\n            }\r\n        }\r\n        if (fail) {\r\n            contfallos++;\r\n            return (false);\r\n        } else\r\n            return (true);\r\n    }\r\n\r\n    public void checkConds(ImageView hangman, char[] caracteres) {\r\n        if (contfallos == 1) {\r\n            hangman.setVisibility(View.VISIBLE);\r\n            hangman.setImageResource(R.drawable.primer_fallo);\r\n        } else if (contfallos == 2) {\r\n            hangman.setVisibility(View.VISIBLE);\r\n            hangman.setImageResource(R.drawable.segundo_fallo);\r\n        } else if (contfallos == 3) {\r\n            hangman.setVisibility(View.VISIBLE);\r\n            hangman.setImageResource(R.drawable.tercer_fallo);\r\n        } else if (contfallos == 4) {\r\n            hangman.setVisibility(View.VISIBLE);\r\n            hangman.setImageResource(R.drawable.cuarto_fallo);\r\n        } else if (contfallos == 5) {\r\n            hangman.setVisibility(View.VISIBLE);\r\n            hangman.setImageResource(R.drawable.quinto_fallo);\r\n        } else if (contfallos == 6) {\r\n            hangman.setVisibility(View.VISIBLE);\r\n            hangman.setImageResource(R.drawable.septimo_fallo);\r\n        } else if (contfallos == 7) {\r\n            hangman.setVisibility(View.VISIBLE);\r\n            hangman.setImageResource(R.drawable.octavo_fallo);\r\n            Intent intent = new Intent(mContext, GameOverActivity.class);\r\n            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);\r\n            intent.putExtra(\"palabraCorrecta\", palabraCorrecta);\r\n            mContext.startActivity(intent);\r\n            finish();\r\n        }\r\n        if (contaciertos == caracteres.length) {\r\n            Intent intent = new Intent(mContext, GameWinActivity.class);\r\n            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);\r\n            intent.putExtra(\"palabraCorrecta\", palabraCorrecta);\r\n            intent.putExtra(\"temaElegido\", temaElegido);\r\n            mContext.startActivity(intent);\r\n            finish();\r\n\r\n            List<ListaPalabras> listaPalabras = ArrayListPalabras.getPalabras(temaElegido);\r\n\r\n            int pos;\r\n            int numero = (int) (Math.random() * 29 + 0);\r\n            Stack<Integer> pNumeros = new Stack<Integer>();\r\n            for (int i = 0; i < numero; i++) {\r\n                pos = (int) Math.floor(Math.random() * numero);\r\n                while (pNumeros.contains(pos)) {\r\n                    pos = (int) Math.floor(Math.random() * numero);\r\n                }\r\n                pNumeros.push(pos);\r\n            }\r\n\r\n\r\n            String palabraAleatoria = listaPalabras.get(numero).getPalabra();\r\n            palabraCorrecta = palabraAleatoria;\r\n\r\n            caracteres = palabraAleatoria.toCharArray();\r\n\r\n            letrasList = new ArrayList<>();\r\n            for (int i = 0; i < caracteres.length; i++) {\r\n                letrasList.add(new LetrasList(' '));\r\n            }\r\n\r\n            LinearLayoutManager layoutManager = new LinearLayoutManager(\r\n                    GameActivity.this, LinearLayoutManager.HORIZONTAL, false\r\n            );\r\n\r\n            recyclerView.setLayoutManager(layoutManager);\r\n            recyclerView.setItemAnimator(new DefaultItemAnimator());\r\n\r\n            letrasAdapter = new LetrasAdapter(GameActivity.this, letrasList);\r\n\r\n            recyclerView.setAdapter(letrasAdapter);\r\n        }\r\n    }\r\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/java/com/stomeo/finalguessed/GameActivity.java b/app/src/main/java/com/stomeo/finalguessed/GameActivity.java
+--- a/app/src/main/java/com/stomeo/finalguessed/GameActivity.java	(revision 8d529f6bb5ec13f18fb1a52653f8ae26a7f14d64)
++++ b/app/src/main/java/com/stomeo/finalguessed/GameActivity.java	(date 1654711225363)
+@@ -6,13 +6,18 @@
+ import androidx.recyclerview.widget.RecyclerView;
+ 
+ import android.annotation.SuppressLint;
++import android.app.AlertDialog;
+ import android.content.BroadcastReceiver;
+ import android.content.Context;
++import android.content.DialogInterface;
+ import android.content.Intent;
+ import android.content.IntentFilter;
+ import android.os.Bundle;
++import android.text.Editable;
+ import android.util.Log;
+ import android.view.View;
++import android.widget.Button;
++import android.widget.EditText;
+ import android.widget.ImageButton;
+ import android.widget.ImageView;
+ import android.widget.TextView;
+@@ -25,19 +30,6 @@
+ 
+ public class GameActivity extends AppCompatActivity {
+ 
+-    BroadcastReceiver miBroadcast = new BroadcastReceiver() {
+-
+-        @Override
+-        public void onReceive(Context context, Intent intent) {
+-            if (intent.getAction().equals(Intent.ACTION_SCREEN_ON)) {
+-                Log.i("TAG", "Screen ON");
+-            } else if (intent.getAction().equals(Intent.ACTION_SCREEN_OFF)) {
+-                Log.i("TAG", "Screen OFF");
+-                parar();
+-            }
+-
+-        }
+-    };
+ 
+     private enum Temas {
+         comida, deportes, animales, capitales, profesiones, cine
+@@ -128,6 +120,8 @@
+         recyclerView = findViewById(R.id.rvLetras);
+         contaciertos = 0;
+         contfallos = 0;
++
++
+         btn.setOnClickListener(new View.OnClickListener() {
+             @Override
+             public void onClick(View v) {
+@@ -196,6 +190,7 @@
+         recyclerView.setAdapter(letrasAdapter);
+ 
+ 
++
+         tvA.setOnClickListener(new View.OnClickListener() {
+             @Override
+             public void onClick(View v) {
+@@ -613,16 +608,6 @@
+             }
+         });
+ 
+-        registerReceiver(miBroadcast, new IntentFilter(Intent.ACTION_SCREEN_ON));
+-        registerReceiver(miBroadcast, new IntentFilter(Intent.ACTION_SCREEN_OFF));
+-    }
+-
+-    private void reproducir() {
+-        startService(new Intent(this, ServicioMusica.class));
+-    }
+-
+-    private void parar() {
+-        stopService(new Intent(this, ServicioMusica.class));
+     }
+ 
+     @Override
+Index: app/src/main/java/com/stomeo/finalguessed/SplashScreen.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.stomeo.finalguessed;\r\n\r\nimport android.annotation.SuppressLint;\r\nimport android.content.BroadcastReceiver;\r\nimport android.content.Context;\r\nimport android.content.Intent;\r\nimport android.content.IntentFilter;\r\nimport android.os.Bundle;\r\nimport android.os.Handler;\r\nimport android.os.Looper;\r\nimport android.util.Log;\r\nimport android.view.View;\r\nimport android.widget.ImageView;\r\n\r\nimport androidx.appcompat.app.AppCompatActivity;\r\n\r\nimport com.bumptech.glide.Glide;\r\n\r\n@SuppressLint(\"CustomSplashScreen\")\r\npublic class SplashScreen extends AppCompatActivity {\r\n\r\n    BroadcastReceiver miBroadcast = new BroadcastReceiver() {\r\n\r\n        @Override\r\n        public void onReceive(Context context, Intent intent) {\r\n            if (intent.getAction().equals(Intent.ACTION_SCREEN_ON)) {\r\n                Log.i(\"TAG\", \"Screen ON\");\r\n            } else if (intent.getAction().equals(Intent.ACTION_SCREEN_OFF)) {\r\n                Log.i(\"TAG\", \"Screen OFF\");\r\n                parar();\r\n            }\r\n\r\n        }\r\n    };\r\n\r\n    @Override\r\n    protected void onCreate(Bundle savedInstanceState) {\r\n        super.onCreate(savedInstanceState);\r\n        setContentView(R.layout.activity_splash_screen);\r\n\r\n        reproducir();\r\n\r\n        ImageView imageView = findViewById(R.id.splashGIF);\r\n        Glide.with(this).asGif().load(R.raw.stickman_dancing).into(imageView);\r\n\r\n        abrirApp();\r\n\r\n        registerReceiver(miBroadcast, new IntentFilter(Intent.ACTION_SCREEN_ON));\r\n        registerReceiver(miBroadcast, new IntentFilter(Intent.ACTION_SCREEN_OFF));\r\n\r\n    }\r\n\r\n    private void reproducir() {\r\n        startService(new Intent(this, ServicioMusica.class));\r\n    }\r\n\r\n    private void parar() {\r\n        stopService(new Intent(this, ServicioMusica.class));\r\n    }\r\n\r\n\r\n    public void abrirApp() {\r\n\r\n        new Handler(Looper.getMainLooper()).postDelayed(new Runnable() {\r\n            @Override\r\n            public void run() {\r\n                Intent intent = new Intent(SplashScreen.this, MainActivity.class);\r\n                startActivity(intent);\r\n                finish();\r\n            }\r\n        }, 6000);\r\n    }\r\n\r\n    @Override\r\n    public void onWindowFocusChanged(boolean hasFocus) {\r\n        super.onWindowFocusChanged(hasFocus);\r\n        if (hasFocus) {\r\n            hideSystemUI();\r\n        }\r\n    }\r\n\r\n    private void hideSystemUI() {\r\n        View decorView = getWindow().getDecorView();\r\n        decorView.setSystemUiVisibility(\r\n                View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY\r\n                        | View.SYSTEM_UI_FLAG_LAYOUT_STABLE\r\n                        | View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION\r\n                        | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN\r\n                        | View.SYSTEM_UI_FLAG_HIDE_NAVIGATION\r\n                        | View.SYSTEM_UI_FLAG_FULLSCREEN);\r\n    }\r\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/java/com/stomeo/finalguessed/SplashScreen.java b/app/src/main/java/com/stomeo/finalguessed/SplashScreen.java
+--- a/app/src/main/java/com/stomeo/finalguessed/SplashScreen.java	(revision 8d529f6bb5ec13f18fb1a52653f8ae26a7f14d64)
++++ b/app/src/main/java/com/stomeo/finalguessed/SplashScreen.java	(date 1654711759411)
+@@ -19,45 +19,18 @@
+ @SuppressLint("CustomSplashScreen")
+ public class SplashScreen extends AppCompatActivity {
+ 
+-    BroadcastReceiver miBroadcast = new BroadcastReceiver() {
+-
+-        @Override
+-        public void onReceive(Context context, Intent intent) {
+-            if (intent.getAction().equals(Intent.ACTION_SCREEN_ON)) {
+-                Log.i("TAG", "Screen ON");
+-            } else if (intent.getAction().equals(Intent.ACTION_SCREEN_OFF)) {
+-                Log.i("TAG", "Screen OFF");
+-                parar();
+-            }
+-
+-        }
+-    };
+ 
+     @Override
+     protected void onCreate(Bundle savedInstanceState) {
+         super.onCreate(savedInstanceState);
+         setContentView(R.layout.activity_splash_screen);
+ 
+-        reproducir();
+ 
+         ImageView imageView = findViewById(R.id.splashGIF);
+         Glide.with(this).asGif().load(R.raw.stickman_dancing).into(imageView);
+ 
+         abrirApp();
+-
+-        registerReceiver(miBroadcast, new IntentFilter(Intent.ACTION_SCREEN_ON));
+-        registerReceiver(miBroadcast, new IntentFilter(Intent.ACTION_SCREEN_OFF));
+-
+-    }
+-
+-    private void reproducir() {
+-        startService(new Intent(this, ServicioMusica.class));
+     }
+-
+-    private void parar() {
+-        stopService(new Intent(this, ServicioMusica.class));
+-    }
+-
+ 
+     public void abrirApp() {
+ 
+Index: app/src/main/java/com/stomeo/finalguessed/ContactActivity.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.stomeo.finalguessed;\r\n\r\nimport androidx.appcompat.app.AppCompatActivity;\r\n\r\nimport android.content.BroadcastReceiver;\r\nimport android.content.Context;\r\nimport android.content.Intent;\r\nimport android.content.IntentFilter;\r\nimport android.net.Uri;\r\nimport android.os.Bundle;\r\nimport android.util.Log;\r\nimport android.view.View;\r\nimport android.widget.EditText;\r\n\r\npublic class ContactActivity extends AppCompatActivity {\r\n\r\n    private EditText etDireccion;\r\n    private EditText etAsunto;\r\n    private EditText etMensaje;\r\n\r\n    BroadcastReceiver miBroadcast = new BroadcastReceiver() {\r\n\r\n        @Override\r\n        public void onReceive(Context context, Intent intent) {\r\n            if (intent.getAction().equals(Intent.ACTION_SCREEN_ON)) {\r\n                Log.i(\"TAG\", \"Screen ON\");\r\n            } else if (intent.getAction().equals(Intent.ACTION_SCREEN_OFF)) {\r\n                Log.i(\"TAG\", \"Screen OFF\");\r\n                parar();\r\n            }\r\n\r\n        }\r\n    };\r\n\r\n    @Override\r\n    protected void onCreate(Bundle savedInstanceState) {\r\n        super.onCreate(savedInstanceState);\r\n        setContentView(R.layout.activity_contact);\r\n\r\n        etDireccion = findViewById(R.id.etDireccion);\r\n        etAsunto = findViewById(R.id.etAsunto);\r\n        etMensaje = findViewById(R.id.etMensaje);\r\n\r\n        registerReceiver(miBroadcast, new IntentFilter(Intent.ACTION_SCREEN_ON));\r\n        registerReceiver(miBroadcast, new IntentFilter(Intent.ACTION_SCREEN_OFF));\r\n    }\r\n\r\n    public void enviar(View v) {\r\n        Intent intent = new Intent(Intent.ACTION_SENDTO);\r\n        intent.setData(Uri.parse(\"mailto:\"));\r\n        intent.putExtra(Intent.EXTRA_EMAIL, new String[]{etDireccion.getText().toString()});\r\n        intent.putExtra(Intent.EXTRA_SUBJECT, etAsunto.getText().toString());\r\n        intent.putExtra(Intent.EXTRA_TEXT, etMensaje.getText().toString());\r\n        startActivity(intent);\r\n    }\r\n\r\n    private void reproducir() {\r\n        startService(new Intent(this, ServicioMusica.class));\r\n    }\r\n\r\n    private void parar() {\r\n        stopService(new Intent(this, ServicioMusica.class));\r\n    }\r\n\r\n\r\n    @Override\r\n    public void onWindowFocusChanged(boolean hasFocus) {\r\n        super.onWindowFocusChanged(hasFocus);\r\n        if (hasFocus) {\r\n            hideSystemUI();\r\n        }\r\n    }\r\n\r\n    private void hideSystemUI() {\r\n        View decorView = getWindow().getDecorView();\r\n        decorView.setSystemUiVisibility(\r\n                View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY\r\n                        | View.SYSTEM_UI_FLAG_LAYOUT_STABLE\r\n                        | View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION\r\n                        | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN\r\n                        | View.SYSTEM_UI_FLAG_HIDE_NAVIGATION\r\n                        | View.SYSTEM_UI_FLAG_FULLSCREEN);\r\n    }\r\n\r\n\r\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/java/com/stomeo/finalguessed/ContactActivity.java b/app/src/main/java/com/stomeo/finalguessed/ContactActivity.java
+--- a/app/src/main/java/com/stomeo/finalguessed/ContactActivity.java	(revision 8d529f6bb5ec13f18fb1a52653f8ae26a7f14d64)
++++ b/app/src/main/java/com/stomeo/finalguessed/ContactActivity.java	(date 1654711224774)
+@@ -18,19 +18,6 @@
+     private EditText etAsunto;
+     private EditText etMensaje;
+ 
+-    BroadcastReceiver miBroadcast = new BroadcastReceiver() {
+-
+-        @Override
+-        public void onReceive(Context context, Intent intent) {
+-            if (intent.getAction().equals(Intent.ACTION_SCREEN_ON)) {
+-                Log.i("TAG", "Screen ON");
+-            } else if (intent.getAction().equals(Intent.ACTION_SCREEN_OFF)) {
+-                Log.i("TAG", "Screen OFF");
+-                parar();
+-            }
+-
+-        }
+-    };
+ 
+     @Override
+     protected void onCreate(Bundle savedInstanceState) {
+@@ -41,8 +28,6 @@
+         etAsunto = findViewById(R.id.etAsunto);
+         etMensaje = findViewById(R.id.etMensaje);
+ 
+-        registerReceiver(miBroadcast, new IntentFilter(Intent.ACTION_SCREEN_ON));
+-        registerReceiver(miBroadcast, new IntentFilter(Intent.ACTION_SCREEN_OFF));
+     }
+ 
+     public void enviar(View v) {
+@@ -54,15 +39,6 @@
+         startActivity(intent);
+     }
+ 
+-    private void reproducir() {
+-        startService(new Intent(this, ServicioMusica.class));
+-    }
+-
+-    private void parar() {
+-        stopService(new Intent(this, ServicioMusica.class));
+-    }
+-
+-
+     @Override
+     public void onWindowFocusChanged(boolean hasFocus) {
+         super.onWindowFocusChanged(hasFocus);
+Index: app/src/main/java/com/stomeo/finalguessed/GameOverActivity.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.stomeo.finalguessed;\r\n\r\nimport static java.lang.String.valueOf;\r\n\r\nimport androidx.appcompat.app.AppCompatActivity;\r\n\r\nimport android.app.AlertDialog;\r\nimport android.content.BroadcastReceiver;\r\nimport android.content.Context;\r\nimport android.content.DialogInterface;\r\nimport android.content.Intent;\r\nimport android.content.IntentFilter;\r\nimport android.os.Bundle;\r\nimport android.util.Log;\r\nimport android.view.View;\r\nimport android.widget.ImageView;\r\n\r\nimport com.bumptech.glide.Glide;\r\n\r\nimport java.util.Locale;\r\n\r\npublic class GameOverActivity extends AppCompatActivity {\r\n\r\n    BroadcastReceiver miBroadcast = new BroadcastReceiver() {\r\n\r\n        @Override\r\n        public void onReceive(Context context, Intent intent) {\r\n            if (intent.getAction().equals(Intent.ACTION_SCREEN_ON)) {\r\n                Log.i(\"TAG\", \"Screen ON\");\r\n            } else if (intent.getAction().equals(Intent.ACTION_SCREEN_OFF)) {\r\n                Log.i(\"TAG\", \"Screen OFF\");\r\n                parar();\r\n            }\r\n\r\n        }\r\n    };\r\n\r\n    @Override\r\n    protected void onCreate(Bundle savedInstanceState) {\r\n        super.onCreate(savedInstanceState);\r\n        setContentView(R.layout.activity_game_over);\r\n\r\n        ImageView imageView = findViewById(R.id.gameoverGIF);\r\n        Glide.with(this).asGif().load(R.raw.game_over).into(imageView);\r\n\r\n        String palabraCorrecta = getIntent().getStringExtra(\"palabraCorrecta\");\r\n        String palabraAAdivinar = valueOf(palabraCorrecta);\r\n\r\n        if (Locale.getDefault().getISO3Language().equals(\"eng\")) {\r\n\r\n            AlertDialog.Builder alerta = new AlertDialog.Builder(GameOverActivity.this);\r\n            alerta.setCancelable(false).setPositiveButton(\"Yes\", new DialogInterface.OnClickListener() {\r\n                @Override\r\n                public void onClick(DialogInterface dialog, int which) {\r\n                    Intent intent = new Intent(getApplicationContext(), PlayActivity.class);\r\n                    startActivity(intent);\r\n                    finish();\r\n                }\r\n            }).setNegativeButton(\"No\", new DialogInterface.OnClickListener() {\r\n                @Override\r\n                public void onClick(DialogInterface dialog, int which) {\r\n                    parar();\r\n                    Intent intent = new Intent(Intent.ACTION_MAIN);\r\n                    intent.addCategory(Intent.CATEGORY_HOME);\r\n                    intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);\r\n                    startActivity(intent);\r\n                    finish();\r\n                }\r\n            });\r\n            AlertDialog titulo = alerta.create();\r\n            titulo.setTitle(\"The word you had to guess was: \" + palabraAAdivinar + \" You wanna play again?\");\r\n            titulo.show();\r\n\r\n        } else {\r\n            AlertDialog.Builder alerta = new AlertDialog.Builder(GameOverActivity.this);\r\n            alerta.setCancelable(false).setPositiveButton(\"Sí\", new DialogInterface.OnClickListener() {\r\n                @Override\r\n                public void onClick(DialogInterface dialog, int which) {\r\n                    Intent intent = new Intent(getApplicationContext(), PlayActivity.class);\r\n                    startActivity(intent);\r\n                    finish();\r\n                }\r\n            }).setNegativeButton(\"No\", new DialogInterface.OnClickListener() {\r\n                @Override\r\n                public void onClick(DialogInterface dialog, int which) {\r\n                    parar();\r\n                    Intent intent = new Intent(Intent.ACTION_MAIN);\r\n                    intent.addCategory(Intent.CATEGORY_HOME);\r\n                    intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);\r\n                    startActivity(intent);\r\n                    finish();\r\n                }\r\n            });\r\n            AlertDialog titulo = alerta.create();\r\n            titulo.setTitle(\"La palabra a adivinar era: \" + palabraAAdivinar + \" ¿Desea jugar de nuevo?\");\r\n            titulo.show();\r\n        }\r\n\r\n        registerReceiver(miBroadcast, new IntentFilter(Intent.ACTION_SCREEN_ON));\r\n        registerReceiver(miBroadcast, new IntentFilter(Intent.ACTION_SCREEN_OFF));\r\n\r\n    }\r\n\r\n    private void reproducir() {\r\n        startService(new Intent(this, ServicioMusica.class));\r\n    }\r\n\r\n    private void parar() {\r\n        stopService(new Intent(this, ServicioMusica.class));\r\n    }\r\n\r\n    @Override\r\n    public void onWindowFocusChanged(boolean hasFocus) {\r\n        super.onWindowFocusChanged(hasFocus);\r\n        if (hasFocus) {\r\n            hideSystemUI();\r\n        }\r\n    }\r\n\r\n    private void hideSystemUI() {\r\n        View decorView = getWindow().getDecorView();\r\n        decorView.setSystemUiVisibility(\r\n                View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY\r\n                        | View.SYSTEM_UI_FLAG_LAYOUT_STABLE\r\n                        | View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION\r\n                        | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN\r\n                        | View.SYSTEM_UI_FLAG_HIDE_NAVIGATION\r\n                        | View.SYSTEM_UI_FLAG_FULLSCREEN);\r\n    }\r\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/java/com/stomeo/finalguessed/GameOverActivity.java b/app/src/main/java/com/stomeo/finalguessed/GameOverActivity.java
+--- a/app/src/main/java/com/stomeo/finalguessed/GameOverActivity.java	(revision 8d529f6bb5ec13f18fb1a52653f8ae26a7f14d64)
++++ b/app/src/main/java/com/stomeo/finalguessed/GameOverActivity.java	(date 1654711225601)
+@@ -21,20 +21,6 @@
+ 
+ public class GameOverActivity extends AppCompatActivity {
+ 
+-    BroadcastReceiver miBroadcast = new BroadcastReceiver() {
+-
+-        @Override
+-        public void onReceive(Context context, Intent intent) {
+-            if (intent.getAction().equals(Intent.ACTION_SCREEN_ON)) {
+-                Log.i("TAG", "Screen ON");
+-            } else if (intent.getAction().equals(Intent.ACTION_SCREEN_OFF)) {
+-                Log.i("TAG", "Screen OFF");
+-                parar();
+-            }
+-
+-        }
+-    };
+-
+     @Override
+     protected void onCreate(Bundle savedInstanceState) {
+         super.onCreate(savedInstanceState);
+@@ -59,7 +45,6 @@
+             }).setNegativeButton("No", new DialogInterface.OnClickListener() {
+                 @Override
+                 public void onClick(DialogInterface dialog, int which) {
+-                    parar();
+                     Intent intent = new Intent(Intent.ACTION_MAIN);
+                     intent.addCategory(Intent.CATEGORY_HOME);
+                     intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+@@ -83,7 +68,6 @@
+             }).setNegativeButton("No", new DialogInterface.OnClickListener() {
+                 @Override
+                 public void onClick(DialogInterface dialog, int which) {
+-                    parar();
+                     Intent intent = new Intent(Intent.ACTION_MAIN);
+                     intent.addCategory(Intent.CATEGORY_HOME);
+                     intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+@@ -96,18 +80,8 @@
+             titulo.show();
+         }
+ 
+-        registerReceiver(miBroadcast, new IntentFilter(Intent.ACTION_SCREEN_ON));
+-        registerReceiver(miBroadcast, new IntentFilter(Intent.ACTION_SCREEN_OFF));
+-
+-    }
+-
+-    private void reproducir() {
+-        startService(new Intent(this, ServicioMusica.class));
+     }
+ 
+-    private void parar() {
+-        stopService(new Intent(this, ServicioMusica.class));
+-    }
+ 
+     @Override
+     public void onWindowFocusChanged(boolean hasFocus) {
+Index: app/src/main/java/com/stomeo/finalguessed/OptionsActivity.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.stomeo.finalguessed;\r\n\r\nimport android.content.BroadcastReceiver;\r\nimport android.content.Context;\r\nimport android.content.Intent;\r\nimport android.content.IntentFilter;\r\nimport android.net.Uri;\r\nimport android.os.Bundle;\r\nimport android.util.Log;\r\nimport android.view.View;\r\n\r\nimport androidx.appcompat.app.AppCompatActivity;\r\nimport androidx.recyclerview.widget.LinearLayoutManager;\r\nimport androidx.recyclerview.widget.RecyclerView;\r\n\r\nimport java.util.ArrayList;\r\nimport java.util.List;\r\nimport java.util.Locale;\r\n\r\npublic class OptionsActivity extends AppCompatActivity {\r\n\r\n    public List<ArrayListElementos> elements;\r\n    private final static String atlantis_URL = \"https://play.google.com/store/apps/details?id=com.sermami.atlantis&hl=es&gl=US\";\r\n\r\n    BroadcastReceiver miBroadcast = new BroadcastReceiver() {\r\n\r\n        @Override\r\n        public void onReceive(Context context, Intent intent) {\r\n            if (intent.getAction().equals(Intent.ACTION_SCREEN_ON)) {\r\n                Log.i(\"TAG\", \"Screen ON\");\r\n            } else if (intent.getAction().equals(Intent.ACTION_SCREEN_OFF)) {\r\n                Log.i(\"TAG\", \"Screen OFF\");\r\n                parar();\r\n            }\r\n\r\n        }\r\n    };\r\n\r\n    @Override\r\n    protected void onCreate(Bundle savedInstanceState) {\r\n        super.onCreate(savedInstanceState);\r\n        setContentView(R.layout.activity_options);\r\n        inicializar();\r\n\r\n        registerReceiver(miBroadcast, new IntentFilter(Intent.ACTION_SCREEN_ON));\r\n        registerReceiver(miBroadcast, new IntentFilter(Intent.ACTION_SCREEN_OFF));\r\n    }\r\n\r\n    public void inicializar() {\r\n        elements = new ArrayList<>();\r\n        if (Locale.getDefault().getISO3Language().equals(\"eng\")) {\r\n            elements.add(new ArrayListElementos(\"Contact us\"));\r\n            elements.add(new ArrayListElementos(\"Share app\"));\r\n            elements.add(new ArrayListElementos(\"Our games\"));\r\n            elements.add(new ArrayListElementos(\"Activate sound\"));\r\n            elements.add(new ArrayListElementos(\"About us\"));\r\n        } else {\r\n            elements.add(new ArrayListElementos(\"Contáctanos\"));\r\n            elements.add(new ArrayListElementos(\"Compartir app\"));\r\n            elements.add(new ArrayListElementos(\"Nuestros juegos\"));\r\n            elements.add(new ArrayListElementos(\"Activar sonido\"));\r\n            elements.add(new ArrayListElementos(\"Sobre nosotros\"));\r\n        }\r\n        MiAdaptador miAdaptador = new MiAdaptador(this, elements, new MiAdaptador.OnItemClickListener() {\r\n            @Override\r\n            public void onItemClick(ArrayListElementos item) {\r\n                iniciarActividad(item);\r\n            }\r\n        });\r\n        RecyclerView recyclerView = findViewById(R.id.recycler);\r\n        recyclerView.setLayoutManager(new LinearLayoutManager(this));\r\n        recyclerView.setAdapter(miAdaptador);\r\n    }\r\n\r\n    private void reproducir() {\r\n        startService(new Intent(this, ServicioMusica.class));\r\n    }\r\n\r\n    private void parar() {\r\n        stopService(new Intent(this, ServicioMusica.class));\r\n    }\r\n\r\n\r\n    public void iniciarActividad(ArrayListElementos item) {\r\n        switch (item.getOpcion()) {\r\n            case \"Contáctanos\": {\r\n                Intent intent = new Intent(this, ContactActivity.class);\r\n                startActivity(intent);\r\n                break;\r\n            }\r\n            case \"Compartir app\": {\r\n                compartirApp();\r\n                break;\r\n            }\r\n            case \"Nuestros juegos\": {\r\n                Intent intent = new Intent(Intent.ACTION_VIEW);\r\n                intent.setData(Uri.parse(atlantis_URL));\r\n                startActivity(intent);\r\n                break;\r\n            }\r\n            case \"Activar sonido\": {\r\n                Intent intent = new Intent(this, SoundActivity.class);\r\n                startActivity(intent);\r\n                break;\r\n            }\r\n            case \"Sobre nosotros\": {\r\n                Intent intent = new Intent(this, AboutUsActivity.class);\r\n                startActivity(intent);\r\n                finish();\r\n                break;\r\n            }\r\n            case \"Contact us\": {\r\n                Intent intent = new Intent(this, ContactActivity.class);\r\n                startActivity(intent);\r\n                break;\r\n            }\r\n            case \"Share app\": {\r\n                compartirApp();\r\n                break;\r\n            }\r\n            case \"Our games\": {\r\n                Intent intent = new Intent(Intent.ACTION_VIEW);\r\n                intent.setData(Uri.parse(atlantis_URL));\r\n                startActivity(intent);\r\n                break;\r\n            }\r\n            case \"Activate sound\": {\r\n                Intent intent = new Intent(this, SoundActivity.class);\r\n                startActivity(intent);\r\n                break;\r\n            }\r\n            case \"About us\": {\r\n                Intent intent = new Intent(this, AboutUsActivity.class);\r\n                startActivity(intent);\r\n                finish();\r\n                break;\r\n            }\r\n        }\r\n    }\r\n\r\n    private void compartirApp() {\r\n        try {\r\n            Intent i = new Intent(Intent.ACTION_SEND);\r\n            i.setType(\"text/plain\");\r\n            i.putExtra(Intent.EXTRA_SUBJECT, getResources().getString(R.string.app_name));\r\n            String aux = \"Descarga la app Guessed\\n\";\r\n            aux = aux + \"https://mega.nz/file/JnxW3TAb#3IrAmC3R0KokZdefWBR40xfxsts8GMgo5a04TIIlaoQ\";\r\n            i.putExtra(Intent.EXTRA_TEXT, aux);\r\n            startActivity(i);\r\n        } catch (Exception ignored) {\r\n        }\r\n    }\r\n\r\n    @Override\r\n    public void onWindowFocusChanged(boolean hasFocus) {\r\n        super.onWindowFocusChanged(hasFocus);\r\n        if (hasFocus) {\r\n            hideSystemUI();\r\n        }\r\n    }\r\n\r\n    private void hideSystemUI() {\r\n        View decorView = getWindow().getDecorView();\r\n        decorView.setSystemUiVisibility(\r\n                View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY\r\n                        | View.SYSTEM_UI_FLAG_LAYOUT_STABLE\r\n                        | View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION\r\n                        | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN\r\n                        | View.SYSTEM_UI_FLAG_HIDE_NAVIGATION\r\n                        | View.SYSTEM_UI_FLAG_FULLSCREEN);\r\n    }\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/java/com/stomeo/finalguessed/OptionsActivity.java b/app/src/main/java/com/stomeo/finalguessed/OptionsActivity.java
+--- a/app/src/main/java/com/stomeo/finalguessed/OptionsActivity.java	(revision 8d529f6bb5ec13f18fb1a52653f8ae26a7f14d64)
++++ b/app/src/main/java/com/stomeo/finalguessed/OptionsActivity.java	(date 1654711225241)
+@@ -22,28 +22,12 @@
+     public List<ArrayListElementos> elements;
+     private final static String atlantis_URL = "https://play.google.com/store/apps/details?id=com.sermami.atlantis&hl=es&gl=US";
+ 
+-    BroadcastReceiver miBroadcast = new BroadcastReceiver() {
+-
+-        @Override
+-        public void onReceive(Context context, Intent intent) {
+-            if (intent.getAction().equals(Intent.ACTION_SCREEN_ON)) {
+-                Log.i("TAG", "Screen ON");
+-            } else if (intent.getAction().equals(Intent.ACTION_SCREEN_OFF)) {
+-                Log.i("TAG", "Screen OFF");
+-                parar();
+-            }
+-
+-        }
+-    };
+ 
+     @Override
+     protected void onCreate(Bundle savedInstanceState) {
+         super.onCreate(savedInstanceState);
+         setContentView(R.layout.activity_options);
+         inicializar();
+-
+-        registerReceiver(miBroadcast, new IntentFilter(Intent.ACTION_SCREEN_ON));
+-        registerReceiver(miBroadcast, new IntentFilter(Intent.ACTION_SCREEN_OFF));
+     }
+ 
+     public void inicializar() {
+@@ -52,13 +36,11 @@
+             elements.add(new ArrayListElementos("Contact us"));
+             elements.add(new ArrayListElementos("Share app"));
+             elements.add(new ArrayListElementos("Our games"));
+-            elements.add(new ArrayListElementos("Activate sound"));
+             elements.add(new ArrayListElementos("About us"));
+         } else {
+             elements.add(new ArrayListElementos("Contáctanos"));
+             elements.add(new ArrayListElementos("Compartir app"));
+             elements.add(new ArrayListElementos("Nuestros juegos"));
+-            elements.add(new ArrayListElementos("Activar sonido"));
+             elements.add(new ArrayListElementos("Sobre nosotros"));
+         }
+         MiAdaptador miAdaptador = new MiAdaptador(this, elements, new MiAdaptador.OnItemClickListener() {
+@@ -72,15 +54,6 @@
+         recyclerView.setAdapter(miAdaptador);
+     }
+ 
+-    private void reproducir() {
+-        startService(new Intent(this, ServicioMusica.class));
+-    }
+-
+-    private void parar() {
+-        stopService(new Intent(this, ServicioMusica.class));
+-    }
+-
+-
+     public void iniciarActividad(ArrayListElementos item) {
+         switch (item.getOpcion()) {
+             case "Contáctanos": {
+@@ -98,11 +71,6 @@
+                 startActivity(intent);
+                 break;
+             }
+-            case "Activar sonido": {
+-                Intent intent = new Intent(this, SoundActivity.class);
+-                startActivity(intent);
+-                break;
+-            }
+             case "Sobre nosotros": {
+                 Intent intent = new Intent(this, AboutUsActivity.class);
+                 startActivity(intent);
+@@ -123,11 +91,6 @@
+                 intent.setData(Uri.parse(atlantis_URL));
+                 startActivity(intent);
+                 break;
+-            }
+-            case "Activate sound": {
+-                Intent intent = new Intent(this, SoundActivity.class);
+-                startActivity(intent);
+-                break;
+             }
+             case "About us": {
+                 Intent intent = new Intent(this, AboutUsActivity.class);
+Index: app/src/main/res/layout/activity_main.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"utf-8\"?>\r\n<androidx.constraintlayout.widget.ConstraintLayout xmlns:android=\"http://schemas.android.com/apk/res/android\"\r\n    xmlns:app=\"http://schemas.android.com/apk/res-auto\"\r\n    xmlns:tools=\"http://schemas.android.com/tools\"\r\n    android:layout_width=\"match_parent\"\r\n    android:layout_height=\"match_parent\"\r\n    android:background=\"@drawable/hoja\"\r\n    tools:context=\".MainActivity\">\r\n\r\n    <ImageView\r\n        android:id=\"@+id/mainGIF\"\r\n        android:layout_width=\"match_parent\"\r\n        android:layout_height=\"250dp\"\r\n        android:contentDescription=\"@string/mainGIFDescription\"\r\n        app:layout_constraintBottom_toTopOf=\"@+id/textView\"\r\n        app:layout_constraintTop_toTopOf=\"parent\"\r\n        app:layout_constraintVertical_bias=\"0.618\"\r\n        tools:ignore=\"ImageContrastCheck\"\r\n        tools:layout_editor_absoluteX=\"0dp\" />\r\n\r\n    <TextView\r\n        android:id=\"@+id/textView\"\r\n        android:layout_width=\"wrap_content\"\r\n        android:layout_height=\"wrap_content\"\r\n        android:fontFamily=\"@font/organic_relief\"\r\n        android:text=\"@string/guessed\"\r\n        android:textColor=\"@color/black\"\r\n        android:textSize=\"40sp\"\r\n        app:layout_constraintBottom_toBottomOf=\"parent\"\r\n        app:layout_constraintLeft_toLeftOf=\"parent\"\r\n        app:layout_constraintRight_toRightOf=\"parent\"\r\n        app:layout_constraintTop_toTopOf=\"parent\" />\r\n\r\n    <TextView\r\n        android:id=\"@+id/_1\"\r\n        android:layout_width=\"wrap_content\"\r\n        android:layout_height=\"wrap_content\"\r\n        android:fontFamily=\"@font/organic_relief\"\r\n        android:text=\"@string/barra_baja\"\r\n        android:textColor=\"@android:color/holo_blue_dark\"\r\n        android:textSize=\"40sp\"\r\n        app:layout_constraintBottom_toBottomOf=\"parent\"\r\n        app:layout_constraintHorizontal_bias=\"0.123\"\r\n        app:layout_constraintLeft_toLeftOf=\"parent\"\r\n        app:layout_constraintRight_toRightOf=\"parent\"\r\n        app:layout_constraintTop_toTopOf=\"parent\"\r\n        app:layout_constraintVertical_bias=\"0.543\" />\r\n\r\n    <TextView\r\n        android:id=\"@+id/_2\"\r\n        android:layout_width=\"wrap_content\"\r\n        android:layout_height=\"wrap_content\"\r\n        android:fontFamily=\"@font/organic_relief\"\r\n        android:text=\"@string/barra_baja\"\r\n        android:textColor=\"@android:color/holo_blue_dark\"\r\n        android:textSize=\"40sp\"\r\n        app:layout_constraintBottom_toBottomOf=\"parent\"\r\n        app:layout_constraintHorizontal_bias=\"0.249\"\r\n        app:layout_constraintLeft_toLeftOf=\"parent\"\r\n        app:layout_constraintRight_toRightOf=\"parent\"\r\n        app:layout_constraintTop_toTopOf=\"parent\"\r\n        app:layout_constraintVertical_bias=\"0.543\" />\r\n\r\n    <TextView\r\n        android:id=\"@+id/_3\"\r\n        android:layout_width=\"wrap_content\"\r\n        android:layout_height=\"wrap_content\"\r\n        android:fontFamily=\"@font/organic_relief\"\r\n        android:text=\"@string/barra_baja\"\r\n        android:textColor=\"@android:color/holo_blue_dark\"\r\n        android:textSize=\"40sp\"\r\n        app:layout_constraintBottom_toBottomOf=\"parent\"\r\n        app:layout_constraintHorizontal_bias=\"0.375\"\r\n        app:layout_constraintLeft_toLeftOf=\"parent\"\r\n        app:layout_constraintRight_toRightOf=\"parent\"\r\n        app:layout_constraintTop_toTopOf=\"parent\"\r\n        app:layout_constraintVertical_bias=\"0.543\" />\r\n\r\n    <TextView\r\n        android:id=\"@+id/_4\"\r\n        android:layout_width=\"wrap_content\"\r\n        android:layout_height=\"wrap_content\"\r\n        android:fontFamily=\"@font/organic_relief\"\r\n        android:text=\"@string/barra_baja\"\r\n        android:textColor=\"@android:color/holo_blue_dark\"\r\n        android:textSize=\"40sp\"\r\n        app:layout_constraintBottom_toBottomOf=\"parent\"\r\n        app:layout_constraintHorizontal_bias=\"0.501\"\r\n        app:layout_constraintLeft_toLeftOf=\"parent\"\r\n        app:layout_constraintRight_toRightOf=\"parent\"\r\n        app:layout_constraintTop_toTopOf=\"parent\"\r\n        app:layout_constraintVertical_bias=\"0.543\" />\r\n\r\n    <TextView\r\n        android:id=\"@+id/_5\"\r\n        android:layout_width=\"wrap_content\"\r\n        android:layout_height=\"wrap_content\"\r\n        android:fontFamily=\"@font/organic_relief\"\r\n        android:text=\"@string/barra_baja\"\r\n        android:textColor=\"@android:color/holo_blue_dark\"\r\n        android:textSize=\"40sp\"\r\n        app:layout_constraintBottom_toBottomOf=\"parent\"\r\n        app:layout_constraintHorizontal_bias=\"0.627\"\r\n        app:layout_constraintLeft_toLeftOf=\"parent\"\r\n        app:layout_constraintRight_toRightOf=\"parent\"\r\n        app:layout_constraintTop_toTopOf=\"parent\"\r\n        app:layout_constraintVertical_bias=\"0.543\" />\r\n\r\n    <TextView\r\n        android:id=\"@+id/_6\"\r\n        android:layout_width=\"wrap_content\"\r\n        android:layout_height=\"wrap_content\"\r\n        android:fontFamily=\"@font/organic_relief\"\r\n        android:text=\"@string/barra_baja\"\r\n        android:textColor=\"@android:color/holo_blue_dark\"\r\n        android:textSize=\"40sp\"\r\n        app:layout_constraintBottom_toBottomOf=\"parent\"\r\n        app:layout_constraintHorizontal_bias=\"0.753\"\r\n        app:layout_constraintLeft_toLeftOf=\"parent\"\r\n        app:layout_constraintRight_toRightOf=\"parent\"\r\n        app:layout_constraintTop_toTopOf=\"parent\"\r\n        app:layout_constraintVertical_bias=\"0.543\" />\r\n\r\n    <TextView\r\n        android:id=\"@+id/_7\"\r\n        android:layout_width=\"wrap_content\"\r\n        android:layout_height=\"wrap_content\"\r\n        android:fontFamily=\"@font/organic_relief\"\r\n        android:text=\"@string/barra_baja\"\r\n        android:textColor=\"@android:color/holo_blue_dark\"\r\n        android:textSize=\"40sp\"\r\n        app:layout_constraintBottom_toBottomOf=\"parent\"\r\n        app:layout_constraintHorizontal_bias=\"0.857\"\r\n        app:layout_constraintLeft_toLeftOf=\"parent\"\r\n        app:layout_constraintRight_toRightOf=\"parent\"\r\n        app:layout_constraintTop_toTopOf=\"parent\"\r\n        app:layout_constraintVertical_bias=\"0.543\" />\r\n\r\n    <Button\r\n        android:id=\"@+id/jugar\"\r\n        android:layout_width=\"match_parent\"\r\n        android:layout_height=\"50dp\"\r\n        android:layout_gravity=\"center|center\"\r\n        android:backgroundTint=\"@android:color/holo_red_light\"\r\n        android:fontFamily=\"@font/hollaboi_2\"\r\n        android:text=\"@string/jugar\"\r\n        android:textAllCaps=\"false\"\r\n        android:textColor=\"@color/white\"\r\n        android:textSize=\"35sp\"\r\n        app:layout_constraintBottom_toBottomOf=\"parent\"\r\n        app:layout_constraintEnd_toEndOf=\"parent\"\r\n        app:layout_constraintStart_toStartOf=\"parent\"\r\n        app:layout_constraintTop_toBottomOf=\"@+id/textView\" />\r\n\r\n    <Button\r\n        android:id=\"@+id/opciones\"\r\n        android:layout_width=\"match_parent\"\r\n        android:layout_height=\"50dp\"\r\n        android:layout_gravity=\"center|center\"\r\n        android:backgroundTint=\"@android:color/holo_blue_light\"\r\n        android:fontFamily=\"@font/hollaboi_2\"\r\n        android:text=\"@string/opciones\"\r\n        android:textAllCaps=\"false\"\r\n        android:textColor=\"@color/black\"\r\n        android:textSize=\"35sp\"\r\n        app:layout_constraintBottom_toBottomOf=\"parent\"\r\n        app:layout_constraintEnd_toEndOf=\"parent\"\r\n        app:layout_constraintHorizontal_bias=\"0.0\"\r\n        app:layout_constraintStart_toStartOf=\"parent\"\r\n        app:layout_constraintTop_toBottomOf=\"@+id/jugar\"\r\n        app:layout_constraintVertical_bias=\"0.172\"\r\n        tools:ignore=\"TextContrastCheck\" />\r\n\r\n</androidx.constraintlayout.widget.ConstraintLayout>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/res/layout/activity_main.xml b/app/src/main/res/layout/activity_main.xml
+--- a/app/src/main/res/layout/activity_main.xml	(revision 8d529f6bb5ec13f18fb1a52653f8ae26a7f14d64)
++++ b/app/src/main/res/layout/activity_main.xml	(date 1654706937329)
+@@ -136,6 +136,24 @@
+         app:layout_constraintTop_toTopOf="parent"
+         app:layout_constraintVertical_bias="0.543" />
+ 
++    <Button
++        android:id="@+id/btn2jugadores"
++        android:layout_width="match_parent"
++        android:layout_height="50dp"
++        android:layout_gravity="center|center"
++        android:backgroundTint="@android:color/holo_purple"
++        android:fontFamily="@font/hollaboi_2"
++        android:text="2 jugadores"
++        android:textAllCaps="false"
++        android:textColor="@color/white"
++        android:textSize="35sp"
++        app:layout_constraintBottom_toTopOf="@+id/jugar"
++        app:layout_constraintEnd_toEndOf="parent"
++        app:layout_constraintHorizontal_bias="0.0"
++        app:layout_constraintStart_toStartOf="parent"
++        app:layout_constraintTop_toBottomOf="@+id/textView"
++        app:layout_constraintVertical_bias="0.704" />
++
+     <Button
+         android:id="@+id/jugar"
+         android:layout_width="match_parent"
+Index: app/src/main/java/com/stomeo/finalguessed/MainActivity.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.stomeo.finalguessed;\r\n\r\nimport androidx.appcompat.app.AppCompatActivity;\r\n\r\nimport android.app.AlertDialog;\r\nimport android.content.BroadcastReceiver;\r\nimport android.content.Context;\r\nimport android.content.DialogInterface;\r\nimport android.content.Intent;\r\nimport android.content.IntentFilter;\r\nimport android.os.Bundle;\r\nimport android.util.Log;\r\nimport android.view.View;\r\nimport android.widget.Button;\r\nimport android.widget.ImageView;\r\n\r\nimport com.bumptech.glide.Glide;\r\n\r\npublic class MainActivity extends AppCompatActivity {\r\n\r\n    Button jugar;\r\n    Button opciones;\r\n\r\n    BroadcastReceiver miBroadcast = new BroadcastReceiver() {\r\n\r\n        @Override\r\n        public void onReceive(Context context, Intent intent) {\r\n            if (intent.getAction().equals(Intent.ACTION_SCREEN_ON)) {\r\n                Log.i(\"TAG\", \"Screen ON\");\r\n            } else if (intent.getAction().equals(Intent.ACTION_SCREEN_OFF)) {\r\n                Log.i(\"TAG\", \"Screen OFF\");\r\n                parar();\r\n            }\r\n\r\n        }\r\n    };\r\n\r\n    @Override\r\n    protected void onCreate(Bundle savedInstanceState) {\r\n        super.onCreate(savedInstanceState);\r\n        setContentView(R.layout.activity_main);\r\n\r\n        ImageView imageView = findViewById(R.id.mainGIF);\r\n        Glide.with(this).asGif().load(R.raw.ahorcado).into(imageView);\r\n\r\n\r\n        jugar = findViewById(R.id.jugar);\r\n\r\n        jugar.setOnClickListener(new View.OnClickListener() {\r\n            @Override\r\n            public void onClick(View v) {\r\n                Intent intent = new Intent(getApplicationContext(), PlayActivity.class);\r\n                startActivity(intent);\r\n            }\r\n        });\r\n\r\n        opciones = findViewById(R.id.opciones);\r\n\r\n        opciones.setOnClickListener(new View.OnClickListener() {\r\n            @Override\r\n            public void onClick(View v) {\r\n                Intent intent = new Intent(getApplicationContext(), OptionsActivity.class);\r\n                startActivity(intent);\r\n            }\r\n        });\r\n\r\n        registerReceiver(miBroadcast, new IntentFilter(Intent.ACTION_SCREEN_ON));\r\n        registerReceiver(miBroadcast, new IntentFilter(Intent.ACTION_SCREEN_OFF));\r\n\r\n    }\r\n\r\n    private void reproducir() {\r\n        startService(new Intent(this, ServicioMusica.class));\r\n    }\r\n\r\n    private void parar() {\r\n        stopService(new Intent(this, ServicioMusica.class));\r\n    }\r\n\r\n    @Override\r\n    public void onBackPressed() {\r\n        AlertDialog.Builder alerta = new AlertDialog.Builder(MainActivity.this);\r\n        alerta.setCancelable(false).setPositiveButton(\"Sí\", new DialogInterface.OnClickListener() {\r\n            @Override\r\n            public void onClick(DialogInterface dialog, int which) {\r\n                parar();\r\n                Intent intent = new Intent(Intent.ACTION_MAIN);\r\n                intent.addCategory(Intent.CATEGORY_HOME);\r\n                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);\r\n                startActivity(intent);\r\n            }\r\n        }).setNegativeButton(\"No\", new DialogInterface.OnClickListener() {\r\n            @Override\r\n            public void onClick(DialogInterface dialog, int which) {\r\n                dialog.dismiss();\r\n            }\r\n        });\r\n        AlertDialog titulo = alerta.create();\r\n        titulo.setTitle(\"¿Desea salir de la aplicación?\");\r\n        titulo.show();\r\n\r\n    }\r\n\r\n    @Override\r\n    public void onWindowFocusChanged(boolean hasFocus) {\r\n        super.onWindowFocusChanged(hasFocus);\r\n        if (hasFocus) {\r\n            hideSystemUI();\r\n        }\r\n    }\r\n\r\n    private void hideSystemUI() {\r\n        View decorView = getWindow().getDecorView();\r\n        decorView.setSystemUiVisibility(\r\n                View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY\r\n                        | View.SYSTEM_UI_FLAG_LAYOUT_STABLE\r\n                        | View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION\r\n                        | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN\r\n                        | View.SYSTEM_UI_FLAG_HIDE_NAVIGATION\r\n                        | View.SYSTEM_UI_FLAG_FULLSCREEN);\r\n    }\r\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/java/com/stomeo/finalguessed/MainActivity.java b/app/src/main/java/com/stomeo/finalguessed/MainActivity.java
+--- a/app/src/main/java/com/stomeo/finalguessed/MainActivity.java	(revision 8d529f6bb5ec13f18fb1a52653f8ae26a7f14d64)
++++ b/app/src/main/java/com/stomeo/finalguessed/MainActivity.java	(date 1654711226039)
+@@ -12,7 +12,10 @@
+ import android.util.Log;
+ import android.view.View;
+ import android.widget.Button;
++import android.widget.EditText;
+ import android.widget.ImageView;
++import android.widget.LinearLayout;
++import android.widget.Toast;
+ 
+ import com.bumptech.glide.Glide;
+ 
+@@ -20,20 +23,9 @@
+ 
+     Button jugar;
+     Button opciones;
+-
+-    BroadcastReceiver miBroadcast = new BroadcastReceiver() {
++    Button btn2Jugadores;
++    private String palabra = "";
+ 
+-        @Override
+-        public void onReceive(Context context, Intent intent) {
+-            if (intent.getAction().equals(Intent.ACTION_SCREEN_ON)) {
+-                Log.i("TAG", "Screen ON");
+-            } else if (intent.getAction().equals(Intent.ACTION_SCREEN_OFF)) {
+-                Log.i("TAG", "Screen OFF");
+-                parar();
+-            }
+-
+-        }
+-    };
+ 
+     @Override
+     protected void onCreate(Bundle savedInstanceState) {
+@@ -64,17 +56,49 @@
+             }
+         });
+ 
+-        registerReceiver(miBroadcast, new IntentFilter(Intent.ACTION_SCREEN_ON));
+-        registerReceiver(miBroadcast, new IntentFilter(Intent.ACTION_SCREEN_OFF));
++        btn2Jugadores = findViewById(R.id.btn2jugadores);
++
++        btn2Jugadores.setOnClickListener(new View.OnClickListener() {
++            @Override
++            public void onClick(View v) {
++                AlertDialog.Builder alertDialog = new AlertDialog.Builder(MainActivity.this);
++                alertDialog.setTitle("2 jugadores");
++                alertDialog.setMessage("Introduzca una palabra");
++
++                final EditText input = new EditText(MainActivity.this);
++                LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(
++                        LinearLayout.LayoutParams.MATCH_PARENT,
++                        LinearLayout.LayoutParams.MATCH_PARENT);
++                input.setLayoutParams(lp);
++                alertDialog.setView(input);
++
++                alertDialog.setPositiveButton("Jugar",
++                        new DialogInterface.OnClickListener() {
++                            public void onClick(DialogInterface dialog, int which) {
++                                String palabraAAdivinar = input.getText().toString();
++                                palabra = palabraAAdivinar;
++                                Intent intent = new Intent(getApplicationContext(), MultiplayerActivity.class);
++                                intent.putExtra("palabraAAdivinar", palabra);
++                                startActivity(intent);
++                                finish();
++                                Toast.makeText(getApplicationContext(),
++                                        "¡A jugar!", Toast.LENGTH_SHORT).show();
++                            }
++
++                        });
++
++                alertDialog.setNegativeButton("Cerrar",
++                        new DialogInterface.OnClickListener() {
++                            public void onClick(DialogInterface dialog, int which) {
++                                dialog.cancel();
++                            }
++                        });
+ 
+-    }
++                alertDialog.show();
++            }
+ 
+-    private void reproducir() {
+-        startService(new Intent(this, ServicioMusica.class));
+-    }
++        });
+ 
+-    private void parar() {
+-        stopService(new Intent(this, ServicioMusica.class));
+     }
+ 
+     @Override
+@@ -83,7 +107,6 @@
+         alerta.setCancelable(false).setPositiveButton("Sí", new DialogInterface.OnClickListener() {
+             @Override
+             public void onClick(DialogInterface dialog, int which) {
+-                parar();
+                 Intent intent = new Intent(Intent.ACTION_MAIN);
+                 intent.addCategory(Intent.CATEGORY_HOME);
+                 intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+Index: app/src/main/java/com/stomeo/finalguessed/PlayActivity.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.stomeo.finalguessed;\r\n\r\nimport androidx.appcompat.app.AppCompatActivity;\r\nimport androidx.cardview.widget.CardView;\r\n\r\nimport android.content.BroadcastReceiver;\r\nimport android.content.Context;\r\nimport android.content.Intent;\r\nimport android.content.IntentFilter;\r\nimport android.os.Bundle;\r\nimport android.util.Log;\r\nimport android.view.View;\r\nimport android.widget.ImageButton;\r\n\r\npublic class PlayActivity extends AppCompatActivity {\r\n\r\n    ImageButton btn;\r\n    CardView cvComida;\r\n    CardView cvDeportes;\r\n    CardView cvAnimales;\r\n    CardView cvCapitales;\r\n    CardView cvProfesiones;\r\n    CardView cvCine;\r\n\r\n    private String temaElegido = \"\";\r\n\r\n    BroadcastReceiver miBroadcast = new BroadcastReceiver() {\r\n\r\n        @Override\r\n        public void onReceive(Context context, Intent intent) {\r\n            if (intent.getAction().equals(Intent.ACTION_SCREEN_ON)) {\r\n                Log.i(\"TAG\", \"Screen ON\");\r\n            } else if (intent.getAction().equals(Intent.ACTION_SCREEN_OFF)) {\r\n                Log.i(\"TAG\", \"Screen OFF\");\r\n                parar();\r\n            }\r\n\r\n        }\r\n    };\r\n\r\n    @Override\r\n    protected void onCreate(Bundle savedInstanceState) {\r\n        super.onCreate(savedInstanceState);\r\n        setContentView(R.layout.activity_play);\r\n\r\n        btn = findViewById(R.id.mainButton);\r\n\r\n        btn.setOnClickListener(new View.OnClickListener() {\r\n            @Override\r\n            public void onClick(View v) {\r\n                Intent intent = new Intent(getApplicationContext(), MainActivity.class);\r\n                startActivity(intent);\r\n            }\r\n        });\r\n\r\n        cvComida = findViewById(R.id.cvComida);\r\n        cvDeportes = findViewById(R.id.cvDeportes);\r\n        cvAnimales = findViewById(R.id.cvAnimales);\r\n        cvCapitales = findViewById(R.id.cvCapitales);\r\n        cvProfesiones = findViewById(R.id.cvProfesiones);\r\n        cvCine = findViewById(R.id.cvCine);\r\n\r\n        cvComida.setOnClickListener(new View.OnClickListener() {\r\n            @Override\r\n            public void onClick(View v) {\r\n                temaElegido = \"comida\";\r\n                setTemaElegido(\"comida\");\r\n                Intent intent = new Intent(getApplicationContext(), GameActivity.class);\r\n                intent.putExtra(\"temaElegido\", temaElegido);\r\n                startActivity(intent);\r\n                finish();\r\n            }\r\n        });\r\n\r\n        cvDeportes.setOnClickListener(new View.OnClickListener() {\r\n            @Override\r\n            public void onClick(View v) {\r\n                temaElegido = \"deportes\";\r\n                setTemaElegido(\"deportes\");\r\n                Intent intent = new Intent(getApplicationContext(), GameActivity.class);\r\n                intent.putExtra(\"temaElegido\", temaElegido);\r\n                startActivity(intent);\r\n                finish();\r\n            }\r\n        });\r\n\r\n        cvAnimales.setOnClickListener(new View.OnClickListener() {\r\n            @Override\r\n            public void onClick(View v) {\r\n                temaElegido = \"animales\";\r\n                setTemaElegido(\"animales\");\r\n                Intent intent = new Intent(getApplicationContext(), GameActivity.class);\r\n                intent.putExtra(\"temaElegido\", temaElegido);\r\n                startActivity(intent);\r\n                finish();\r\n            }\r\n        });\r\n\r\n        cvCapitales.setOnClickListener(new View.OnClickListener() {\r\n            @Override\r\n            public void onClick(View v) {\r\n                temaElegido = \"capitales\";\r\n                setTemaElegido(\"capitales\");\r\n                Intent intent = new Intent(getApplicationContext(), GameActivity.class);\r\n                intent.putExtra(\"temaElegido\", temaElegido);\r\n                startActivity(intent);\r\n                finish();\r\n            }\r\n        });\r\n\r\n        cvProfesiones.setOnClickListener(new View.OnClickListener() {\r\n            @Override\r\n            public void onClick(View v) {\r\n                temaElegido = \"profesiones\";\r\n                setTemaElegido(\"profesiones\");\r\n                Intent intent = new Intent(getApplicationContext(), GameActivity.class);\r\n                intent.putExtra(\"temaElegido\", temaElegido);\r\n                startActivity(intent);\r\n                finish();\r\n            }\r\n        });\r\n\r\n        cvCine.setOnClickListener(new View.OnClickListener() {\r\n            @Override\r\n            public void onClick(View v) {\r\n                temaElegido = \"cine\";\r\n                setTemaElegido(\"cine\");\r\n                Intent intent = new Intent(getApplicationContext(), GameActivity.class);\r\n                intent.putExtra(\"temaElegido\", temaElegido);\r\n                startActivity(intent);\r\n                finish();\r\n            }\r\n        });\r\n\r\n        registerReceiver(miBroadcast, new IntentFilter(Intent.ACTION_SCREEN_ON));\r\n        registerReceiver(miBroadcast, new IntentFilter(Intent.ACTION_SCREEN_OFF));\r\n    }\r\n\r\n    private void reproducir() {\r\n        startService(new Intent(this, ServicioMusica.class));\r\n    }\r\n\r\n    private void parar() {\r\n        stopService(new Intent(this, ServicioMusica.class));\r\n    }\r\n\r\n\r\n    public void setTemaElegido(String temaElegido) {\r\n        this.temaElegido = temaElegido;\r\n    }\r\n\r\n    @Override\r\n    public void onWindowFocusChanged(boolean hasFocus) {\r\n        super.onWindowFocusChanged(hasFocus);\r\n        if (hasFocus) {\r\n            hideSystemUI();\r\n        }\r\n    }\r\n\r\n    private void hideSystemUI() {\r\n        View decorView = getWindow().getDecorView();\r\n        decorView.setSystemUiVisibility(\r\n                View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY\r\n                        | View.SYSTEM_UI_FLAG_LAYOUT_STABLE\r\n                        | View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION\r\n                        | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN\r\n                        | View.SYSTEM_UI_FLAG_HIDE_NAVIGATION\r\n                        | View.SYSTEM_UI_FLAG_FULLSCREEN);\r\n    }\r\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/java/com/stomeo/finalguessed/PlayActivity.java b/app/src/main/java/com/stomeo/finalguessed/PlayActivity.java
+--- a/app/src/main/java/com/stomeo/finalguessed/PlayActivity.java	(revision 8d529f6bb5ec13f18fb1a52653f8ae26a7f14d64)
++++ b/app/src/main/java/com/stomeo/finalguessed/PlayActivity.java	(date 1654711310167)
+@@ -24,19 +24,6 @@
+ 
+     private String temaElegido = "";
+ 
+-    BroadcastReceiver miBroadcast = new BroadcastReceiver() {
+-
+-        @Override
+-        public void onReceive(Context context, Intent intent) {
+-            if (intent.getAction().equals(Intent.ACTION_SCREEN_ON)) {
+-                Log.i("TAG", "Screen ON");
+-            } else if (intent.getAction().equals(Intent.ACTION_SCREEN_OFF)) {
+-                Log.i("TAG", "Screen OFF");
+-                parar();
+-            }
+-
+-        }
+-    };
+ 
+     @Override
+     protected void onCreate(Bundle savedInstanceState) {
+@@ -132,16 +119,6 @@
+             }
+         });
+ 
+-        registerReceiver(miBroadcast, new IntentFilter(Intent.ACTION_SCREEN_ON));
+-        registerReceiver(miBroadcast, new IntentFilter(Intent.ACTION_SCREEN_OFF));
+-    }
+-
+-    private void reproducir() {
+-        startService(new Intent(this, ServicioMusica.class));
+-    }
+-
+-    private void parar() {
+-        stopService(new Intent(this, ServicioMusica.class));
+     }
+ 
+ 
