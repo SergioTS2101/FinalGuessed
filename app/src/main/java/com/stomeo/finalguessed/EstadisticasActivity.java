@@ -15,6 +15,8 @@ import android.widget.TextView;
 import com.stomeo.finalguessed.sql.BaseDatosPalabras;
 import com.stomeo.finalguessed.sql.SQLite;
 
+import java.util.Locale;
+
 public class EstadisticasActivity extends AppCompatActivity {
 
     TextView tvComidas, tvDeportes, tvAnimales, tvCapitales, tvProfesiones, tvCine;
@@ -42,12 +44,22 @@ public class EstadisticasActivity extends AppCompatActivity {
         Cursor cursorProfesiones = dbAciertos.consultarAciertos("profesiones");
         Cursor cursorCine = dbAciertos.consultarAciertos("cine");
 
-        tvComidas.setText("Comidas acertadas: " + cursorComidas.getCount() + " palabra/s");
-        tvDeportes.setText("Deportes acertados: " + cursorDeportes.getCount() + " palabra/s");
-        tvAnimales.setText("Animales acertados: " + cursorAnimales.getCount() + " palabra/s");
-        tvCapitales.setText("Capitales acertadas: " + cursorCapitales.getCount() + " palabra/s");
-        tvProfesiones.setText("Profesiones acertadas: " + cursorProfesiones.getCount() + " palabra/s");
-        tvCine.setText("Peliculas acertadas: " + cursorCine.getCount() + " palabra/s");
+        if (Locale.getDefault().getISO3Language().equals("eng")) {
+            tvComidas.setText("Foods guessed: " + cursorComidas.getCount() + " word/s");
+            tvDeportes.setText("Sports guessed: " + cursorDeportes.getCount() + " word/s");
+            tvAnimales.setText("Animals guessed: " + cursorAnimales.getCount() + " word/s");
+            tvCapitales.setText("Capitals guessed: " + cursorCapitales.getCount() + " word/s");
+            tvProfesiones.setText("Professions guessed: " + cursorProfesiones.getCount() + " word/s");
+            tvCine.setText("Movies guessed: " + cursorCine.getCount() + " word/s");
+        } else {
+            tvComidas.setText("Comidas acertadas: " + cursorComidas.getCount() + " palabra/s");
+            tvDeportes.setText("Deportes acertados: " + cursorDeportes.getCount() + " palabra/s");
+            tvAnimales.setText("Animales acertados: " + cursorAnimales.getCount() + " palabra/s");
+            tvCapitales.setText("Capitales acertadas: " + cursorCapitales.getCount() + " palabra/s");
+            tvProfesiones.setText("Profesiones acertadas: " + cursorProfesiones.getCount() + " palabra/s");
+            tvCine.setText("Peliculas acertadas: " + cursorCine.getCount() + " palabra/s");
+
+        }
     }
 
     @Override

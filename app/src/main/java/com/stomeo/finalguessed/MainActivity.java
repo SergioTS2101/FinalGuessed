@@ -19,6 +19,8 @@ import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 
+import java.util.Locale;
+
 public class MainActivity extends AppCompatActivity {
 
     Button jugar;
@@ -34,6 +36,40 @@ public class MainActivity extends AppCompatActivity {
 
         ImageView imageView = findViewById(R.id.mainGIF);
         Glide.with(this).asGif().load(R.raw.ahorcado).into(imageView);
+
+        if (Locale.getDefault().getISO3Language().equals("eng")) {
+            AlertDialog.Builder alertDialog = new AlertDialog.Builder(MainActivity.this);
+            alertDialog.setTitle("Welcome!");
+            alertDialog.setMessage("Before you start playing, we would like to clarify something.                                       " + "The words you can introduce in the multiplayer mode, only can have a length from 4 to 10 letters.                                  " + "The length of the generate words is the same. Enjoy the game!.");
+            LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(
+                    LinearLayout.LayoutParams.MATCH_PARENT,
+                    LinearLayout.LayoutParams.MATCH_PARENT);
+
+            alertDialog.setPositiveButton("OK",
+                    new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int which) {
+                            dialog.cancel();
+                        }
+
+                    });
+            alertDialog.show();
+        }else{
+            AlertDialog.Builder alertDialog = new AlertDialog.Builder(MainActivity.this);
+            alertDialog.setTitle("¡Bienvenid@!");
+            alertDialog.setMessage("Antes de comenzar a jugar, nos gustaría explicar un par de cosas.                               " + "Las palabras introducidas en el modo 2 jugadores solo pueden tener una longitud de entre 4 y 10 letras y deben de estar escritas en mayúsculas.                                  " + "La longitud de las palabras generadas en el juego son las mismas. Disfruta del juego.");
+            LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(
+                    LinearLayout.LayoutParams.MATCH_PARENT,
+                    LinearLayout.LayoutParams.MATCH_PARENT);
+
+            alertDialog.setPositiveButton("OK",
+                    new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int which) {
+                            dialog.cancel();
+                        }
+
+                    });
+            alertDialog.show();
+        }
 
 
         jugar = findViewById(R.id.jugar);
@@ -61,40 +97,91 @@ public class MainActivity extends AppCompatActivity {
         btn2Jugadores.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                AlertDialog.Builder alertDialog = new AlertDialog.Builder(MainActivity.this);
-                alertDialog.setTitle("2 jugadores");
-                alertDialog.setMessage("Introduzca una palabra");
+                if (Locale.getDefault().getISO3Language().equals("eng")) {
+                    AlertDialog.Builder alertDialog = new AlertDialog.Builder(MainActivity.this);
+                    alertDialog.setTitle("2 players");
+                    alertDialog.setMessage("Introduce a word");
 
-                final EditText input = new EditText(MainActivity.this);
-                LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(
-                        LinearLayout.LayoutParams.MATCH_PARENT,
-                        LinearLayout.LayoutParams.MATCH_PARENT);
-                input.setLayoutParams(lp);
-                alertDialog.setView(input);
+                    final EditText input = new EditText(MainActivity.this);
+                    LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(
+                            LinearLayout.LayoutParams.MATCH_PARENT,
+                            LinearLayout.LayoutParams.MATCH_PARENT);
+                    input.setLayoutParams(lp);
+                    alertDialog.setView(input);
 
-                alertDialog.setPositiveButton("Jugar",
-                        new DialogInterface.OnClickListener() {
-                            public void onClick(DialogInterface dialog, int which) {
-                                String palabraAAdivinar = input.getText().toString();
-                                palabra = palabraAAdivinar;
-                                Intent intent = new Intent(getApplicationContext(), MultiplayerActivity.class);
-                                intent.putExtra("palabraAAdivinar", palabra);
-                                startActivity(intent);
-                                finish();
-                                Toast.makeText(getApplicationContext(),
-                                        "¡A jugar!", Toast.LENGTH_SHORT).show();
-                            }
+                    alertDialog.setPositiveButton("Play",
+                            new DialogInterface.OnClickListener() {
+                                public void onClick(DialogInterface dialog, int which) {
+                                    String palabraAAdivinar = input.getText().toString();
+                                    palabra = palabraAAdivinar;
+                                    if ((palabra.length() >= 4 && palabra.length() <= 10)) {
+                                        String palabraMayuscula = palabra.toUpperCase();
+                                        Intent intent = new Intent(getApplicationContext(), MultiplayerActivity.class);
+                                        intent.putExtra("palabraAAdivinar", palabraMayuscula);
+                                        startActivity(intent);
+                                        finish();
+                                        Toast.makeText(getApplicationContext(),
+                                                "Lets play!", Toast.LENGTH_SHORT).show();
+                                    } else {
+                                        dialog.cancel();
+                                        Toast.makeText(getApplicationContext(),
+                                                "Introduce a word which have from 4 to 10 letters.", Toast.LENGTH_SHORT).show();
+                                    }
+                                }
 
-                        });
+                            });
 
-                alertDialog.setNegativeButton("Cerrar",
-                        new DialogInterface.OnClickListener() {
-                            public void onClick(DialogInterface dialog, int which) {
-                                dialog.cancel();
-                            }
-                        });
+                    alertDialog.setNegativeButton("Close",
+                            new DialogInterface.OnClickListener() {
+                                public void onClick(DialogInterface dialog, int which) {
+                                    dialog.cancel();
+                                }
+                            });
 
-                alertDialog.show();
+                    alertDialog.show();
+                }else{
+                    AlertDialog.Builder alertDialog = new AlertDialog.Builder(MainActivity.this);
+                    alertDialog.setTitle("2 jugadores");
+                    alertDialog.setMessage("Introduzca una palabra");
+
+                    final EditText input = new EditText(MainActivity.this);
+                    LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(
+                            LinearLayout.LayoutParams.MATCH_PARENT,
+                            LinearLayout.LayoutParams.MATCH_PARENT);
+                    input.setLayoutParams(lp);
+                    alertDialog.setView(input);
+
+                    alertDialog.setPositiveButton("Jugar",
+                            new DialogInterface.OnClickListener() {
+                                public void onClick(DialogInterface dialog, int which) {
+                                    String palabraAAdivinar = input.getText().toString();
+                                    palabra = palabraAAdivinar;
+                                    if ((palabra.length() >= 4 && palabra.length() <= 10)) {
+                                        String palabraMayuscula = palabra.toUpperCase();
+                                        Intent intent = new Intent(getApplicationContext(), MultiplayerActivity.class);
+                                        intent.putExtra("palabraAAdivinar", palabraMayuscula);
+                                        startActivity(intent);
+                                        finish();
+                                        Toast.makeText(getApplicationContext(),
+                                                "¡A jugar!", Toast.LENGTH_SHORT).show();
+                                    } else {
+                                        dialog.cancel();
+                                        Toast.makeText(getApplicationContext(),
+                                                "Introduce una palabra de entre 4 y 10 caracteres", Toast.LENGTH_SHORT).show();
+                                    }
+                                }
+
+                            });
+
+                    alertDialog.setNegativeButton("Cerrar",
+                            new DialogInterface.OnClickListener() {
+                                public void onClick(DialogInterface dialog, int which) {
+                                    dialog.cancel();
+                                }
+                            });
+
+                    alertDialog.show();
+                }
             }
 
         });
@@ -103,24 +190,45 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-        AlertDialog.Builder alerta = new AlertDialog.Builder(MainActivity.this);
-        alerta.setCancelable(false).setPositiveButton("Sí", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                Intent intent = new Intent(Intent.ACTION_MAIN);
-                intent.addCategory(Intent.CATEGORY_HOME);
-                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                startActivity(intent);
-            }
-        }).setNegativeButton("No", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                dialog.dismiss();
-            }
-        });
-        AlertDialog titulo = alerta.create();
-        titulo.setTitle("¿Desea salir de la aplicación?");
-        titulo.show();
+        if (Locale.getDefault().getISO3Language().equals("eng")) {
+            AlertDialog.Builder alerta = new AlertDialog.Builder(MainActivity.this);
+            alerta.setCancelable(false).setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    Intent intent = new Intent(Intent.ACTION_MAIN);
+                    intent.addCategory(Intent.CATEGORY_HOME);
+                    intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                    startActivity(intent);
+                }
+            }).setNegativeButton("No", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    dialog.dismiss();
+                }
+            });
+            AlertDialog titulo = alerta.create();
+            titulo.setTitle("You want to leave the application?");
+            titulo.show();
+        }else{
+            AlertDialog.Builder alerta = new AlertDialog.Builder(MainActivity.this);
+            alerta.setCancelable(false).setPositiveButton("Sí", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    Intent intent = new Intent(Intent.ACTION_MAIN);
+                    intent.addCategory(Intent.CATEGORY_HOME);
+                    intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                    startActivity(intent);
+                }
+            }).setNegativeButton("No", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    dialog.dismiss();
+                }
+            });
+            AlertDialog titulo = alerta.create();
+            titulo.setTitle("¿Desea salir de la aplicación?");
+            titulo.show();
+        }
 
     }
 

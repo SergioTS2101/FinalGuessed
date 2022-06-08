@@ -130,7 +130,7 @@ public class MultiplayerActivity extends AppCompatActivity {
         });
 
         palabraUsuario = temaElegido = getIntent().getStringExtra("palabraAAdivinar");
-
+        palabraCorrecta = palabraUsuario;
         caracteres = palabraUsuario.toCharArray();
 
         letrasList = new ArrayList<>();

@@ -138,6 +138,24 @@
         app:layout_constraintVertical_bias="0.543" />
 
     <Button
+        android:id="@+id/btn2jugadores"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_gravity="center|center"
+        android:backgroundTint="@android:color/holo_purple"
+        android:fontFamily="@font/hollaboi_2"
+        android:text="@string/dosJugadores"
+        android:textAllCaps="false"
+        android:textColor="@color/white"
+        android:textSize="35sp"
+        app:layout_constraintBottom_toTopOf="@+id/jugar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView"
+        app:layout_constraintVertical_bias="0.818" />
+
+    <Button
         android:id="@+id/jugar"
         android:layout_width="match_parent"
         android:layout_height="50dp"

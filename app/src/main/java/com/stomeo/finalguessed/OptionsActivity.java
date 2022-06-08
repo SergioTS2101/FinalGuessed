@@ -118,7 +118,7 @@ public class OptionsActivity extends AppCompatActivity {
             i.setType("text/plain");
             i.putExtra(Intent.EXTRA_SUBJECT, getResources().getString(R.string.app_name));
             String aux = "Descarga la app Guessed\n";
-            aux = aux + "https://mega.nz/file/MiQQSQzB#SeAThbZPeTHHou6h1hMngsRD14Y4xZDIt1ks2OcrNn0";
+            aux = aux + "https://mega.nz/file/1zACnAbb#AVZi5M1Pgrv5tXOLGXoQwEP0LMkCjllADxt26hFbTXk";
             i.putExtra(Intent.EXTRA_TEXT, aux);
             startActivity(i);
         } catch (Exception ignored) {

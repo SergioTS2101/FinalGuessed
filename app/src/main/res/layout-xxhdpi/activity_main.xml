@@ -144,7 +144,7 @@
         android:layout_gravity="center|center"
         android:backgroundTint="@android:color/holo_purple"
         android:fontFamily="@font/hollaboi_2"
-        android:text="2 jugadores"
+        android:text="@string/dosJugadores"
         android:textAllCaps="false"
         android:textColor="@color/white"
         android:textSize="35sp"
