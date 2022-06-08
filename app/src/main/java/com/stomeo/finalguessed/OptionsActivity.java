@@ -22,28 +22,11 @@ public class OptionsActivity extends AppCompatActivity {
     public List<ArrayListElementos> elements;
     private final static String atlantis_URL = "https://play.google.com/store/apps/details?id=com.sermami.atlantis&hl=es&gl=US";
 
-    BroadcastReceiver miBroadcast = new BroadcastReceiver() {
-
-        @Override
-        public void onReceive(Context context, Intent intent) {
-            if (intent.getAction().equals(Intent.ACTION_SCREEN_ON)) {
-                Log.i("TAG", "Screen ON");
-            } else if (intent.getAction().equals(Intent.ACTION_SCREEN_OFF)) {
-                Log.i("TAG", "Screen OFF");
-                parar();
-            }
-
-        }
-    };
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_options);
         inicializar();
-
-        registerReceiver(miBroadcast, new IntentFilter(Intent.ACTION_SCREEN_ON));
-        registerReceiver(miBroadcast, new IntentFilter(Intent.ACTION_SCREEN_OFF));
     }
 
     public void inicializar() {
@@ -52,14 +35,14 @@ public class OptionsActivity extends AppCompatActivity {
             elements.add(new ArrayListElementos("Contact us"));
             elements.add(new ArrayListElementos("Share app"));
             elements.add(new ArrayListElementos("Our games"));
-            elements.add(new ArrayListElementos("Activate sound"));
             elements.add(new ArrayListElementos("About us"));
+            elements.add(new ArrayListElementos("Statistics"));
         } else {
             elements.add(new ArrayListElementos("Contáctanos"));
             elements.add(new ArrayListElementos("Compartir app"));
             elements.add(new ArrayListElementos("Nuestros juegos"));
-            elements.add(new ArrayListElementos("Activar sonido"));
             elements.add(new ArrayListElementos("Sobre nosotros"));
+            elements.add(new ArrayListElementos("Estadísticas"));
         }
         MiAdaptador miAdaptador = new MiAdaptador(this, elements, new MiAdaptador.OnItemClickListener() {
             @Override
@@ -71,15 +54,6 @@ public class OptionsActivity extends AppCompatActivity {
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setAdapter(miAdaptador);
     }
-
-    private void reproducir() {
-        startService(new Intent(this, ServicioMusica.class));
-    }
-
-    private void parar() {
-        stopService(new Intent(this, ServicioMusica.class));
-    }
-
 
     public void iniciarActividad(ArrayListElementos item) {
         switch (item.getOpcion()) {
@@ -98,11 +72,6 @@ public class OptionsActivity extends AppCompatActivity {
                 startActivity(intent);
                 break;
             }
-            case "Activar sonido": {
-                Intent intent = new Intent(this, SoundActivity.class);
-                startActivity(intent);
-                break;
-            }
             case "Sobre nosotros": {
                 Intent intent = new Intent(this, AboutUsActivity.class);
                 startActivity(intent);
@@ -111,6 +80,11 @@ public class OptionsActivity extends AppCompatActivity {
             }
             case "Contact us": {
                 Intent intent = new Intent(this, ContactActivity.class);
+                startActivity(intent);
+                break;
+            }
+            case "Estadísticas": {
+                Intent intent = new Intent(this, EstadisticasActivity.class);
                 startActivity(intent);
                 break;
             }
@@ -124,15 +98,15 @@ public class OptionsActivity extends AppCompatActivity {
                 startActivity(intent);
                 break;
             }
-            case "Activate sound": {
-                Intent intent = new Intent(this, SoundActivity.class);
-                startActivity(intent);
-                break;
-            }
             case "About us": {
                 Intent intent = new Intent(this, AboutUsActivity.class);
                 startActivity(intent);
                 finish();
+                break;
+            }
+            case "Statistics": {
+                Intent intent = new Intent(this, EstadisticasActivity.class);
+                startActivity(intent);
                 break;
             }
         }

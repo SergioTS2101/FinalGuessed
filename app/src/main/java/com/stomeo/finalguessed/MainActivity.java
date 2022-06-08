@@ -21,20 +21,6 @@ public class MainActivity extends AppCompatActivity {
     Button jugar;
     Button opciones;
 
-    BroadcastReceiver miBroadcast = new BroadcastReceiver() {
-
-        @Override
-        public void onReceive(Context context, Intent intent) {
-            if (intent.getAction().equals(Intent.ACTION_SCREEN_ON)) {
-                Log.i("TAG", "Screen ON");
-            } else if (intent.getAction().equals(Intent.ACTION_SCREEN_OFF)) {
-                Log.i("TAG", "Screen OFF");
-                parar();
-            }
-
-        }
-    };
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -63,18 +49,6 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-
-        registerReceiver(miBroadcast, new IntentFilter(Intent.ACTION_SCREEN_ON));
-        registerReceiver(miBroadcast, new IntentFilter(Intent.ACTION_SCREEN_OFF));
-
-    }
-
-    private void reproducir() {
-        startService(new Intent(this, ServicioMusica.class));
-    }
-
-    private void parar() {
-        stopService(new Intent(this, ServicioMusica.class));
     }
 
     @Override
@@ -83,7 +57,6 @@ public class MainActivity extends AppCompatActivity {
         alerta.setCancelable(false).setPositiveButton("Sí", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                parar();
                 Intent intent = new Intent(Intent.ACTION_MAIN);
                 intent.addCategory(Intent.CATEGORY_HOME);
                 intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);

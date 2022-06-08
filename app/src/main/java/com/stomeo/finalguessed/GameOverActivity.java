@@ -21,20 +21,6 @@ import java.util.Locale;
 
 public class GameOverActivity extends AppCompatActivity {
 
-    BroadcastReceiver miBroadcast = new BroadcastReceiver() {
-
-        @Override
-        public void onReceive(Context context, Intent intent) {
-            if (intent.getAction().equals(Intent.ACTION_SCREEN_ON)) {
-                Log.i("TAG", "Screen ON");
-            } else if (intent.getAction().equals(Intent.ACTION_SCREEN_OFF)) {
-                Log.i("TAG", "Screen OFF");
-                parar();
-            }
-
-        }
-    };
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -59,7 +45,6 @@ public class GameOverActivity extends AppCompatActivity {
             }).setNegativeButton("No", new DialogInterface.OnClickListener() {
                 @Override
                 public void onClick(DialogInterface dialog, int which) {
-                    parar();
                     Intent intent = new Intent(Intent.ACTION_MAIN);
                     intent.addCategory(Intent.CATEGORY_HOME);
                     intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
@@ -83,7 +68,6 @@ public class GameOverActivity extends AppCompatActivity {
             }).setNegativeButton("No", new DialogInterface.OnClickListener() {
                 @Override
                 public void onClick(DialogInterface dialog, int which) {
-                    parar();
                     Intent intent = new Intent(Intent.ACTION_MAIN);
                     intent.addCategory(Intent.CATEGORY_HOME);
                     intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
@@ -95,18 +79,6 @@ public class GameOverActivity extends AppCompatActivity {
             titulo.setTitle("La palabra a adivinar era: " + palabraAAdivinar + " ¿Desea jugar de nuevo?");
             titulo.show();
         }
-
-        registerReceiver(miBroadcast, new IntentFilter(Intent.ACTION_SCREEN_ON));
-        registerReceiver(miBroadcast, new IntentFilter(Intent.ACTION_SCREEN_OFF));
-
-    }
-
-    private void reproducir() {
-        startService(new Intent(this, ServicioMusica.class));
-    }
-
-    private void parar() {
-        stopService(new Intent(this, ServicioMusica.class));
     }
 
     @Override

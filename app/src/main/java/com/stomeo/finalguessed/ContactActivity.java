@@ -18,20 +18,6 @@ public class ContactActivity extends AppCompatActivity {
     private EditText etAsunto;
     private EditText etMensaje;
 
-    BroadcastReceiver miBroadcast = new BroadcastReceiver() {
-
-        @Override
-        public void onReceive(Context context, Intent intent) {
-            if (intent.getAction().equals(Intent.ACTION_SCREEN_ON)) {
-                Log.i("TAG", "Screen ON");
-            } else if (intent.getAction().equals(Intent.ACTION_SCREEN_OFF)) {
-                Log.i("TAG", "Screen OFF");
-                parar();
-            }
-
-        }
-    };
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,9 +26,6 @@ public class ContactActivity extends AppCompatActivity {
         etDireccion = findViewById(R.id.etDireccion);
         etAsunto = findViewById(R.id.etAsunto);
         etMensaje = findViewById(R.id.etMensaje);
-
-        registerReceiver(miBroadcast, new IntentFilter(Intent.ACTION_SCREEN_ON));
-        registerReceiver(miBroadcast, new IntentFilter(Intent.ACTION_SCREEN_OFF));
     }
 
     public void enviar(View v) {
@@ -53,15 +36,6 @@ public class ContactActivity extends AppCompatActivity {
         intent.putExtra(Intent.EXTRA_TEXT, etMensaje.getText().toString());
         startActivity(intent);
     }
-
-    private void reproducir() {
-        startService(new Intent(this, ServicioMusica.class));
-    }
-
-    private void parar() {
-        stopService(new Intent(this, ServicioMusica.class));
-    }
-
 
     @Override
     public void onWindowFocusChanged(boolean hasFocus) {

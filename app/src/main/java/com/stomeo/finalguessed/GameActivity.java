@@ -25,20 +25,6 @@ import java.util.Stack;
 
 public class GameActivity extends AppCompatActivity {
 
-    BroadcastReceiver miBroadcast = new BroadcastReceiver() {
-
-        @Override
-        public void onReceive(Context context, Intent intent) {
-            if (intent.getAction().equals(Intent.ACTION_SCREEN_ON)) {
-                Log.i("TAG", "Screen ON");
-            } else if (intent.getAction().equals(Intent.ACTION_SCREEN_OFF)) {
-                Log.i("TAG", "Screen OFF");
-                parar();
-            }
-
-        }
-    };
-
     private enum Temas {
         comida, deportes, animales, capitales, profesiones, cine
     }
@@ -82,7 +68,6 @@ public class GameActivity extends AppCompatActivity {
 
     char[] caracteres;
 
-    //Recycler letras
     RecyclerView recyclerView;
     ArrayList<LetrasList> letrasList;
     LetrasAdapter letrasAdapter;
@@ -612,17 +597,6 @@ public class GameActivity extends AppCompatActivity {
                 }
             }
         });
-
-        registerReceiver(miBroadcast, new IntentFilter(Intent.ACTION_SCREEN_ON));
-        registerReceiver(miBroadcast, new IntentFilter(Intent.ACTION_SCREEN_OFF));
-    }
-
-    private void reproducir() {
-        startService(new Intent(this, ServicioMusica.class));
-    }
-
-    private void parar() {
-        stopService(new Intent(this, ServicioMusica.class));
     }
 
     @Override
@@ -695,6 +669,7 @@ public class GameActivity extends AppCompatActivity {
             Intent intent = new Intent(mContext, GameOverActivity.class);
             intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
             intent.putExtra("palabraCorrecta", palabraCorrecta);
+            intent.putExtra("temaElegido", temaElegido);
             mContext.startActivity(intent);
             finish();
         }

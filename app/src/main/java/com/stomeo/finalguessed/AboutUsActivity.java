@@ -19,20 +19,6 @@ public class AboutUsActivity extends AppCompatActivity {
     TextView txtLink;
     private final static String gitHub_URL = "https://github.com/SergioTS2101/FinalGuessed";
 
-    BroadcastReceiver miBroadcast = new BroadcastReceiver() {
-
-        @Override
-        public void onReceive(Context context, Intent intent) {
-            if (intent.getAction().equals(Intent.ACTION_SCREEN_ON)) {
-                Log.i("TAG", "Screen ON");
-            } else if (intent.getAction().equals(Intent.ACTION_SCREEN_OFF)) {
-                Log.i("TAG", "Screen OFF");
-                parar();
-            }
-
-        }
-    };
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -59,12 +45,6 @@ public class AboutUsActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-        registerReceiver(miBroadcast, new IntentFilter(Intent.ACTION_SCREEN_ON));
-        registerReceiver(miBroadcast, new IntentFilter(Intent.ACTION_SCREEN_OFF));
-    }
-
-    private void parar() {
-        stopService(new Intent(this, ServicioMusica.class));
     }
 
     @Override

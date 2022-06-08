@@ -14,26 +14,14 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
+import com.stomeo.finalguessed.sql.BaseDatosPalabras;
+import com.stomeo.finalguessed.sql.SQLite;
 
 public class GameWinActivity extends AppCompatActivity {
 
     TextView tvPalabra;
     Button btn1, btn2;
     String temaElegido;
-
-    BroadcastReceiver miBroadcast = new BroadcastReceiver() {
-
-        @Override
-        public void onReceive(Context context, Intent intent) {
-            if (intent.getAction().equals(Intent.ACTION_SCREEN_ON)) {
-                Log.i("TAG", "Screen ON");
-            } else if (intent.getAction().equals(Intent.ACTION_SCREEN_OFF)) {
-                Log.i("TAG", "Screen OFF");
-                parar();
-            }
-
-        }
-    };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,6 +38,12 @@ public class GameWinActivity extends AppCompatActivity {
         String palabraCorrecta = getIntent().getStringExtra("palabraCorrecta");
 
         temaElegido = getIntent().getStringExtra("temaElegido");
+
+        SQLite dbHelper = new SQLite(this);
+
+        BaseDatosPalabras dbAciertos = new BaseDatosPalabras(GameWinActivity.this);
+
+        long id = dbAciertos.insertarPalabra(temaElegido,palabraCorrecta);
 
         tvPalabra.setText(palabraCorrecta);
 
@@ -72,19 +66,7 @@ public class GameWinActivity extends AppCompatActivity {
                 finish();
             }
         });
-
-        registerReceiver(miBroadcast, new IntentFilter(Intent.ACTION_SCREEN_ON));
-        registerReceiver(miBroadcast, new IntentFilter(Intent.ACTION_SCREEN_OFF));
     }
-
-    private void reproducir() {
-        startService(new Intent(this, ServicioMusica.class));
-    }
-
-    private void parar() {
-        stopService(new Intent(this, ServicioMusica.class));
-    }
-
 
     @Override
     public void onWindowFocusChanged(boolean hasFocus) {

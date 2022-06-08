@@ -6,7 +6,8 @@
     android:layout_height="match_parent"
     android:background="@drawable/hoja"
     android:textAlignment="center"
-    tools:context=".AboutUsActivity">
+    tools:context=".AboutUsActivity"
+    android:forceDarkAllowed="false">
 
 
     <androidx.cardview.widget.CardView
