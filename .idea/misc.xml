@@ -7,6 +7,7 @@
         <entry key="..\:/Users/sergi/AndroidStudioProjects/FinalGuessed2/app/src/main/res/layout-hdpi/activity_game_over.xml" value="0.13558743169398907" />
         <entry key="..\:/Users/sergi/AndroidStudioProjects/FinalGuessed2/app/src/main/res/layout-hdpi/activity_game_over_multiplayer.xml" value="0.17980072463768115" />
         <entry key="..\:/Users/sergi/AndroidStudioProjects/FinalGuessed2/app/src/main/res/layout-hdpi/activity_main.xml" value="0.20625" />
+        <entry key="..\:/Users/sergi/AndroidStudioProjects/FinalGuessed2/app/src/main/res/layout-hdpi/activity_options.xml" value="0.3482142857142857" />
         <entry key="..\:/Users/sergi/AndroidStudioProjects/FinalGuessed2/app/src/main/res/layout-ldpi/activity_estadisticas.xml" value="0.43171806167400884" />
         <entry key="..\:/Users/sergi/AndroidStudioProjects/FinalGuessed2/app/src/main/res/layout-ldpi/activity_game_over.xml" value="0.7518939393939394" />
         <entry key="..\:/Users/sergi/AndroidStudioProjects/FinalGuessed2/app/src/main/res/layout-ldpi/activity_game_over_multiplayer.xml" value="0.17980072463768115" />
@@ -25,10 +26,16 @@
         <entry key="..\:/Users/sergi/AndroidStudioProjects/FinalGuessed2/app/src/main/res/layout-xxxhdpi/activity_estadisticas.xml" value="0.17980072463768115" />
         <entry key="..\:/Users/sergi/AndroidStudioProjects/FinalGuessed2/app/src/main/res/layout-xxxhdpi/activity_game_over_multiplayer.xml" value="0.17980072463768115" />
         <entry key="..\:/Users/sergi/AndroidStudioProjects/FinalGuessed2/app/src/main/res/layout-xxxhdpi/activity_main.xml" value="0.1" />
+        <entry key="..\:/Users/sergi/AndroidStudioProjects/FinalGuessed2/app/src/main/res/layout/activity_contact.xml" value="0.1469265367316342" />
         <entry key="..\:/Users/sergi/AndroidStudioProjects/FinalGuessed2/app/src/main/res/layout/activity_estadisticas.xml" value="0.1" />
+        <entry key="..\:/Users/sergi/AndroidStudioProjects/FinalGuessed2/app/src/main/res/layout/activity_game.xml" value="0.1469265367316342" />
         <entry key="..\:/Users/sergi/AndroidStudioProjects/FinalGuessed2/app/src/main/res/layout/activity_game_over.xml" value="0.17980072463768115" />
         <entry key="..\:/Users/sergi/AndroidStudioProjects/FinalGuessed2/app/src/main/res/layout/activity_game_over_multiplayer.xml" value="0.17980072463768115" />
+        <entry key="..\:/Users/sergi/AndroidStudioProjects/FinalGuessed2/app/src/main/res/layout/activity_game_win.xml" value="0.23588709677419356" />
         <entry key="..\:/Users/sergi/AndroidStudioProjects/FinalGuessed2/app/src/main/res/layout/activity_main.xml" value="0.1" />
+        <entry key="..\:/Users/sergi/AndroidStudioProjects/FinalGuessed2/app/src/main/res/layout/activity_options.xml" value="0.23588709677419356" />
+        <entry key="..\:/Users/sergi/AndroidStudioProjects/FinalGuessed2/app/src/main/res/layout/activity_play.xml" value="0.23588709677419356" />
+        <entry key="..\:/Users/sergi/AndroidStudioProjects/FinalGuessed2/app/src/main/res/layout/activity_splash_screen.xml" value="0.23588709677419356" />
       </map>
     </option>
   </component>

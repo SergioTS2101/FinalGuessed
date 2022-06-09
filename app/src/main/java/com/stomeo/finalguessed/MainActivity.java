@@ -53,7 +53,7 @@ public class MainActivity extends AppCompatActivity {
 
                     });
             alertDialog.show();
-        }else{
+        } else {
             AlertDialog.Builder alertDialog = new AlertDialog.Builder(MainActivity.this);
             alertDialog.setTitle("¡Bienvenid@!");
             alertDialog.setMessage("Antes de comenzar a jugar, nos gustaría explicar un par de cosas.                               " + "Las palabras introducidas en el modo 2 jugadores solo pueden tener una longitud de entre 4 y 10 letras y deben de estar escritas en mayúsculas.                                  " + "La longitud de las palabras generadas en el juego son las mismas. Disfruta del juego.");
@@ -114,7 +114,7 @@ public class MainActivity extends AppCompatActivity {
                                 public void onClick(DialogInterface dialog, int which) {
                                     String palabraAAdivinar = input.getText().toString();
                                     palabra = palabraAAdivinar;
-                                    if ((palabra.length() >= 4 && palabra.length() <= 10)) {
+                                    if ((palabra.length() >= 4 && palabra.length() <= 10) && (esSoloLetras(palabra))) {
                                         String palabraMayuscula = palabra.toUpperCase();
                                         Intent intent = new Intent(getApplicationContext(), MultiplayerActivity.class);
                                         intent.putExtra("palabraAAdivinar", palabraMayuscula);
@@ -139,7 +139,7 @@ public class MainActivity extends AppCompatActivity {
                             });
 
                     alertDialog.show();
-                }else{
+                } else {
                     AlertDialog.Builder alertDialog = new AlertDialog.Builder(MainActivity.this);
                     alertDialog.setTitle("2 jugadores");
                     alertDialog.setMessage("Introduzca una palabra");
@@ -156,7 +156,7 @@ public class MainActivity extends AppCompatActivity {
                                 public void onClick(DialogInterface dialog, int which) {
                                     String palabraAAdivinar = input.getText().toString();
                                     palabra = palabraAAdivinar;
-                                    if ((palabra.length() >= 4 && palabra.length() <= 10)) {
+                                    if ((palabra.length() >= 4 && palabra.length() <= 10) && (esSoloLetras(palabra))) {
                                         String palabraMayuscula = palabra.toUpperCase();
                                         Intent intent = new Intent(getApplicationContext(), MultiplayerActivity.class);
                                         intent.putExtra("palabraAAdivinar", palabraMayuscula);
@@ -167,7 +167,7 @@ public class MainActivity extends AppCompatActivity {
                                     } else {
                                         dialog.cancel();
                                         Toast.makeText(getApplicationContext(),
-                                                "Introduce una palabra de entre 4 y 10 caracteres", Toast.LENGTH_SHORT).show();
+                                                "Introduce una palabra que solo contenga letras de entre 4 y 10 caracteres", Toast.LENGTH_SHORT).show();
                                     }
                                 }
 
@@ -209,7 +209,7 @@ public class MainActivity extends AppCompatActivity {
             AlertDialog titulo = alerta.create();
             titulo.setTitle("You want to leave the application?");
             titulo.show();
-        }else{
+        } else {
             AlertDialog.Builder alerta = new AlertDialog.Builder(MainActivity.this);
             alerta.setCancelable(false).setPositiveButton("Sí", new DialogInterface.OnClickListener() {
                 @Override
@@ -230,6 +230,23 @@ public class MainActivity extends AppCompatActivity {
             titulo.show();
         }
 
+    }
+
+    static boolean esSoloLetras(String cadena) {
+        //Recorremos cada caracter de la cadena y comprobamos si son letras.
+        //Para comprobarlo, lo pasamos a mayuscula y consultamos su numero ASCII.
+        //Si está fuera del rango 65 - 90, es que NO son letras.
+        //Para ser más exactos al tratarse del idioma español, tambien comprobamos
+
+        for (int i = 0; i < cadena.length(); i++) {
+            char caracter = cadena.toUpperCase().charAt(i);
+            int valorASCII = (int) caracter;
+            if (valorASCII < 65 || valorASCII > 90)
+                return false; //Se ha encontrado un caracter que no es letra
+        }
+
+        //Terminado el bucle sin que se haya retornado false, es que todos los caracteres son letras
+        return true;
     }
 
     @Override
