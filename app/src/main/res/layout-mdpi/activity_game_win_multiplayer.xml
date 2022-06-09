@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    tools:context=".GameWinActivity"
+    android:forceDarkAllowed="false">
+
+    <ImageView
+        android:id="@+id/gamewinGIF"
+        android:layout_width="match_parent"
+        android:layout_height="160dp"
+        android:contentDescription="@string/gameWinDescription"
+        app:layout_constraintBottom_toTopOf="@id/tvTema"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.017"
+        tools:ignore="ImageContrastCheck"
+        tools:layout_editor_absoluteX="4dp" />
+
+    <TextView
+        android:id="@+id/tvTema"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="20dp"
+        android:fontFamily="@font/organic_relief"
+        android:gravity="center"
+        android:text="GUESSED!"
+        android:textColor="@color/black"
+        android:textSize="25sp"
+        app:layout_constraintBottom_toTopOf="@id/tvPalabra"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent" />
+
+    <TextView
+        android:id="@+id/tvPalabra"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:fontFamily="@font/organic_relief"
+        android:gravity="center"
+        android:text="Palabra"
+        android:textColor="@color/black"
+        android:textSize="25sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/btn1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="68dp"
+        android:backgroundTint="@android:color/holo_red_light"
+        android:fontFamily="@font/hollaboi_2"
+        android:gravity="center"
+        android:text="@string/volver"
+        android:textColor="@color/black"
+        android:textSize="35sp"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toLeftOf="@id/btn2"
+        app:layout_constraintTop_toBottomOf="@id/tvPalabra" />
+
+    <Button
+        android:id="@+id/btn2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@android:color/holo_blue_light"
+        android:fontFamily="@font/hollaboi_2"
+        android:gravity="center"
+        android:text="@string/nuevoTema"
+        android:textColor="@color/black"
+        android:textSize="35sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/btn1" />
+</androidx.constraintlayout.widget.ConstraintLayout>

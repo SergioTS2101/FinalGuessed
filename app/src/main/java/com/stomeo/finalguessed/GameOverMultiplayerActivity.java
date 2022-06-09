@@ -38,7 +38,7 @@ public class GameOverMultiplayerActivity extends AppCompatActivity {
             alerta.setCancelable(false).setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                 @Override
                 public void onClick(DialogInterface dialog, int which) {
-                    Intent intent = new Intent(getApplicationContext(), PlayActivity.class);
+                    Intent intent = new Intent(getApplicationContext(), MainActivity.class);
                     startActivity(intent);
                     finish();
                 }
@@ -61,7 +61,7 @@ public class GameOverMultiplayerActivity extends AppCompatActivity {
             alerta.setCancelable(false).setPositiveButton("Sí", new DialogInterface.OnClickListener() {
                 @Override
                 public void onClick(DialogInterface dialog, int which) {
-                    Intent intent = new Intent(getApplicationContext(), PlayActivity.class);
+                    Intent intent = new Intent(getApplicationContext(), MainActivity.class);
                     startActivity(intent);
                     finish();
                 }

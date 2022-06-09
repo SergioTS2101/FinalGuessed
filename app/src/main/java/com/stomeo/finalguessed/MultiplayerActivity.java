@@ -644,7 +644,7 @@ public class MultiplayerActivity extends AppCompatActivity {
             finish();
         }
         if (contaciertos == caracteres.length) {
-            Intent intent = new Intent(mContext, GameWinActivity.class);
+            Intent intent = new Intent(mContext, GameWinMultiplayerActivity.class);
             intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
             intent.putExtra("palabraCorrecta", palabraCorrecta);
             mContext.startActivity(intent);
